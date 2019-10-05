@@ -25,7 +25,7 @@
     </head>
     <body>
         {{-- Navigation --}}
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
                 <div class="navbar-brand">
                     <a class="navbar-logo" href="{{ route('home') }}">LARA<b>COMP</b></a>
@@ -38,13 +38,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav m-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#about">About</a>
+                            <a class="nav-link" href="#about">Tentang</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Services</a>
+                            <a class="nav-link" href="#service">Layanan</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Products</a>
+                            <a class="nav-link" href="#">Produk</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Harga</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Team</a>
@@ -52,9 +55,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Blog</a>
                         </li>
-
-                        <div class="divider"></div>
                         
+                        <li class="nav-item item-button2">
+                            <a class="btn btn-career" href="#">Career</a>
+                        </li>
                         <li class="nav-item item-button2">
                             <a class="btn btn-contact" href="#">Contact</a>
                         </li>
@@ -70,9 +74,7 @@
 
         {{-- content --}}
         <div class="content-wrapper">
-            <div class="container">
-                @yield('content')
-            </div>
+            @yield('content')
         </div>
         {{-- END content --}}
         
