@@ -3,10 +3,10 @@
     <div class="jumbotron">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-sm-12 jumbo-content">
+                <div class="col-md-6 col-sm-12 jumbo-content mt-5 text-white">
                     <h3 class="display-4" style="font-size: 35pt;">IT SOLUTION</h3>
                     <p class="lead" style="text-align: justify;">
-                        Jasa perbaikan komputer, laptop, install ulang windows dan lain-lain. Info lebih lanjut hubungi kami.
+                        brand usaha kami di bidang IT yang memberikan layanan professional dan dibekali dengan tenaga ahli yang berpengalaman. Info lebih lanjut hubungi kami!
                     </p>
                 </div>
 
