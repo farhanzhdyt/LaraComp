@@ -22,10 +22,13 @@
         {{-- Icons --}}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+        {{-- script --}}
+        <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
+
     </head>
     <body>
         {{-- Navigation --}}
-        <nav class="navbar navbar-expand-lg fixed-top">
+        <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <div class="navbar-brand">
                     <a class="navbar-logo" href="{{ route('home') }}">LARA<b>COMP</b></a>
@@ -53,7 +56,7 @@
                             <a class="nav-link" href="#">Team</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Blog</a>
+                            <a class="nav-link" href="{{ route('blog') }}">Blog</a>
                         </li>
                         
                         <li class="nav-item item-button2">
@@ -80,12 +83,14 @@
         
 
         {{-- script --}}
+        @stack('script')
+        <script src="{{ asset('js/script.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/scrollreveal.min.js') }}"></script>
         <script src="{{ asset('js/hamburger.js') }}"></script>
         <script src="{{ asset('js/scrollAnimate.js') }}"></script>
-        <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
         <script src="{{ asset('js/smoothScroll.js') }}"></script>
+        <script src="{{ asset('js/jquery.nicescroll.min.js') }}"></script>
 
     </body>
 </html>
