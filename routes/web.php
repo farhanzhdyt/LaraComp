@@ -26,3 +26,13 @@ Route::group(['prefix' => 'site'], function (){
 
 // Route Front End
 Route::get('/', 'PageController@index')->name('home');
+Route::get('/blog', 'PageController@blog')->name('blog');
+
+Auth::routes();
+
+// Remove Register
+Route::match(["GET", "POST"], "/register", function () {
+    return redirect("/login");
+})->name("register");
+
+Route::get('/home', 'HomeController@index')->name('home');
