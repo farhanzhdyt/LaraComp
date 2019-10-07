@@ -101,6 +101,9 @@
                     <li>
                         <a href="{{ route('products.index') }}"><span class="oi oi-laptop"></span> Product</a>
                     </li>
+                    <li>
+                        <a href="{{ route('pricing.index') }}"><span class="oi oi-dollar"></span> Pricing</a>
+                    </li>
                     <div class="d-block d-md-none">
                         <div class="dropdown-divider"></div>
                         <li><a href="#"> Profile</a></li>

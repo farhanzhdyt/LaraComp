@@ -19,6 +19,9 @@ Route::group(['prefix' => 'site'], function (){
     Route::get('products', [\App\Http\Controllers\Site\ProductController::class, 'index'])->name('products.index');
     Route::get('products/{id}', [\App\Http\Controllers\Site\ProductController::class, 'show'])->name('products.detail');
     Route::get('products/create', [\App\Http\Controllers\Site\ProductController::class, 'create'])->name('products.create');
+
+    // Pricing
+    Route::get('pricing', [\App\Http\Controllers\Site\PricingController::class, 'index'])->name('pricing.index');
 });
 
 // Route Front End
