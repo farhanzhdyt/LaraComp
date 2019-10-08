@@ -70,7 +70,9 @@
             MENU
         </button>
         
-        <input class="form-control d-none d-md-block w-50 ml-3 mr-2" type="text" placeholder="Search" aria-label="Search" style="border: transparent;">
+        <div class="d-none d-md-block w-50 ml-3 mr-2">
+            {{ $date }}
+        </div>
         <div class="dropdown d-none d-md-block">
             <img class="d-none d-lg-inline rounded-circle ml-1" width="32px" src="{{ asset('assets/gorilla.jpg') }}" alt="FN"/>
             <button class="btn btn-link btn-link-primary dropdown-toggle" id="navbar-dropdown" data-toggle="dropdown">

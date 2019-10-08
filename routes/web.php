@@ -25,6 +25,7 @@ Route::group(['prefix' => 'site'], function (){
     Route::get('pricing/create', [\App\Http\Controllers\Site\PricingController::class, 'create'])->name('pricing.create');
     Route::post('pricing/store', [\App\Http\Controllers\Site\PricingController::class, 'store'])->name('pricing.store');
     Route::get('pricing/edit/{id}', [\App\Http\Controllers\Site\PricingController::class, 'edit'])->name('pricing.edit');
+    Route::put('pricing/update', [\App\Http\Controllers\Site\PricingController::class, 'update'])->name('pricing.update');
 });
 
 // Route Front End

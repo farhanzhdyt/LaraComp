@@ -16,7 +16,9 @@
         </a>
     </div>
     <div class="card-body">
-        {!! Form::open(['route' => 'pricing.store', 'method' => 'PUT']) !!}
+        {!! Form::open(['route' => 'pricing.update', $pricing->id]) !!}
+
+        @method('PUT')
 
         <div class="form-group">
             {!! Form::label('title', 'Jenis :') !!}
@@ -51,7 +53,7 @@
         </div>
         
         <div class="button mt-4">
-            <button type="submit" class="btn btn-success">Tambah</button>
+            <button type="submit" class="btn btn-success">Ubah</button>
         </div>
 
         {!! Form::close() !!}

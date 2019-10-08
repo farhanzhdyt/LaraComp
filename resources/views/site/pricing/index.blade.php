@@ -44,7 +44,7 @@
                 <td>{{ $price->optional_description }}</td>
                 <td>{{ $price->price}}</td>
                 <td>
-                    <a href="{{ route('pricing.detail', $price->id) }}" class="btn btn-info" style="border: transparent;"><i class="oi oi-eye"></i></a>
+                    <a href="#" class="btn btn-info" style="border: transparent;"><i class="oi oi-eye"></i></a>
                     <a href="{{ route('pricing.edit', $price->id) }}" class="btn btn-success" style="border: transparent;"><i class="oi oi-pencil"></i></a>
                 </td>
             </tr>
