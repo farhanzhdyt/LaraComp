@@ -16,6 +16,8 @@
 
     <link rel="icon" href="{{ asset('assets/polished-logo-small.png') }}">
 
+    @stack('style')
+
     <style>
         .grid-highlight {
         padding-top: 1rem;
@@ -100,6 +102,9 @@
                     </li>
                     <li>
                         <a href="{{ route('products.index') }}"><span class="oi oi-laptop"></span> Product</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('pricing.index') }}"><span class="oi oi-dollar"></span> Pricing</a>
                     </li>
                     <div class="d-block d-md-none">
                         <div class="dropdown-divider"></div>
