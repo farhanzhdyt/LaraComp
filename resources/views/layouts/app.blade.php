@@ -16,6 +16,7 @@
         {{-- stylesheets --}}
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
         <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
         <link rel="stylesheet" href="{{ asset('css/hamburgers.css') }}">
 
@@ -81,6 +82,17 @@
         </div>
         {{-- END content --}}
         
+
+
+        {{-- footer --}}
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-desc">
+                    <p class="text-center">Copyright &copy; <a href="">LaraComp</a> 2019</p>
+                </div>
+            </div>
+        </footer>
+        {{-- END footer --}}
 
         {{-- script --}}
         @stack('script')
