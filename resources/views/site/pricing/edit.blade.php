@@ -5,7 +5,7 @@
 @endsection
 
 @section('page-title')
-    Tambah Harga
+    Ubah Harga
 @endsection
 
 @section('content-page')
@@ -16,11 +16,11 @@
         </a>
     </div>
     <div class="card-body">
-        {!! Form::open(['route' => 'pricing.store']) !!}
+        {!! Form::open(['route' => 'pricing.store', 'method' => 'PUT']) !!}
 
         <div class="form-group">
             {!! Form::label('title', 'Jenis :') !!}
-            {!! Form::text('title', '', ['class' => 'form-control']) !!}
+            {!! Form::text('title', $pricing->title, ['class' => 'form-control']) !!}
 
             @error('title')
                 <div class="text-danger">{{ $message }}</div>
@@ -29,12 +29,12 @@
 
         <div class="form-group">
             {!! Form::label('optional_description', 'Deskripsi (Opsional) :') !!}
-            {!! Form::textarea('optional_description', '', ['class' => 'form-control']) !!}
+            {!! Form::textarea('optional_description', $pricing->title, ['class' => 'form-control']) !!}
         </div>
 
         <div class="form-group @error('price') is-invalid @enderror">
             {!! Form::label('price', 'Harga :') !!}
-            {!! Form::number('price', '', ['class' => 'form-control']) !!}
+            {!! Form::number('price', $pricing->title, ['class' => 'form-control']) !!}
 
             @error('price')
                 <div class="text-danger">{{ $message }}</div>
@@ -43,7 +43,7 @@
 
         <div class="form-group @error('description') is-invalid @enderror">
             {!! Form::label('description', 'Deskripsi :') !!}
-            {!! Form::textarea('description', '', ['class' => 'form-control']) !!}
+            {!! Form::textarea('description', $pricing->title, ['class' => 'form-control']) !!}
 
             @error('description')
                 <div class="text-danger">{{ $message }}</div>

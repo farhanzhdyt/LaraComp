@@ -16,6 +16,8 @@
 
     <link rel="icon" href="{{ asset('assets/polished-logo-small.png') }}">
 
+    @stack('style')
+
     <style>
         .grid-highlight {
         padding-top: 1rem;

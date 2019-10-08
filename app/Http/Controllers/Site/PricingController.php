@@ -26,7 +26,7 @@ class PricingController extends Controller
      */
     public function create()
     {
-        //
+        return view('site.pricing.create');
     }
 
     /**
@@ -37,7 +37,26 @@ class PricingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $msg = [
+            "required" => "form tidak boleh kosong!",
+            "numeric" => "form harus berisi nomor"
+        ];
+
+        $this->validate($request, [
+            'title' => 'required',
+            'price' => 'required|numeric',
+            'description' => 'required'
+        ], $msg);
+
+        $pricing = new Pricing;
+        $pricing->title = $request->input('title');
+        $pricing->optional_description = $request->input('optional_description');
+        $pricing->price = $request->input('price');
+        $pricing->description = $request->input('description');
+
+        $pricing->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -59,7 +78,9 @@ class PricingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pricing = Pricing::findOrFail($id);
+
+        return view('site.pricing.edit', compact("pricing"));
     }
 
     /**
