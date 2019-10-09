@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Pricing;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class PricingController extends Controller
 {
@@ -15,8 +16,9 @@ class PricingController extends Controller
      */
     public function index()
     {
+        $date = Carbon::now()->format('Y-m-d');
         $pricing = Pricing::paginate();
-        return view('site.pricing.index', compact('pricing'));
+        return view('site.pricing.index', compact('pricing', 'date'));
     }
 
     /**
@@ -44,7 +46,6 @@ class PricingController extends Controller
 
         $this->validate($request, [
             'title' => 'required',
-            'price' => 'required|numeric',
             'description' => 'required'
         ], $msg);
 
@@ -56,7 +57,7 @@ class PricingController extends Controller
 
         $pricing->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data harga berhasil ditambah!');
     }
 
     /**
@@ -92,7 +93,24 @@ class PricingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $msg = [
+            "required" => "form tidak boleh kosong!",
+            "numeric" => "form harus berisi nomor"
+        ];
+
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required'
+        ], $msg);
+
+        $pricing = Pricing::findOrFail($id);
+        $pricing->update($request->all());
+
+        dd($pricing);
+
+        $pricing->save();
+
+        return redirect()->back()->with('success', 'Data harga berhasil ditambah!');
     }
 
     /**

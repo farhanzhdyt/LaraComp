@@ -16,45 +16,49 @@
         </a>
     </div>
     <div class="card-body">
-        {!! Form::open(['route' => 'pricing.store', 'method' => 'PUT']) !!}
+        <form action="{{ route('pricing.update', $pricing->id) }}" method="post">
+            @csrf
+            @method('PATCH')
+
+            <input type="hidden" name="id" value="{{ $pricing->id }}">
 
         <div class="form-group">
-            {!! Form::label('title', 'Jenis :') !!}
-            {!! Form::text('title', $pricing->title, ['class' => 'form-control']) !!}
-
+            <label>Jenis</label>
+            <input type="text" class="form-control" name="title" value="{{ $pricing->title }}">
             @error('title')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
 
         <div class="form-group">
-            {!! Form::label('optional_description', 'Deskripsi (Opsional) :') !!}
-            {!! Form::textarea('optional_description', $pricing->title, ['class' => 'form-control']) !!}
+            <label>Deskripsi (Opsional)</label>
+            <input type="text" class="form-control" name="optional_description" value="{{ $pricing->optional_description }}">
+            @error('optional_description')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
-        <div class="form-group @error('price') is-invalid @enderror">
-            {!! Form::label('price', 'Harga :') !!}
-            {!! Form::number('price', $pricing->title, ['class' => 'form-control']) !!}
-
+        <div class="form-group">
+            <label>Harga</label>
+            <input type="text" class="form-control" name="price" value="{{ $pricing->price }}">
             @error('price')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
 
-        <div class="form-group @error('description') is-invalid @enderror">
-            {!! Form::label('description', 'Deskripsi :') !!}
-            {!! Form::textarea('description', $pricing->title, ['class' => 'form-control']) !!}
-
+        <div class="form-group">
+            <label>Deskripsi</label>
+            <input type="text" class="form-control" name="description" value="{{ $pricing->description }}">
             @error('description')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
-        
-        <div class="button mt-4">
-            <button type="submit" class="btn btn-success">Tambah</button>
+
+        <div class="button">
+            <button type="submit" class="btn btn-success">Ubah</button>
         </div>
 
-        {!! Form::close() !!}
+        </form>
     </div>
 </div>
 

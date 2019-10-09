@@ -9,6 +9,11 @@
 @endsection
 
 @section('content-page')
+
+<div style="margin-top: 20px; margin-bottom: 20px;">
+    @include('message.flash-message')
+</div>
+
 <div class="form-pricing-input card">
     <div class="card-header">
         <a href="{{ route('pricing.index') }}">
@@ -32,16 +37,12 @@
             {!! Form::textarea('optional_description', '', ['class' => 'form-control']) !!}
         </div>
 
-        <div class="form-group @error('price') is-invalid @enderror">
+        <div class="form-group">
             {!! Form::label('price', 'Harga :') !!}
             {!! Form::number('price', '', ['class' => 'form-control']) !!}
-
-            @error('price')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
         </div>
 
-        <div class="form-group @error('description') is-invalid @enderror">
+        <div class="form-group">
             {!! Form::label('description', 'Deskripsi :') !!}
             {!! Form::textarea('description', '', ['class' => 'form-control']) !!}
 
