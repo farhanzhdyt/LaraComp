@@ -26,6 +26,13 @@ Route::group(['prefix' => 'site'], function (){
     Route::post('pricing/store', [\App\Http\Controllers\Site\PricingController::class, 'store'])->name('pricing.store');
     Route::get('pricing/edit/{id}', [\App\Http\Controllers\Site\PricingController::class, 'edit'])->name('pricing.edit');
     Route::patch('pricing/update', [\App\Http\Controllers\Site\PricingController::class, 'update'])->name('pricing.update');
+
+    // User Management
+    Route::get('users', [\App\Http\Controllers\Site\UsersController::class, 'index'])->name('users.index');
+    Route::get('users/create', [\App\Http\Controllers\Site\UsersController::class, 'create'])->name('users.create');
+    Route::post('users/store', [\App\Http\Controllers\Site\UsersController::class, 'store'])->name('users.store');
+    Route::get('users/edit/{id}', [\App\Http\Controllers\Site\UsersController::class, 'edit'])->name('users.edit');
+    Route::patch('users/update', [\App\Http\Controllers\Site\UsersController::class, 'update'])->name('users.update');
 });
 
 // Route Front End
