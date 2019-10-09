@@ -97,7 +97,7 @@
                         <a href="{{ route('dashboard') }}"><span class="oi oi-dashboard"></span> Dashboard</a>
                     </li>
                     <li>
-                        <a href="dashboard.html"><span class="oi oi-people"></span> Users</a>
+                        <a href="{{ route('users.index') }}"><span class="oi oi-people"></span> Users</a>
                     </li>
                     <li>
                         <a href="dashboard.html"><span class="oi oi-sun"></span> Team</a>
