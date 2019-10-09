@@ -104,10 +104,9 @@ class PricingController extends Controller
         ], $msg);
 
         $pricing = Pricing::findOrFail($id);
-        $pricing->title = $request->input('title');
-        $pricing->optional_description = $request->input('optional_description');
-        $pricing->price = $request->input('price');
-        $pricing->description = $request->input('description');
+        $pricing->update($request->all());
+
+        dd($pricing);
 
         $pricing->save();
 

@@ -71,7 +71,7 @@
         </button>
         
         <div class="d-none d-md-block w-50 ml-3 mr-2">
-            {{ $date }}
+            <i class="oi oi-calendar mr-2 text-white"></i><span class="time text-white">{{ \Carbon\Carbon::now()->format('Y-m-d') }}</span>
         </div>
         <div class="dropdown d-none d-md-block">
             <img class="d-none d-lg-inline rounded-circle ml-1" width="32px" src="{{ asset('assets/gorilla.jpg') }}" alt="FN"/>
