@@ -1,7 +1,7 @@
 @extends('site.layouts.app')
 
 @section('title')
-    Pricing
+    Harga Layanan
 @endsection
 
 @section('page-title')
@@ -9,7 +9,10 @@
 @endsection
 
 @section('content-page')
-<div class="form-pricing-input card">
+
+@include('message.flash-message')
+
+<div class="card mt-4">
     <div class="card-header">
         <a href="{{ route('pricing.index') }}">
             <button class="btn btn-primary"><i class="oi oi-chevron-left"></i></button>
@@ -18,12 +21,12 @@
     <div class="card-body">
         <form action="{{ route('pricing.update', $pricing->id) }}" method="post">
             @csrf
-            @method('PATCH')
+            @method('PUT')
 
             <input type="hidden" name="id" value="{{ $pricing->id }}">
 
         <div class="form-group">
-            <label>Jenis</label>
+            <label>Nama Layanan</label>
             <input type="text" class="form-control" name="title" value="{{ $pricing->title }}">
             @error('title')
                 <div class="text-danger">{{ $message }}</div>
