@@ -1,7 +1,7 @@
 @extends('site.layouts.app')
 
 @section('title')
-    Pricing
+    Harga Layanan
 @endsection
 
 @section('page-title')
@@ -24,7 +24,7 @@
         {!! Form::open(['route' => 'pricing.store']) !!}
 
         <div class="form-group">
-            {!! Form::label('title', 'Jenis :') !!}
+            {!! Form::label('title', 'Nama Layanan :') !!}
             {!! Form::text('title', '', ['class' => 'form-control']) !!}
 
             @error('title')
