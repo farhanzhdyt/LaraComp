@@ -4,6 +4,11 @@
         padding: 30px;
         background-color: transparent;
         box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1;
     }
 
     .navbar .container .navbar-brand .navbar-logo {
@@ -56,8 +61,8 @@
 
     .navbar .container .navbar-nav .nav-item .btn.btn-career {
         background: transparent;
-        color: #24A8EC;
-        background-color: #fff;
+        color: #fff;
+        border: 2px solid #fff;
         -webkit-transition: 0.3s;
         -moz-transition: 0.3s;
         -o-transition: 0.3s;
@@ -66,7 +71,7 @@
 
     .navbar .container .navbar-nav .nav-item .btn.btn-career:hover {
         background-color: #fff;
-        color: #000;
+        color: #24A8EC;
     }
 
     .navbar .container .navbar-nav .nav-item .btn.btn-contact {

@@ -16,6 +16,7 @@
         {{-- stylesheets --}}
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/footer.css') }}">
         <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
         <link rel="stylesheet" href="{{ asset('css/hamburgers.css') }}">
 
@@ -81,6 +82,12 @@
         </div>
         {{-- END content --}}
         
+        {{-- footer --}}
+        <footer class="main-footer">
+            <div class="container text-center">
+                <p>&copy; <a href="">LARACOMP</a> 2019</p>
+            </div>
+        </footer>
 
         {{-- script --}}
         @stack('script')
@@ -91,6 +98,5 @@
         <script src="{{ asset('js/scrollAnimate.js') }}"></script>
         <script src="{{ asset('js/smoothScroll.js') }}"></script>
         <script src="{{ asset('js/jquery.nicescroll.min.js') }}"></script>
-
     </body>
 </html>
