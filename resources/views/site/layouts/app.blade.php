@@ -63,76 +63,81 @@
 
 {{-- NavBar --}}
     
-    <nav class="navbar navbar-expand p-0">
-        <a class="navbar-brand text-center col-xs-12 col-md-3 col-lg-2 mr-0" href="index.html">
-            <img src="{{ asset('assets/gorilla.jpg') }}" class="rounded-circle" alt="logo" width="42px">
-            LaraComp
-        </a>
-        <button class="btn btn-link d-block d-md-none text-white" data-toggle="collapse" data-target="#sidebar-nav" role="button" >
-            MENU
-        </button>
-        
-        <div class="d-none d-md-block w-50 ml-3 mr-2">
-            <i class="oi oi-calendar mr-2 text-white"></i><span class="time text-white">{{ \Carbon\Carbon::now()->format('Y-m-d') }}</span>
-        </div>
-        <div class="dropdown d-none d-md-block">
-            <img class="d-none d-lg-inline rounded-circle ml-1" width="32px" src="{{ asset('assets/gorilla.jpg') }}" alt="FN"/>
-            <button class="btn btn-link btn-link-primary dropdown-toggle" id="navbar-dropdown" data-toggle="dropdown">
-            Farhan Nurhidayat
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" id="navbar-dropdown">
-                <a href="#" class="dropdown-item">Profile</a>
-                <a href="#" class="dropdown-item">Setting</a>
-                <div class="dropdown-divider"></div>
-                <form action="{{ route("logout") }}" method="POST">
-                    @csrf
-                    <button class="dropdown-item" style="cursor:pointer">Sign Out</button>
-                </form>
-            </div>
-        </div>
-    </nav>
+<nav class="navbar navbar-expand p-0">
+    <a class="navbar-brand text-center col-xs-12 col-md-3 col-lg-2 mr-0" href="index.html">
+        LARACOMP
+    </a>
+    <button class="btn btn-link d-block d-md-none text-white" data-toggle="collapse" data-target="#sidebar-nav" role="button" >
+        MENU
+    </button>
+    
+    @if( auth()->user() )
+    <div class="d-none d-md-block w-50 ml-3 mr-2">
+        <i class="oi oi-calendar mr-2 text-white"></i><span class="time text-white">{{ \Carbon\Carbon::now()->format('Y-m-d') }}</span>
+    </div>
+    @endif
 
+    @if( auth()->user() )
+    <div class="dropdown d-none d-md-block">
+        <img class="d-none d-lg-inline rounded-circle ml-1" width="32px" src="{{ asset('assets/gorilla.jpg') }}" alt="FN"/>
+        <button class="btn btn-link btn-link-primary dropdown-toggle" id="navbar-dropdown" data-toggle="dropdown">
+        {{ Auth::user()->name }}
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" id="navbar-dropdown">
+            <a href="#" class="dropdown-item">Profile</a>
+            <a href="#" class="dropdown-item">Setting</a>
+            <div class="dropdown-divider"></div>
+            <form action="{{ route("logout") }}" method="POST">
+                @csrf
+                <button class="dropdown-item" style="cursor:pointer">Sign Out</button>
+            </form>
+        </div>
+    </div>
+    @endif
+</nav>
 
 {{-- SideBar --}}
 
-    <div class="container-fluid h-100 p-0">
-        <div style="min-height: 100%" class="flex-row d-flex align-items-stretch m-0">
-            <div class="polished-sidebar bg-light col-12 col-md-3 col-lg-2 p-0 collapse d-md-inline" id="sidebar-nav">
+@if(auth()->user())
+<div class="container-fluid h-100 p-0">
+    <div style="min-height: 100%" class="flex-row d-flex align-items-stretch m-0">
+        <div class="polished-sidebar bg-light col-12 col-md-3 col-lg-2 p-0 collapse d-md-inline" id="sidebar-nav">
 
-                <ul class="polished-sidebar-menu ml-0 pt-4 p-0 d-md-block">
-                    <input class="border-dark form-control d-block d-md-none mb-4" type="text" placeholder="Search" aria-label="Search" />
+            <ul class="polished-sidebar-menu ml-0 pt-4 p-0 d-md-block">
+                <input class="border-dark form-control d-block d-md-none mb-4" type="text" placeholder="Search" aria-label="Search" />
+                <li>
+                    <a href="{{ route('dashboard') }}"><span class="oi oi-dashboard"></span> Dashboard</a>
+                </li>
+                <li>
+                    <a href="{{ route('users.index') }}"><span class="oi oi-people"></span> Users</a>
+                </li>
+                <li>
+                    <a href="dashboard.html"><span class="oi oi-sun"></span> Team</a>
+                </li>
+                <li>
+                    <a href="{{ route('products.index') }}"><span class="oi oi-laptop"></span> Product</a>
+                </li>
+                <li>
+                    <a href="{{ route('pricing.index') }}"><span class="oi oi-dollar"></span> Pricing</a>
+                </li>
+                <div class="d-block d-md-none">
+                    <div class="dropdown-divider"></div>
+                    <li><a href="#"> Profile</a></li>
+                    <li><a href="#"> Setting</a></li>
+                    <div class="dropdown-divider"></div>           
                     <li>
-                        <a href="{{ route('dashboard') }}"><span class="oi oi-dashboard"></span> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('users.index') }}"><span class="oi oi-people"></span> Users</a>
-                    </li>
-                    <li>
-                        <a href="dashboard.html"><span class="oi oi-sun"></span> Team</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('products.index') }}"><span class="oi oi-laptop"></span> Product</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('pricing.index') }}"><span class="oi oi-dollar"></span> Pricing</a>
-                    </li>
-                    <div class="d-block d-md-none">
-                        <div class="dropdown-divider"></div>
-                        <li><a href="#"> Profile</a></li>
-                        <li><a href="#"> Setting</a></li>
-                        <div class="dropdown-divider"></div>           
-                        <li>
-                            <form action="{{ route("logout") }}" method="POST">
-                                @csrf
-                                <button class="dropdown-item" style="cursor:pointer">Sign Out</button>
-                            </form>           
-                        </li>  
-                    </div>
-                </ul>
-                <div class="pl-3 d-none d-md-block position-fixed" style="bottom: 0px">
-                    <span class="oi oi-cog"></span> Setting
+                        <form action="{{ route("logout") }}" method="POST">
+                            @csrf
+                            <button class="dropdown-item" style="cursor:pointer">Sign Out</button>
+                        </form>           
+                    </li>  
                 </div>
+            </ul>
+            <div class="pl-3 d-none d-md-block position-fixed" style="bottom: 0px">
+                <span class="oi oi-cog"></span> Setting
             </div>
+        </div>
+        @endif
             <div class="col-lg-10 col-md-9 p-4">
                 <div class="row h-100">
                     <div class="col-md-12 pl-3 pt-2">
