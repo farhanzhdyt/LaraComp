@@ -28,11 +28,12 @@ Route::group(['prefix' => 'site'], function (){
     Route::patch('pricing/update', [\App\Http\Controllers\Site\PricingController::class, 'update'])->name('pricing.update');
 
     // User Management
-    Route::get('users', [\App\Http\Controllers\Site\UsersController::class, 'index'])->name('users.index');
-    Route::get('users/create', [\App\Http\Controllers\Site\UsersController::class, 'create'])->name('users.create');
-    Route::post('users/store', [\App\Http\Controllers\Site\UsersController::class, 'store'])->name('users.store');
-    Route::get('users/edit/{id}', [\App\Http\Controllers\Site\UsersController::class, 'edit'])->name('users.edit');
-    Route::patch('users/update', [\App\Http\Controllers\Site\UsersController::class, 'update'])->name('users.update');
+    Route::get('users', [\App\Http\Controllers\Site\UserController::class, 'index'])->name('users.index');
+    Route::get('users/create', [\App\Http\Controllers\Site\UserController::class, 'create'])->name('users.create');
+    Route::post('users/store', [\App\Http\Controllers\Site\UserController::class, 'store'])->name('users.store');
+    Route::get('users/edit/{id}', [\App\Http\Controllers\Site\UserController::class, 'edit'])->name('users.edit');
+    Route::get('users/show/{id}', [\App\Http\Controllers\Site\UserController::class, 'show'])->name('users.show');
+    Route::patch('users/update', [\App\Http\Controllers\Site\UserController::class, 'update'])->name('users.update');
 });
 
 // Route Front End

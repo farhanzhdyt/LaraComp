@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = 'Hello World';
+        $users = User::all();
 
         return view('site.users.index', compact('users'));
     }
@@ -27,7 +27,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('site.users.create');
     }
 
     /**
@@ -38,7 +38,21 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $users = new User;
+        $users->name = $request->get('name');
+        $users->roles = json_encode($request->get('roles'));
+        $users->email = $request->get('email');
+        $users->address = $request->get('address');
+        $users->phone = $request->get('phone');
+        $users->password = \Has::make($request->get('password'));
+
+        if( $request->file('avatar') ) {
+            $file = $request->file('avatar')->store('avatars', 'public');
+
+            $users->avatar = $file;
+        }
+        $users->save();
+        return redirect('users.index')->with('success', 'User successfully created');
     }
 
     /**
@@ -49,7 +63,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('site.users.show');
     }
 
     /**
@@ -60,7 +74,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('site.users.edit');
     }
 
     /**
