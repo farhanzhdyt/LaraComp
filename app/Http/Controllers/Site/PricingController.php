@@ -14,11 +14,13 @@ class PricingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $date = Carbon::now()->format('Y-m-d');
-        $pricing = Pricing::paginate();
-        return view('site.pricing.index', compact('pricing', 'date'));
+        $pricing = Pricing::when($request->keyword, function ($query) use ($request) {
+            $query->where('title', 'LIKE', "%{$request->keyword}%");
+        })->paginate();
+
+        return view('site.pricing.index', compact('pricing'));
     }
 
     /**
@@ -68,7 +70,9 @@ class PricingController extends Controller
      */
     public function show($id)
     {
-        //
+        $pricing = Pricing::findOrFail($id);
+
+        return view('site.pricing.show', compact("pricing"));
     }
 
     /**
@@ -104,13 +108,12 @@ class PricingController extends Controller
         ], $msg);
 
         $pricing = Pricing::findOrFail($id);
-        $pricing->update($request->all());
 
-        dd($pricing);
+        $pricing->update($request->all());
 
         $pricing->save();
 
-        return redirect()->back()->with('success', 'Data harga berhasil ditambah!');
+        return redirect()->back()->with('success', 'Data harga berhasil diubah!');
     }
 
     /**
@@ -120,7 +123,9 @@ class PricingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {   
+        $pricing = Pricing::findOrFail($id);
+        $pricing->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus!');
     }
 }
