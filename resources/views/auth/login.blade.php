@@ -1,7 +1,7 @@
-@extends('layouts.app') 
+@extends('site.layouts.app') 
  
-@section('content') 
-<div class="container">     
+@section('content-page') 
+<div class="container" style="margin-left: 100px;">     
     <div class="row">         
         <div class="col-md-4"></div>         
         <div class="col-md-4">             
@@ -64,4 +64,4 @@
                     </div>     
                 </div> 
             </div> 
-            @endsection  
+@endsection
