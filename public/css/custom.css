@@ -12,11 +12,10 @@ body {
 /* Jumbotron */
 @media (min-width: 992px) {
     .jumbotron {
-        background-color: #7C32FF;
-        -webkit-transform: skew(0deg, 10deg);
-        -moz-transform: skew(0deg, 10deg);
-        -o-transform: skew(0deg, 10deg);
-        transform: skew(0deg, 10deg);
+        background-image: url('../images/background.svg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
         height: 600px;
         border-radius: 0;
         position: relative;
@@ -27,10 +26,6 @@ body {
         position: relative;
         top: 5rem !important;
         text-align: left !important;
-        -webkit-transform: skew(0deg, -10deg);
-        -moz-transform: skew(0deg, -10deg);
-        -o-transform: skew(0deg, -10deg);
-        transform: skew(0deg, -10deg);
     }
     
     .jumbotron .container .row .jumbo-img {
@@ -119,6 +114,13 @@ body {
         position: relative;
     }
 
+    .about .container .blob {
+        width: 30rem !important;
+        position: absolute;
+        opacity: 0.2;
+        z-index: -1;
+    }
+
     .about .container .about-header h2::after {
         content: '';
         display: block;
@@ -167,6 +169,13 @@ body {
 .about .container {
     margin: 20px auto;
     position: relative;
+}
+
+.about .container .blob {
+    width: 100%;
+    position: absolute;
+    opacity: 0.2;
+    z-index: -1;
 }
 
 .about .container .about-header .background-point {
@@ -226,8 +235,11 @@ body {
         box-sizing: border-box;
         margin-top: 50px;
         position: relative;
-        background-image: linear-gradient(-45deg, #7C32FF, #8F34F5);
-        padding: 30px;
+        background-image: url('../images/background2.svg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding: 50px;
     }
 
     .service .container {
@@ -304,8 +316,11 @@ body {
     box-sizing: border-box;
     margin-top: 50px;
     position: relative;
-    background-image: linear-gradient(-45deg, #7C32FF, #8F34F5);
-    padding: 30px;
+    background-image: url('../images/background2.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 50px;
 }
 
 .service .container {
@@ -363,6 +378,7 @@ body {
     -moz-transition: 0.3s cubic-bezier(0.77,0.2,0.05,1.0);
     -o-transition: 0.3s cubic-bezier(0.77,0.2,0.05,1.0);
     transition: 0.3s cubic-bezier(0.77,0.2,0.05,1.0);
+    opacity: 0.7;
 }
 
 .service .container .service-body .row .column .card:hover {

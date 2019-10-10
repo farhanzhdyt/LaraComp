@@ -7,6 +7,7 @@
     {{-- About Section --}}
     <section class="about" id="about">
         <div class="container">
+            <img src="{{ asset('images/blob.svg') }}" class="blob">
             <div class="about-header">
                 <h2>Tentang</h2>
             </div>
