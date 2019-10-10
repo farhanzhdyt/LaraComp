@@ -23,9 +23,11 @@ Route::group(['prefix' => 'site'], function (){
     // Pricing
     Route::get('pricing', [\App\Http\Controllers\Site\PricingController::class, 'index'])->name('pricing.index');
     Route::get('pricing/create', [\App\Http\Controllers\Site\PricingController::class, 'create'])->name('pricing.create');
+    Route::get('pricing/show/{id}', [\App\Http\Controllers\Site\PricingController::class, 'show'])->name('pricing.show');
     Route::post('pricing/store', [\App\Http\Controllers\Site\PricingController::class, 'store'])->name('pricing.store');
     Route::get('pricing/edit/{id}', [\App\Http\Controllers\Site\PricingController::class, 'edit'])->name('pricing.edit');
     Route::patch('pricing/update', [\App\Http\Controllers\Site\PricingController::class, 'update'])->name('pricing.update');
+    Route::patch('pricing/destroy/{id}', [\App\Http\Controllers\Site\PricingController::class, 'destroy'])->name('pricing.destroy');
 
     // User Management
     Route::get('users', [\App\Http\Controllers\Site\UserController::class, 'index'])->name('users.index');

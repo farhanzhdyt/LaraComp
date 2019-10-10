@@ -48,7 +48,7 @@
                 <td>{{ $i }}</td>
                 <td>{{ $price->title }}</td>
                 <td>{{ $price->optional_description }}</td>
-                <td>{{ $price->price}}</td>
+                <td>{{ number_format($price->price, 0, ',', '.') }}</td>
                 <td>
                     <a href="{{ route('pricing.show', $price->id) }}" class="btn btn-info" style="border: transparent;"><i class="oi oi-eye"></i></a>
                     <a href="{{ route('pricing.edit', $price->id) }}" class="btn btn-success" style="border: transparent;"><i class="oi oi-pencil"></i></a>
