@@ -221,10 +221,7 @@ body {
         box-sizing: border-box;
         margin-top: 50px;
         position: relative;
-        background-image: url('../images/background2.svg');
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
+        background-color: #7C32FF;
         padding: 50px;
     }
 
@@ -302,10 +299,7 @@ body {
     box-sizing: border-box;
     margin-top: 50px;
     position: relative;
-    background-image: url('../images/background2.svg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: #7C32FF;
     padding: 50px;
 }
 
