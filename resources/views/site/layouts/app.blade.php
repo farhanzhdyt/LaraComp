@@ -16,6 +16,8 @@
 
     <link rel="icon" href="{{ asset('assets/polished-logo-small.png') }}">
 
+    @stack('style')
+
     <style>
         .grid-highlight {
         padding-top: 1rem;
@@ -68,7 +70,9 @@
             MENU
         </button>
         
-        <input class="form-control d-none d-md-block w-50 ml-3 mr-2" type="text" placeholder="Search" aria-label="Search" style="border: transparent;">
+        <div class="d-none d-md-block w-50 ml-3 mr-2">
+            <i class="oi oi-calendar mr-2 text-white"></i><span class="time text-white">{{ \Carbon\Carbon::now()->format('Y-m-d') }}</span>
+        </div>
         <div class="dropdown d-none d-md-block">
             <img class="d-none d-lg-inline rounded-circle ml-1" width="32px" src="{{ asset('assets/gorilla.jpg') }}" alt="FN"/>
             <button class="btn btn-link btn-link-primary dropdown-toggle" id="navbar-dropdown" data-toggle="dropdown">
@@ -93,13 +97,16 @@
                         <a href="{{ route('dashboard') }}"><span class="oi oi-dashboard"></span> Dashboard</a>
                     </li>
                     <li>
-                        <a href="dashboard.html"><span class="oi oi-people"></span> Users</a>
+                        <a href="{{ route('users.index') }}"><span class="oi oi-people"></span> Users</a>
                     </li>
                     <li>
                         <a href="dashboard.html"><span class="oi oi-sun"></span> Team</a>
                     </li>
                     <li>
                         <a href="{{ route('products.index') }}"><span class="oi oi-laptop"></span> Product</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('pricing.index') }}"><span class="oi oi-dollar"></span> Pricing</a>
                     </li>
                     <div class="d-block d-md-none">
                         <div class="dropdown-divider"></div>

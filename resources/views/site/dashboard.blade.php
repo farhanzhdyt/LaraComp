@@ -27,12 +27,12 @@
                 </div>
                 
                 <div class="col-md-6 col-lg-3 col-12 mb-2 col-sm-6">
-                    <div class="media shadow-sm p-0 bg-success-lighter text-light rounded">
-                        <span class="oi top-0 rounded-left bg-white text-success h-100 p-4 oi-people fs-5"></span>
+                    <div class="media shadow-sm p-0 bg-white rounded text-primary ">
+                        <span class="oi top-0 rounded-left bg-success text-light h-100 p-4 oi-dollar fs-5"></span>
                         <div class="media-body p-2">
-                            <h6 class="media-title m-0">Purchase</h6>
+                        <h6 class="media-title m-0">Pricing</h6>
                             <div class="media-text">
-                                <h3>43848</h3>
+                                <h3>{{ $pricing }}</h3>
                             </div>
                         </div>
                     </div>
