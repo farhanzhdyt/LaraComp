@@ -78,7 +78,7 @@ body {
 }
 
 .jumbotron {
-    background-color: #7C32FF;
+    background-image: url('../images/background.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -112,13 +112,6 @@ body {
     .about .container {
         margin: 20px auto;
         position: relative;
-    }
-
-    .about .container .blob {
-        width: 30rem !important;
-        position: absolute;
-        opacity: 0.2;
-        z-index: -1;
     }
 
     .about .container .about-header h2::after {
@@ -169,13 +162,6 @@ body {
 .about .container {
     margin: 20px auto;
     position: relative;
-}
-
-.about .container .blob {
-    width: 100%;
-    position: absolute;
-    opacity: 0.2;
-    z-index: -1;
 }
 
 .about .container .about-header .background-point {

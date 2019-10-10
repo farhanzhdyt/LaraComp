@@ -1,21 +1,54 @@
 .main-footer {
-    background-color: #7C32FF;
+    background-image: url('../images/background2.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: transparent;
 }
 
 .main-footer .container {
-    padding: 20px;
+    padding: 50px;
 }
 
-.main-footer .container p {
-    color: #fff;
+.main-footer .container .row .column-company-info {
+	color: #fff;
 }
 
-.main-footer .container p a {
-    color: #f5f5f5;
-    text-decoration: none;
-    transition: 0.3s;
+.main-footer .container .row .column-company-links .row .col-md-4 ul li {
+	list-style: none;
+	position: relative;
+	left: -15px;
 }
 
-.main-footer .container p a:hover {
-    background-color: #59bbec;
+.main-footer .container .row .column-company-links .row .col-md-4 ul li .nav-link {
+	color: #ccc;
+	font-size: 10pt;
+	-webkit-transition: 0.4s;
+	-moz-transition: 0.4s;
+	-o-transition: 0.4s;
+	transition: 0.4s;
+}
+
+.main-footer .container .row .column-company-links .row .col-md-4 ul li .nav-link:hover {
+	background-color: #59bbec;
+	color: #fff;
+}
+
+.main-footer .container .row .column-company-links .row .col-md-4 h2 {
+	color: #fff;
+	font-size: 15pt;
+}
+
+.main-footer .container .copyright a {
+	color: #ccc;
+	-webkit-transition: 0.4s;
+	-moz-transition: 0.4s;
+	-o-transition: 0.4s;
+	transition: 0.4s;
+	text-decoration: none;
+}
+
+.main-footer .container .copyright a:hover {
+	background-color: #59bbec;
+	color: #fff;
 }
