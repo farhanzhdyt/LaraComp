@@ -13,8 +13,17 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+
     public function index()
     {
+        if(auth()->user()->level !== "ADMIN"){
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+
         $users = User::all();
 
         return view('site.users.index', compact('users'));
@@ -27,6 +36,10 @@ class UserController extends Controller
      */
     public function create()
     {
+        if(auth()->user()->level !== "ADMIN"){
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+
         return view('site.users.create');
     }
 
@@ -38,18 +51,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        if(auth()->user()->level !== "ADMIN"){
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+        
         $users = new User;
         $users->name = $request->get('name');
-        $users->roles = json_encode($request->get('roles'));
+        $users->level = json_encode($request->get('level'));
         $users->email = $request->get('email');
         $users->address = $request->get('address');
         $users->phone = $request->get('phone');
         $users->password = \Has::make($request->get('password'));
 
-        if( $request->file('avatar') ) {
-            $file = $request->file('avatar')->store('avatars', 'public');
+        if( $request->file('image') ) {
+            $file = $request->file('image')->store('avatars', 'public');
 
-            $users->avatar = $file;
+            $users->image = $file;
         }
         $users->save();
         return redirect('users.index')->with('success', 'User successfully created');
@@ -63,6 +80,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        if(auth()->user()->level !== "ADMIN"){
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+
         return view('site.users.show');
     }
 
@@ -74,6 +95,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        if(auth()->user()->level !== "ADMIN"){
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+
         return view('site.users.edit');
     }
 
@@ -86,7 +111,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(auth()->user()->level !== "ADMIN"){
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+
     }
 
     /**
@@ -97,6 +125,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(auth()->user()->level !== "ADMIN"){
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
     }
 }

@@ -14,6 +14,11 @@ class PricingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+    
     public function index(Request $request)
     {
         $pricing = Pricing::when($request->keyword, function ($query) use ($request) {
