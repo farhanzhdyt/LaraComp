@@ -14,10 +14,10 @@ class PenyesuaianTableUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string("roles");
+            $table->enum('level', ['ADMIN', 'GUEST']);
             $table->text("address");
             $table->string("phone");
-            $table->string("avatar");
+            $table->string('image')->nullable()->default('noimage.png');
             $table->enum("status", ["ACTIVE", "INACTIVE"]);
         });
     }

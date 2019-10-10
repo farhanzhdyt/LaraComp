@@ -61,6 +61,8 @@
 
 <body>
 
+{{-- NavBar --}}
+    
     <nav class="navbar navbar-expand p-0">
         <a class="navbar-brand text-center col-xs-12 col-md-3 col-lg-2 mr-0" href="index.html">
             <img src="{{ asset('assets/gorilla.jpg') }}" class="rounded-circle" alt="logo" width="42px">
@@ -81,11 +83,17 @@
             <div class="dropdown-menu dropdown-menu-right" id="navbar-dropdown">
                 <a href="#" class="dropdown-item">Profile</a>
                 <a href="#" class="dropdown-item">Setting</a>
-            <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">Sign Out</a>
+                <div class="dropdown-divider"></div>
+                <form action="{{ route("logout") }}" method="POST">
+                    @csrf
+                    <button class="dropdown-item" style="cursor:pointer">Sign Out</button>
+                </form>
             </div>
         </div>
     </nav>
+
+
+{{-- SideBar --}}
 
     <div class="container-fluid h-100 p-0">
         <div style="min-height: 100%" class="flex-row d-flex align-items-stretch m-0">
@@ -112,7 +120,13 @@
                         <div class="dropdown-divider"></div>
                         <li><a href="#"> Profile</a></li>
                         <li><a href="#"> Setting</a></li>
-                        <li><a href="#"> Sign Out</a></li>
+                        <div class="dropdown-divider"></div>           
+                        <li>
+                            <form action="{{ route("logout") }}" method="POST">
+                                @csrf
+                                <button class="dropdown-item" style="cursor:pointer">Sign Out</button>
+                            </form>           
+                        </li>  
                     </div>
                 </ul>
                 <div class="pl-3 d-none d-md-block position-fixed" style="bottom: 0px">

@@ -9,6 +9,11 @@ use App\Pricing;
 
 class PageController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+    
     public function index() 
     {
         $products = Product::all()->count();
