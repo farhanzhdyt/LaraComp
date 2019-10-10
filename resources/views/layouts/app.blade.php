@@ -16,8 +16,12 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        {{-- stylesheets --}}
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/hamburgers.css') }}">
 </head>
 <body>
     <div id="app">
@@ -73,7 +77,31 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            @yield('content'
+        </div>
+        {{-- END content --}}
+        
+
+
+        {{-- footer --}}
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-desc">
+                    <p class="text-center">Copyright &copy; <a href="">LaraComp</a> 2019</p>
+                </div>
+            </div>
+        </footer>
+        {{-- END footer --}}
+
+        {{-- script --}}
+        @stack('script')
+        <script src="{{ asset('js/script.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/scrollreveal.min.js') }}"></script>
+        <script src="{{ asset('js/hamburger.js') }}"></script>
+        <script src="{{ asset('js/scrollAnimate.js') }}"></script>
+        <script src="{{ asset('js/smoothScroll.js') }}"></script>
+        <script src="{{ asset('js/jquery.nicescroll.min.js') }}"></script>
         </main>
     </div>
 </body>
