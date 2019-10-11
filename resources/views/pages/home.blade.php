@@ -121,6 +121,9 @@
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="mb-5">Hubungi Kami</h2>
+
+            @include('message.flash-message')
+
             <div class="row">
                 <div class="col-md-6 mb-3 contact-form">
                     <form action="{{ route('contact-send') }}" method="post">
