@@ -31,6 +31,7 @@
 	
 	.main-footer .container .row .column-company-links .row .col-md-4 ul li {
 		list-style: none;
+		text-align: center;
 	}
 	
 	.main-footer .container .row .column-company-links .row .col-md-4 ul li .nav-link {

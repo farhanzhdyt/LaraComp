@@ -26,6 +26,9 @@
         {{-- script --}}
         <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
 
+        {{-- fontawesome --}}
+        <link href="https://fonts.googleapis.com/css?family=Palanquin+Dark&display=swap" rel="stylesheet">
+
     </head>
     <body>
         {{-- Navigation --}}
@@ -64,7 +67,7 @@
                             <a class="btn btn-career" href="#">Career</a>
                         </li>
                         <li class="nav-item item-button2">
-                            <a class="btn btn-contact" href="#">Contact</a>
+                            <a class="btn btn-contact" href="#contact">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -135,7 +138,7 @@
                 </div>
 
                 <div class="copyright mt-5">
-                    <p class="text-center text-white">&copy; <a href="#">LARACOMP</a> 2019</p>
+                    <p class="text-center text-white">&copy; <a href="#">LARACOMP</a> {{ date('Y') }}</p>
                 </div>
             </div>
         </footer>
