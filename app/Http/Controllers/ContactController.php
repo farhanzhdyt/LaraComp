@@ -25,6 +25,6 @@ class ContactController extends Controller
 
     	Mail::to('exampl@laracomp.com')->send(new ContactFormMail($data));
 
-    	return redirect('home');
+    	return redirect()->route('index');
     }
 }

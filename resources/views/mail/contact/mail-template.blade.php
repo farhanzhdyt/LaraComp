@@ -7,11 +7,7 @@ Email 	: {{ $data['email'] }}
 <br>
 Subjek	: {{ $data['subject'] }}
 <br>
-Pesan	: {{ $data['message'] }} 
-
-@component('mail::button', ['route' => 'index'])
-Kembali Ke Halaman Utama
-@endcomponent
+Pesan	: {{ $data['message'] }}
 
 Terima Kasih,<br>
 LARACOMP
