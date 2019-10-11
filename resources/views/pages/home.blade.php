@@ -15,14 +15,18 @@
                 <div class="row">
                     <div class="col-md-6 about-info">
                         <p style="text-align: justify;">Laracomp adalah brand usaha kami di bidang IT yang memberikan layanan professional dan dibekali dengan tenaga ahli yang berpengalaman. Kami telah berkembang menjadi perusahaan IT dengan tenaga ahli yang lebih professional dan berpengalaman di bidangnya.
-                        <br>
+                        </p>
+                        <p>
                         Visi kami ialah menjadi partner bisnis di IT yang paling dipercaya sesuai dengan tagline kami “Your Trusted IT Partner”.
+                        </p>
+
                         Adapun Misi kami ialah :
                         <ul class="ml-4">
                             <li>Menjadi role model bisnis percontohan di bidang jasa IT</li>
                             <li>Mengimplementasikan teknologi dan inovasi terbaru dalam setiap jasa dan produk yang kami miliki demi kepuasan pelanggan kami</li>
                             <li>Mengutamakan kepuasan pelanggan dan asas manfaat serta nilai tambah bagi klien dan stakeholder kami</li>
                         </ul>
+                        <p>
                         Saat ini perusahaan kami berkembang pesat menjadi salah satu Jasa IT yang banyak dikenal baik secara online maupun offline melalui kunjungan ke perumahan dan perkantoran.</p>
                     </div>
                     <div class="col-md-6 about-img">
@@ -86,51 +90,7 @@
     </section>
     {{-- END Serices --}}
 
-    {{-- Product --}}
-    <section class="product" id="product">
-        <div class="container">
-            <div class="product-header">
-                <h2>Produk</h2>
-            </div>
-            <div class="product-body">
-                <div class="row">
-                    <div class="col-md-4 column">
-                        <div class="card">
-                            <div class="card-logo-and-title">
-                                <img src="{{ asset('images/icons/customer-support.png') }}" class="icon" alt="" srcset="">
-                                <h2>IT Support</h2>
-                            </div>
-                            <div class="card-description">
-                                <p>Melayani Service & Maintenance Komputer/Laptop, Service Jaringan Komputer, Rakit Komputer dan Pengadaan Komputer</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 column">
-                        <div class="card">
-                            <div class="card-logo-and-title">
-                                <img src="{{ asset('images/icons/creativity.png') }}" class="icon" alt="" srcset="">
-                                <h2>Corporate Design</h2>
-                            </div>
-                            <div class="card-description">
-                                <p>Melayani Pembuatan Company Profile, Katalog Produk, Brosur dan Kartu Nama untuk Perusahaan</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 column">
-                        <div class="card">
-                            <div class="card-logo-and-title">
-                                <img src="{{ asset('images/icons/digital-marketing.png') }}" class="icon" alt="" srcset="">
-                                <h2>Digital Marketing</h2>
-                            </div>
-                            <div class="card-description">
-                                <p>Melayani Maintenance Digital Marketing Google Ads, Instagram Ads dan Web SEO untuk Meningkatkan Pencarian di Mesin Pencari</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     {{-- Pricing --}}
     <section class="pricing" id="pricing">
@@ -202,7 +162,7 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-submit-contact-form">Kirim</button>
+                        <button type="submit" class="btn btn-submit-contact-form">Kirim Pesan</button>
                     </form>
                 </div>
 
@@ -222,10 +182,7 @@
     <script>
         function initMap() {
             var location = {lat: -6.951919, lng: 107.642507};
-            var map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 4,
-                center: location
-            });
+            var map = document.getElementById('map-container-google-1');
             var marker = new google.maps.Marker({
                 position: location,
                 map: map
