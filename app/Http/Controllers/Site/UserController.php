@@ -128,5 +128,8 @@ class UserController extends Controller
         if(auth()->user()->level !== "ADMIN"){
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
+        $users = User::findOrFail($id);
+        $users->delete();
+        return redirect()->with('success', 'Delete user successfully');
     }
 }
