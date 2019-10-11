@@ -54,7 +54,7 @@
                             <a class="nav-link" href="#">Harga</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Team</a>
+                            <a class="nav-link" href="#">Testimonial</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('blog') }}">Blog</a>
@@ -87,11 +87,8 @@
             <div class="container py-5">
                 <div class="row">
                     <div class="col-md-6 column-company-info">
-                        <h1 class="text-white">LARACOMP</h1>
-                        <p style="text-align: justify; width: 30rem;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
+                        <h1 class="text-white">LARA<b>COMP</b></h1>
+                        <p>brand usaha kami di bidang IT yang memberikan layanan professional dan dibekali dengan tenaga ahli yang berpengalaman. Info lebih lanjut hubungi kami!</p>
                     </div>
                     <div class="col-md-6 column-company-links">
                         <div class="row">
@@ -109,9 +106,6 @@
                                     </li>
                                     <li>
                                         <a class="nav-link" href="#">Harga</a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link" href="#">Team</a>
                                     </li>
                                 </ul>
                             </div>

@@ -27,11 +27,6 @@
                     </div>
                     <div class="col-md-6 about-img">
                         <img src="{{ asset('images/company.svg') }}" class="mt-5" class="animate" alt="company" srcset="">
-                    
-                        {{-- <div id="map-container-google-1" class="z-depth-1-half map-container" style="display:block; height: 100%;">
-                            <iframe src="https://maps.google.com/maps?q=Bandung&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
-                            style="border:0; width:100%;" allowfullscreen height="100%"></iframe>
-                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -161,9 +156,51 @@
         </div>
     </section>
     {{-- END Pricing --}}
+
+    {{-- Contact --}}
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="mb-5">Hubungi Kami</h2>
+            <div class="row">
+                <div class="col-md-6 mb-3 contact-form">
+                    <form action="" method="post">
+
+                        @csrf
+
+                        <div class="form-group">
+                            <label>Nama</label>
+                            <input type="text" class="form-control" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label>Subjek</label>
+                            <input type="text" class="form-control" name="subject">
+                        </div>
+                        <div class="form-group">
+                            <label>Pesan</label>
+                            <textarea class="form-control" name="message"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-submit-contact-form">Kirim</button>
+                    </form>
+                </div>
+
+                <div class="col-md-6 google-maps-section">
+                    <div id="map-container-google-1" class="z-depth-1-half map-container" style="display:block; height: 100%;">
+                        <iframe src="https://maps.google.com/maps?q=Bandung&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                        style="border:0; width:100%;" allowfullscreen height="100%"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- END Contact --}}
 @endsection
 
-{{-- @push('script')
+@push('script')
     <script>
         function initMap() {
             var location = {lat: -6.951919, lng: 107.642507};
@@ -179,4 +216,4 @@
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqFwQAp7wOiDc1y8YB4_cZp3BkMKUzHwk&callback=initMap"
     type="text/javascript"></script>
-@endpush --}}
+@endpush
