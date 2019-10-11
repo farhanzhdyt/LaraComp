@@ -40,8 +40,11 @@ Route::group(['prefix' => 'site'], function (){
 });
 
 // Route Front End
-Route::get('/', 'PageController@index')->name('home');
+Route::get('/', 'PageController@index')->name('index');
 Route::get('/blog', 'PageController@blog')->name('blog');
+
+// Contact
+Route::post('/contact-send', 'ContactController@store')->name('contact-send');
 
 Auth::routes();
 

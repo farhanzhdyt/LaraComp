@@ -163,25 +163,43 @@
             <h2 class="mb-5">Hubungi Kami</h2>
             <div class="row">
                 <div class="col-md-6 mb-3 contact-form">
-                    <form action="" method="post">
+                    <form action="{{ route('contact-send') }}" method="post">
 
                         @csrf
 
                         <div class="form-group">
                             <label>Nama</label>
-                            <input type="text" class="form-control" name="name">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" name="name">
+
+                            @error('name')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="text" class="form-control" name="email">
+                            <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" name="email">
+
+                            @error('email')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Subjek</label>
-                            <input type="text" class="form-control" name="subject">
+                            <input type="text" class="form-control @error('subject') is-invalid @enderror" value="{{ old('subject') }}" name="subject">
+
+                            @error('subject')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Pesan</label>
-                            <textarea class="form-control" name="message"></textarea>
+                            <textarea class="form-control @error('message') is-invalid @enderror" name="message">
+                                {{ old('message') }}
+                            </textarea>
+
+                            @error('message')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <button type="submit" class="btn btn-submit-contact-form">Kirim</button>
