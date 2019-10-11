@@ -1,54 +1,133 @@
-.main-footer {
-    background-image: url('../images/background2.svg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border: transparent;
+@media (max-width: 600px) {
+	.main-footer {
+		background-image: url('../images/background2.svg');
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		width: 100%;
+		border: transparent;
+	}
+	
+	.main-footer .container {
+		padding: 50px 50px;
+	}
+	
+	.main-footer .container .row .column-company-info {
+		color: #fff;
+	}
+	
+	.main-footer .container .row .column-company-info h1, p {
+		width: 100%;
+		text-align: center;
+	}
+
+	.main-footer .container .row {
+		margin-top: 50px;
+	} 
+
+	.main-footer .container .row .column-company-links .row .col-md-4 h2, ul {
+		text-align: center;
+	}
+	
+	.main-footer .container .row .column-company-links .row .col-md-4 ul li {
+		list-style: none;
+	}
+	
+	.main-footer .container .row .column-company-links .row .col-md-4 ul li .nav-link {
+		color: #ccc;
+		font-size: 10pt;
+		-webkit-transition: 0.4s;
+		-moz-transition: 0.4s;
+		-o-transition: 0.4s;
+		transition: 0.4s;
+	}
+	
+	.main-footer .container .row .column-company-links .row .col-md-4 ul li .nav-link:hover {
+		background-color: #59bbec;
+		color: #fff;
+	}
+	
+	.main-footer .container .row .column-company-links .row .col-md-4 h2 {
+		color: #fff;
+		font-size: 15pt;
+	}
+	
+	.main-footer .container .copyright a {
+		color: #ccc;
+		-webkit-transition: 0.4s;
+		-moz-transition: 0.4s;
+		-o-transition: 0.4s;
+		transition: 0.4s;
+		text-decoration: none;
+	}
+	
+	.main-footer .container .copyright a:hover {
+		background-color: #59bbec;
+		color: #fff;
+	}
+	
 }
 
-.main-footer .container {
-    padding: 50px;
-}
+@media (min-width: 992px) {
+	.main-footer {
+		background-image: url('../images/background2.svg');
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		width: 100%;
+		border: transparent;
+	}
+	
+	.main-footer .container {
+		padding: 50px;
+	}
+	
+	.main-footer .container .row .column-company-info {
+		color: #fff;
+	}
 
-.main-footer .container .row .column-company-info {
-	color: #fff;
-}
-
-.main-footer .container .row .column-company-links .row .col-md-4 ul li {
-	list-style: none;
-	position: relative;
-	left: -15px;
-}
-
-.main-footer .container .row .column-company-links .row .col-md-4 ul li .nav-link {
-	color: #ccc;
-	font-size: 10pt;
-	-webkit-transition: 0.4s;
-	-moz-transition: 0.4s;
-	-o-transition: 0.4s;
-	transition: 0.4s;
-}
-
-.main-footer .container .row .column-company-links .row .col-md-4 ul li .nav-link:hover {
-	background-color: #59bbec;
-	color: #fff;
-}
-
-.main-footer .container .row .column-company-links .row .col-md-4 h2 {
-	color: #fff;
-	font-size: 15pt;
-}
-
-.main-footer .container .copyright a {
-	color: #ccc;
-	-webkit-transition: 0.4s;
-	-moz-transition: 0.4s;
-	-o-transition: 0.4s;
-	transition: 0.4s;
-	text-decoration: none;
-}
-
-.main-footer .container .copyright a:hover {
-	background-color: #59bbec;
-	color: #fff;
+	.main-footer .container .row .column-company-info p {
+		text-align: justify;
+		width: 30rem;
+	}
+	
+	.main-footer .container .row .column-company-links .row .col-md-4 ul li {
+		list-style: none;
+		position: relative;
+		left: -15px;
+	}
+	
+	.main-footer .container .row .column-company-links .row .col-md-4 ul li .nav-link {
+		color: #ccc;
+		font-size: 10pt;
+		-webkit-transition: 0.4s;
+		-moz-transition: 0.4s;
+		-o-transition: 0.4s;
+		transition: 0.4s;
+	}
+	
+	.main-footer .container .row .column-company-links .row .col-md-4 ul li .nav-link:hover {
+		background-color: #59bbec;
+		color: #fff;
+	}
+	
+	.main-footer .container .row .column-company-links .row .col-md-4 h2 {
+		color: #fff;
+		font-size: 15pt;
+	}
+	
+	.main-footer .container .copyright a {
+		color: #ccc;
+		-webkit-transition: 0.4s;
+		-moz-transition: 0.4s;
+		-o-transition: 0.4s;
+		transition: 0.4s;
+		text-decoration: none;
+	}
+	
+	.main-footer .container .copyright a:hover {
+		background-color: #59bbec;
+		color: #fff;
+	}
+	
 }
