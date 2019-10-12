@@ -101,16 +101,21 @@
 
             <div class="pricing-body">
                 <div class="row">
-                    <div class="col-md-4">
+                    @foreach($pricing as $price)
+                    <div class="col-md-4 column">
                         <div class="card">
                             <div class="card-header">
-
+                                <h2>{{ $price->title }}</h2>
+                                <span class="optional_description">{{ $price->optional_description }}</span>
+                                <br>
+                                <span class="price">Rp. {{ number_format($price->price, 0, ',', '.') }}</span>
                             </div>
-                            <div class="body">
-                                
+                            <div class="card-body">
+                                <p>{{ $price->description }}</p>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>

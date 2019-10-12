@@ -60,14 +60,14 @@
                             <a class="nav-link" href="#">Testimonial</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('blog') }}">Blog</a>
+                            <a class="nav-link" href="{{ route('blog') }}">Artikel</a>
                         </li>
                         
                         <li class="nav-item item-button2">
-                            <a class="btn btn-career" href="#">Career</a>
+                            <a class="btn btn-career" href="#">Karir</a>
                         </li>
                         <li class="nav-item item-button2">
-                            <a class="btn btn-contact" href="#contact">Contact</a>
+                            <a class="btn btn-contact" href="#contact">Kontak</a>
                         </li>
                     </ul>
                 </div>
