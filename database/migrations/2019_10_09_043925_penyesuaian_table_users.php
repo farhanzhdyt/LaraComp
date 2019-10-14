@@ -14,7 +14,7 @@ class PenyesuaianTableUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('level', ['ADMIN', 'GUEST']);
+            $table->enum('level', ['ADMIN', 'ADMIN_BERITA', 'ADMIN_PROFILE']);
             $table->text("address");
             $table->string("phone");
             $table->string('image')->nullable()->default('noimage.png');
