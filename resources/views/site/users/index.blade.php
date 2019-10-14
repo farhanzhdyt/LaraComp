@@ -10,10 +10,22 @@
 
 @section('content-page')
 
-@if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
+@if ( session('success') )
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        </div>
+    </div> 
+@elseif ( session('delete') )
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger">
+                {{ session('delete') }}
+            </div>
+        </div>
+    </div> 
 @endif
 
 <div class="row">
@@ -43,11 +55,7 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
-                        @if( $user->image )                 
-                            <img src="{{ asset('images/users_images/' . $user->image) }}" width="48px">        
-                        @else
-                            N/A    
-                        @endif
+                        <img src="{{ asset('images/users_images/' . $user->image) }}" width="48px">
                     </td>
                     <td>
                         @if ($user->status == "ACTIVE")
@@ -62,7 +70,7 @@
                     </td>
                     <td>
                         <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-info" style="border: transparent;"><i class="oi oi-eye"></i></a>
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-success" style="border: transparent;"><i class="oi oi-pencil"></i></a>
+                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning" style="border: transparent;"><i class="oi oi-pencil"></i></a>
                         <form action="{{ route('users.destroy', $user->id) }}" method="post" style="display: inline;" onsubmit="return confirm('Hapus Data ?')">
                             @csrf
                             @method('DELETE')
