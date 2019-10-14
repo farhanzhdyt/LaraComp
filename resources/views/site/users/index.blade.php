@@ -9,6 +9,19 @@
 @endsection
 
 @section('content-page')
+
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+<div class="row">
+    <div class="col-md-12 text-right">
+        <a href="{{route('users.create')}}" class="btn btn-success"><i class="oi oi-plus"></i> Create User</a>
+    </div>
+</div>
+<br>
 <div class="table table-responsive">
     <table class="table table-striped" id="datatable">
         <thead>
@@ -27,11 +40,11 @@
             @foreach ($users as $user)
                 <tr>
                     <td>{{ $no }}.</td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
                     <td>
-                        @if($user->avatar)                 
-                            <img src="{{asset('public/storage/'.$user->avatar)}}" width="50px"/>         
+                        @if( $user->image )                 
+                            <img src="{{ asset('images/users_images/' . $user->image) }}" width="48px">        
                         @else
                             N/A    
                         @endif

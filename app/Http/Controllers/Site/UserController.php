@@ -24,7 +24,7 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
-        $users = User::all();
+        $users = User::paginate(15);
 
         return view('site.users.index', compact('users'));
     }
@@ -54,22 +54,31 @@ class UserController extends Controller
         if(auth()->user()->level !== "ADMIN"){
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
-        
         $users = new User;
         $users->name = $request->get('name');
-        $users->level = json_encode($request->get('level'));
+        $users->level = strtoupper($request->input('level'));
         $users->email = $request->get('email');
         $users->address = $request->get('address');
         $users->phone = $request->get('phone');
-        $users->password = \Has::make($request->get('password'));
+        $users->password = \Hash::make($request->input('password'));
 
-        if( $request->file('image') ) {
-            $file = $request->file('image')->store('avatars', 'public');
-
-            $users->image = $file;
+        // Handle File Upload
+        if($request->hasFile('image')) {
+            // Get File Name
+            $fileNameWithExt = $request->file('image')->getClientOriginalName();
+            // Get File name
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // Get File Ext
+            $ext = $request->file('image')->getClientOriginalExtension();
+            // File Name To Store
+            $fileNameToStore = $fileName . '-' . rand() . '.' . $ext;
+            // Path
+            $path = $request->file('image')->move('images/users_images/', $fileNameToStore);
+        } else {
+            $fileNameToStore = "noimage.png";
         }
         $users->save();
-        return redirect('users.index')->with('success', 'User successfully created');
+        return view('site.users.index')->with('success', 'User successfully created');
     }
 
     /**
@@ -130,6 +139,6 @@ class UserController extends Controller
         }
         $users = User::findOrFail($id);
         $users->delete();
-        return redirect()->with('success', 'Delete user successfully');
+        return view('site.users.index')->with('success', 'Delete user successfully');
     }
 }
