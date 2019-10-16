@@ -5,6 +5,7 @@ namespace App\Http\Controllers\site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use File;
 
 class UserController extends Controller
 {
@@ -18,13 +19,18 @@ class UserController extends Controller
         return $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         if(auth()->user()->level !== "ADMIN"){
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
-        $users = User::all();
+        $keyword = $request->get('keyword');
+        $users = User::orderBy('id')->paginate(10);
+        
+        if($keyword) {
+            $users = User::where('name', 'LIKE', '%' . $keyword . '%')->orderBy('name', 'asc')->paginate(10);
+        }
 
         return view('site.users.index', compact('users'));
     }
@@ -54,22 +60,34 @@ class UserController extends Controller
         if(auth()->user()->level !== "ADMIN"){
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
-        
-        $users = new User;
-        $users->name = $request->get('name');
-        $users->level = json_encode($request->get('level'));
-        $users->email = $request->get('email');
-        $users->address = $request->get('address');
-        $users->phone = $request->get('phone');
-        $users->password = \Has::make($request->get('password'));
 
-        if( $request->file('image') ) {
-            $file = $request->file('image')->store('avatars', 'public');
-
-            $users->image = $file;
+        // Handle File Upload
+        if($request->hasFile('image')) {
+            // Get File Name
+            $fileNameWithExt = $request->file('image')->getClientOriginalName();
+            // Get File name
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // Get File Ext
+            $ext = $request->file('image')->getClientOriginalExtension();
+            // File Name To Store
+            $fileNameToStore = $fileName . '-' . rand() . '.' . $ext;
+            // Path
+            $path = $request->file('image')->move('images/users_images/', $fileNameToStore);
+        } else {
+            $fileNameToStore = "noimage.png";
         }
-        $users->save();
-        return redirect('users.index')->with('success', 'User successfully created');
+        
+        $user = new User;
+        $user->image = $fileNameToStore;
+        $user->name = $request->get('name');
+        $user->level = strtoupper($request->input('level'));
+        $user->email = $request->get('email');
+        $user->address = $request->get('address');
+        $user->phone = $request->get('phone');
+        $user->password = \Hash::make($request->input('password'));
+
+        $user->save();
+        return redirect()->route('users.index')->with('success', 'User successfully created');
     }
 
     /**
@@ -128,8 +146,15 @@ class UserController extends Controller
         if(auth()->user()->level !== "ADMIN"){
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
-        $users = User::findOrFail($id);
-        $users->delete();
-        return redirect()->with('success', 'Delete user successfully');
+        $user = User::findOrFail($id);
+        // Check For Image
+
+        if($user->image !== "noimage.png") {
+            File::delete('images/users_images/' . $user->image);
+        }
+
+        $user->delete();
+
+        return redirect()->route('users.index')->with('delete', 'User Has Been Removed');
     }
 }
