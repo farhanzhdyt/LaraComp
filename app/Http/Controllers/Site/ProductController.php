@@ -21,6 +21,10 @@ class ProductController extends Controller
     
     public function index()
     {
+        if (auth()->user()->level !== "ADMIN") {
+			return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+        
         $products = Product::paginate();
         return view('site.products.index', compact('products'));
     }
@@ -54,6 +58,10 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+        if (auth()->user()->level !== "ADMIN") {
+			return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+        
         $product = Product::findOrFail($id);
         return view('site.products.show', compact('product'));
     }
