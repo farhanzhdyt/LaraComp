@@ -18,9 +18,6 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
 
-    {{-- FilePond --}}
-    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
-
     @stack('style')
 
     <style>
@@ -114,6 +111,9 @@
                     <a href="{{ route('dashboard') }}"><span class="oi oi-dashboard"></span> Dashboard</a>
                 </li>
                 <li>
+                    <a href="{{ route('company.index') }}"><span class="oi oi-home"></span> Company</a>
+                </li>
+                <li>
                     <a href="{{ route('users.index') }}"><span class="oi oi-people"></span> Users</a>
                 </li>
                 <li>
@@ -166,8 +166,7 @@
     <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 
-    {{-- FilePond --}}
-    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    @stack('script')
 
 </body>
 
