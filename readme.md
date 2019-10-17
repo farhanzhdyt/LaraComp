@@ -9,5 +9,4 @@
 
 ## LaraComp
 
-LaraComp(Laravel Company Profile) website untuk tugas akhir
-
+<p>Lierrrrrr</p>
