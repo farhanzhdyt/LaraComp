@@ -102,7 +102,9 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
-        return view('site.users.show');
+        $user = User::findOrFail($id);
+
+        return view('site.users.show', compact('user'));
     }
 
     /**
@@ -117,7 +119,9 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
-        return view('site.users.edit');
+        $user = User::findOrFail($id);
+
+        return view('site.users.edit', compact('user'));
     }
 
     /**
@@ -133,6 +137,41 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
+        // Handle File Upload
+        if($request->hasFile('image')) {
+            // Get File Name
+            $fileNameWithExt = $request->file('image')->getClientOriginalName();
+            // Get File name
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // Get File Ext
+            $ext = $request->file('image')->getClientOriginalExtension();
+            // File Name To Store
+            $fileNameToStore = $fileName . '-' . rand() . '.' . $ext;
+            // Path
+            $path = $request->file('image')->move('images/users_images/', $fileNameToStore);
+        } else {
+            $fileNameToStore = "noimage.png";
+        }
+
+        $user = User::findOrFail($id);
+
+        if ( $request->hasFile("image") ) {
+            if ( $user->image !== "noimage.png" ) {
+                File::delete('images/users_images/' . $user->image);
+            }
+                $user->image = $fileNameToStore;
+        }
+
+        $user->name = $request->input('name');
+        $user->status = $request->input('status');
+        $user->level = strtoupper($request->input('level'));
+        $user->email = $request->input('email');
+        $user->address = $request->input('address');
+        $user->phone = $request->input('phone');
+        $user->password = \Hash::make($request->input('password'));
+        
+        $user->save();
+        return redirect()->route('users.index')->with('edit', 'User successfully updated');
     }
 
     /**
