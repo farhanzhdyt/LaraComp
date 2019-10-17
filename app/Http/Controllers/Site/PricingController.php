@@ -21,6 +21,10 @@ class PricingController extends Controller
     
     public function index(Request $request)
     {
+        if (auth()->user()->level !== "ADMIN") {
+			return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+        
         $pricing = Pricing::when($request->keyword, function ($query) use ($request) {
             $query->where('title', 'LIKE', "%{$request->keyword}%");
         })->paginate();
@@ -35,6 +39,10 @@ class PricingController extends Controller
      */
     public function create()
     {
+        if (auth()->user()->level !== "ADMIN") {
+			return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+        
         return view('site.pricing.create');
     }
 
@@ -46,6 +54,10 @@ class PricingController extends Controller
      */
     public function store(Request $request)
     {
+        if (auth()->user()->level !== "ADMIN") {
+			return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+        
         $msg = [
             "required" => "form tidak boleh kosong!",
             "numeric" => "form harus berisi nomor"
@@ -75,6 +87,10 @@ class PricingController extends Controller
      */
     public function show($id)
     {
+        if (auth()->user()->level !== "ADMIN") {
+			return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+        
         $pricing = Pricing::findOrFail($id);
 
         return view('site.pricing.show', compact("pricing"));
@@ -88,6 +104,10 @@ class PricingController extends Controller
      */
     public function edit($id)
     {
+        if (auth()->user()->level !== "ADMIN") {
+			return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+        
         $pricing = Pricing::findOrFail($id);
 
         return view('site.pricing.edit', compact("pricing"));
@@ -102,6 +122,10 @@ class PricingController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (auth()->user()->level !== "ADMIN") {
+			return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+        
         $msg = [
             "required" => "form tidak boleh kosong!",
             "numeric" => "form harus berisi nomor"
@@ -129,6 +153,10 @@ class PricingController extends Controller
      */
     public function destroy($id)
     {   
+        if (auth()->user()->level !== "ADMIN") {
+			return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+        
         $pricing = Pricing::findOrFail($id);
         $pricing->delete();
         return redirect()->back()->with('success', 'Data berhasil dihapus!');

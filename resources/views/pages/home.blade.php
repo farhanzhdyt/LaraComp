@@ -30,7 +30,7 @@
                         Saat ini perusahaan kami berkembang pesat menjadi salah satu Jasa IT yang banyak dikenal baik secara online maupun offline melalui kunjungan ke perumahan dan perkantoran.</p>
                     </div>
                     <div class="col-md-6 about-img">
-                        <img src="{{ asset('images/company.svg') }}" class="mt-5" class="animate" alt="company" srcset="">
+                        <img src="{{ asset('images/header-bg.svg') }}" class="mt-5" class="animate" alt="company" srcset="">
                     </div>
                 </div>
             </div>

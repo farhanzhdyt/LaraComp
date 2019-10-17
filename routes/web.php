@@ -42,7 +42,7 @@ Route::group(['prefix' => 'site'], function (){
     // Company
     Route::get('company', [\App\Http\Controllers\Site\CompanyController::class, 'index'])->name('company.index');
     Route::get('company/create', [\App\Http\Controllers\Site\CompanyController::class, 'create'])->name('company.create');
-    Route::get('company/store', [\App\Http\Controllers\Site\CompanyController::class, 'store'])->name('company.store');
+    Route::post('company/store', [\App\Http\Controllers\Site\CompanyController::class, 'store'])->name('company.store');
 });
 
 // Route Front End
