@@ -117,7 +117,7 @@
                     <a href="{{ route('users.index') }}"><span class="oi oi-people"></span> Users</a>
                 </li>
                 <li>
-                    <a href="dashboard.html"><span class="oi oi-sun"></span> Team</a>
+                    <a href="{{ route('team.index') }}"><span class="oi oi-sun"></span> Team</a>
                 </li>
                 <li>
                     <a href="{{ route('products.index') }}"><span class="oi oi-laptop"></span> Product</a>

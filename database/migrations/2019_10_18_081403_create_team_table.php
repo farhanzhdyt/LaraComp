@@ -15,6 +15,12 @@ class CreateTeamTable extends Migration
     {
         Schema::create('team', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nik');
+            $table->string('name');
+            $table->text('address');
+            $table->integer('phone_num');
+            $table->string('email');
+            $table->string('position');
             $table->timestamps();
         });
     }
