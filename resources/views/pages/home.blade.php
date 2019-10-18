@@ -113,6 +113,9 @@
                             <div class="card-body">
                                 <p>{{ $price->description }}</p>
                             </div>
+                            <div class="card-button">
+                                <a href="https://api.whatsapp.com/send?phone=6287744411262&text=Hallo%Cungur" class="btn btn-primary btn-order">ORDER VIA WHATSAPP</a>
+                            </div>
                         </div>
                     </div>
                     @endforeach
