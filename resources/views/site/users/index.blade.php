@@ -9,6 +9,33 @@
 @endsection
 
 @section('content-page')
+
+@if ( session('success') )
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-check"></i> Success!</h4>
+        {{ session('success') }}
+    </div>
+@elseif ( session('edit') )
+    <div class="alert alert-warning alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-check"></i> Success!</h4>
+        {{ session('edit') }}
+    </div>
+@elseif ( session('delete') )
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-check"></i> Success!</h4>
+        {{ session('delete') }}
+    </div>
+@endif
+
+<div class="row">
+    <div class="col-md-12 text-right">
+        <a href="{{route('users.create')}}" class="btn btn-success"><i class="oi oi-plus"></i> Create User</a>
+    </div>
+</div>
+<br>
 <div class="table table-responsive">
     <table class="table table-striped" id="datatable">
         <thead>
@@ -27,14 +54,10 @@
             @foreach ($users as $user)
                 <tr>
                     <td>{{ $no }}.</td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
                     <td>
-                        @if($user->avatar)                 
-                            <img src="{{asset('public/storage/'.$user->avatar)}}" width="50px"/>         
-                        @else
-                            N/A    
-                        @endif
+                        <img src="{{ asset('images/users_images/' . $user->image) }}" width="48px">
                     </td>
                     <td>
                         @if ($user->status == "ACTIVE")
@@ -49,7 +72,7 @@
                     </td>
                     <td>
                         <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-info" style="border: transparent;"><i class="oi oi-eye"></i></a>
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-success" style="border: transparent;"><i class="oi oi-pencil"></i></a>
+                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning" style="border: transparent;"><i class="oi oi-pencil"></i></a>
                         <form action="{{ route('users.destroy', $user->id) }}" method="post" style="display: inline;" onsubmit="return confirm('Hapus Data ?')">
                             @csrf
                             @method('DELETE')

@@ -22,7 +22,7 @@
                         <a href="" class="btn btn-primary">Info Lebih Lanjut</a>
                     </div>
                     <div class="col-md-6 about-img">
-                        <img src="{{ asset('images/company.svg') }}" class="mt-5" class="animate" alt="company" srcset="">
+                        <img src="{{ asset('images/header-bg.svg') }}" class="mt-5" class="animate" alt="company" srcset="">
                     </div>
                 </div>
             </div>

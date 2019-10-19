@@ -11,7 +11,6 @@
                 </div>
 
                 <div class="col-md-6 col-sm-12 jumbo-img mt-5">
-                    {{-- <img src="{{ asset('images/header-bg.svg') }}" alt="" srcset=""> --}}
                 </div>
 
                 {{-- Mouse scroll down --}}

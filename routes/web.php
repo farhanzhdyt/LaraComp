@@ -37,6 +37,15 @@ Route::group(['prefix' => 'site'], function (){
     Route::get('users/show/{id}', [\App\Http\Controllers\Site\UserController::class, 'show'])->name('users.show');
     Route::patch('users/update', [\App\Http\Controllers\Site\UserController::class, 'update'])->name('users.update');
     Route::patch('users/destroy/{id}', [\App\Http\Controllers\Site\UserController::class, 'destroy'])->name('users.destroy');
+    Route::resource('users', 'Site\\UserController');
+
+    // Company
+    Route::get('company', [\App\Http\Controllers\Site\CompanyController::class, 'index'])->name('company.index');
+    Route::get('company/create', [\App\Http\Controllers\Site\CompanyController::class, 'create'])->name('company.create');
+    Route::post('company/store', [\App\Http\Controllers\Site\CompanyController::class, 'store'])->name('company.store');
+
+    // Team
+    Route::get('team', [\App\Http\Controllers\Site\TeamController::class, 'index'])->name('team.index');
 });
 
 // Route Front End
