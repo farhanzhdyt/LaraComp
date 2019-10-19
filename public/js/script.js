@@ -7,11 +7,11 @@ $(document).ready(function () {
         cursorindex: 1
     });
 
-    $(window).scroll(function () {
-        if ($(window).scrollTop()) {
-            $('.navbar').addClass('scrolled');
-        } else {
-            $('.navbar').removeClass('scrolled');
-        }
-    });
+    // $(window).scroll(function () {
+    //     if ($(window).scrollTop()) {
+    //         $('.navbar').addClass('scrolled');
+    //     } else {
+    //         $('.navbar').removeClass('scrolled');
+    //     }
+    // });
 });

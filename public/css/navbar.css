@@ -2,7 +2,7 @@
 @media (min-width: 992px) {
     .navbar {
         padding: 30px;
-        background-color: transparent !important;
+        background-color: #7C32FF;
         box-sizing: border-box;
         position: absolute;
         top: 0;
@@ -94,7 +94,7 @@
 @media (max-width: 650px) {
     .navbar {
         padding: 30px;
-        background-color: #882DEF;
+        background-color: #7C32FF;
         position: absolute;
         top: 0;
         left: 0;

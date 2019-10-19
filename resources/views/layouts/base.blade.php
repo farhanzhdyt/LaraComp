@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
         <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
         <link rel="stylesheet" href="{{ asset('css/hamburgers.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}">
 
         {{-- Icons --}}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,13 +30,16 @@
         {{-- fontawesome --}}
         <link href="https://fonts.googleapis.com/css?family=Palanquin+Dark&display=swap" rel="stylesheet">
 
+        {{-- Custom stylesheets --}}
+        @stack('style')
+
     </head>
     <body>
         {{-- Navigation --}}
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <div class="navbar-brand">
-                    <a class="navbar-logo" href="{{ route('home') }}">LARA<b>COMP</b></a>
+                    <a class="navbar-logo" href="{{ route('index') }}">LARA<b>COMP</b></a>
                 </div>
                 <button class="navbar-toggler hamburger hamburger--squeeze" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <div class="hamburger-box">
@@ -67,7 +71,7 @@
                             <a class="btn btn-career" href="#">Karir</a>
                         </li>
                         <li class="nav-item item-button2">
-                            <a class="btn btn-contact" href="#contact">Kontak</a>
+                            <a class="btn btn-contact" href="{{ route('contact.create') }}">Kontak</a>
                         </li>
                     </ul>
                 </div>
@@ -152,5 +156,8 @@
         <script src="{{ asset('js/scrollAnimate.js') }}"></script>
         <script src="{{ asset('js/smoothScroll.js') }}"></script>
         <script src="{{ asset('js/jquery.nicescroll.min.js') }}"></script>
+
+        {{-- Custom Javascript --}}
+        @stack('script')
     </body>
 </html>

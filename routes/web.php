@@ -53,6 +53,7 @@ Route::get('/', 'PageController@index')->name('index');
 Route::get('/blog', 'PageController@blog')->name('blog');
 
 // Contact
+Route::get('/contact', 'ContactController@create')->name('contact.create');
 Route::post('/contact-send', 'ContactController@store')->name('contact-send');
 
 Auth::routes();
