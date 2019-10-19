@@ -12,10 +12,10 @@ body {
 /* Jumbotron */
 @media (min-width: 992px) {
     .jumbotron {
-        background-image: url('../images/background.svg');
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
+        background-image: url('../images/background2.svg');
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
         height: 600px;
         border-radius: 0;
         position: relative;
@@ -79,7 +79,7 @@ body {
 
 @media (max-width: 600px) {
     .jumbotron {
-        background-image: url('../images/background.svg');
+        background-image: url('../images/background2.svg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -158,6 +158,24 @@ body {
         left: 2rem;
     }
 
+    .about .container .about-body .about-info {
+        color: #888;
+    }
+
+    .about .container .about-body .about-info .btn-primary {
+        padding: 10px 60px;
+        border-radius: 0px;
+        -webkit-transition: 0.4s;
+        -moz-transition: 0.4s;
+        -o-transition: 0.4s;
+        transition: 0.4s;
+        border: transparent;
+    }
+
+    .about .container .about-body .about-info .btn-primary:hover {
+        background-color: #24A8EC;
+    }
+
     .about .container .tongue {
         width: 10rem;
         position: absolute;
@@ -222,6 +240,20 @@ body {
     .about .container .about-body .row .about-info p, li{
         text-align: justify;
     }
+
+    .about .container .about-body .about-info .btn-primary {
+        padding: 10px 60px;
+        border-radius: 0px;
+        -webkit-transition: 0.4s;
+        -moz-transition: 0.4s;
+        -o-transition: 0.4s;
+        transition: 0.4s;
+        border: transparent;
+    }
+
+    .about .container .about-body .about-info .btn-primary:hover {
+        background-color: #24A8EC;
+    }
     
     .about .container .tongue {
         width: 10rem;
@@ -240,8 +272,24 @@ body {
         box-sizing: border-box;
         margin-top: 50px;
         position: relative;
-        background-color: #882DEF;
+        background: linear-gradient(-45deg, #2962FF, #6200EA, #C51162);
+        background-size: 400% 400%;
+        animation: bganimation 15s infinite;
         padding: 50px;
+    }
+
+    @keyframes bganimation {
+        0% {
+            background-position: 0% 50%;
+        }
+        
+        50% {
+            background-position: 100% 50%;
+        }
+        
+        100% {
+            background-position: 0% 50%;
+        }
     }
 
     .service .container {
@@ -295,6 +343,7 @@ body {
         -moz-transition: 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
         -o-transition: 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
         transition: 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
+        height: 20rem;
     }
 
     .service .container .service-body .row .column .card:hover {
@@ -363,10 +412,6 @@ body {
     }
     
     .service .container .service-body .row .column .card {
-        -webkit-border-radius: 10px 50px 10px 50px;
-        -moz-border-radius: 10px 50px 10px 50px;
-        -o-border-radius: 10px 50px 10px 50px;
-        border-radius: 10px 50px 10px 50px;
         padding: 20px;
         box-sizing: border-box;
         text-align: center;
@@ -563,7 +608,7 @@ body {
 
 /* Contact */
 .contact {
-    margin-top: 100px;
+    margin-top: 200px;
     margin-bottom: 100px;
 }
 
@@ -571,27 +616,19 @@ body {
     padding: 20px;
 }
 
-.contact .container h2::after {
-    content: '';
-    display: block;
-    width: 50%;
-    height: 5px;
-    background-color: #24A8EC;
-    -webkit-transition: 0.4s;
-    -moz-transition: 0.4s;
-    -o-transition: 0.4s;
-    transition: 0.4s;
-}
-
 .contact .container h2 {
+    text-align: center;
     font-size: 35pt;
-    margin-bottom: 30px;
-    display: inline-block;
     color: #24A8EC;
 }
 
 .contact .container h2:hover::after {
     width: 100%;
+}
+
+.contact .container .row .contact-form {
+    max-width: 50%;
+    margin: auto;
 }
 
 .contact .container .row .contact-form form .form-group .form-control {

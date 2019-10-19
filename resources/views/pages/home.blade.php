@@ -17,17 +17,9 @@
                         <p style="text-align: justify;">Laracomp adalah brand usaha kami di bidang IT yang memberikan layanan professional dan dibekali dengan tenaga ahli yang berpengalaman. Kami telah berkembang menjadi perusahaan IT dengan tenaga ahli yang lebih professional dan berpengalaman di bidangnya.
                         </p>
                         <p>
-                        Visi kami ialah menjadi partner bisnis di IT yang paling dipercaya sesuai dengan tagline kami “Your Trusted IT Partner”.
-                        </p>
-
-                        Adapun Misi kami ialah :
-                        <ul class="ml-4">
-                            <li>Menjadi role model bisnis percontohan di bidang jasa IT</li>
-                            <li>Mengimplementasikan teknologi dan inovasi terbaru dalam setiap jasa dan produk yang kami miliki demi kepuasan pelanggan kami</li>
-                            <li>Mengutamakan kepuasan pelanggan dan asas manfaat serta nilai tambah bagi klien dan stakeholder kami</li>
-                        </ul>
-                        <p>
                         Saat ini perusahaan kami berkembang pesat menjadi salah satu Jasa IT yang banyak dikenal baik secara online maupun offline melalui kunjungan ke perumahan dan perkantoran.</p>
+
+                        <a href="" class="btn btn-primary">Info Lebih Lanjut</a>
                     </div>
                     <div class="col-md-6 about-img">
                         <img src="{{ asset('images/company.svg') }}" class="mt-5" class="animate" alt="company" srcset="">
@@ -69,7 +61,7 @@
                                 <h2>Corporate Design</h2>
                             </div>
                             <div class="card-description">
-                                <p>Melayani Pembuatan Company Profile, Katalog Produk, Brosur dan Kartu Nama untuk Perusahaan</p>
+                                <p>Melayani Pembuatan Katalog Produk, Brosur dan Kartu Nama untuk Perusahaan</p>
                             </div>
                         </div>
                     </div>
@@ -124,69 +116,6 @@
         </div>
     </section>
     {{-- END Pricing --}}
-
-    {{-- Contact --}}
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2 class="mb-5">Hubungi Kami</h2>
-
-            @include('message.flash-message')
-
-            <div class="row">
-                <div class="col-md-6 mb-3 contact-form">
-                    <form action="{{ route('contact-send') }}" method="post">
-
-                        @csrf
-
-                        <div class="form-group">
-                            <label>Nama</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" name="name">
-
-                            @error('name')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" name="email">
-
-                            @error('email')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label>Subjek</label>
-                            <input type="text" class="form-control @error('subject') is-invalid @enderror" value="{{ old('subject') }}" name="subject">
-
-                            @error('subject')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label>Pesan</label>
-                            <textarea class="form-control @error('message') is-invalid @enderror" name="message">
-                                {{ old('message') }}
-                            </textarea>
-
-                            @error('message')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <button type="submit" class="btn btn-submit-contact-form">Kirim Pesan</button>
-                    </form>
-                </div>
-
-                <div class="col-md-6 google-maps-section">
-                    <div id="map-container-google-1" class="z-depth-1-half map-container" style="display:block; height: 100%;">
-                        <iframe src="https://maps.google.com/maps?q=Bandung&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
-                        style="border:0; width:100%;" allowfullscreen height="100%"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- END Contact --}}
 @endsection
 
 @push('script')

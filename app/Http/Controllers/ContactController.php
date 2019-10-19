@@ -8,6 +8,11 @@ use App\Mail\ContactFormMail;
 
 class ContactController extends Controller
 {
+    public function create() 
+    {
+        return view('pages.contact');
+    }
+
     public function store(Request $request) 
     {
     	$msg = [
@@ -25,6 +30,6 @@ class ContactController extends Controller
 
     	Mail::to('exampl@laracomp.com')->send(new ContactFormMail($data));
 
-    	return redirect()->route('index')->with('success', 'Pesan anda berhasil dikirim!');
+    	return redirect()->route('contact.create')->with('success', 'Pesan anda berhasil dikirim!');
     }
 }
