@@ -15,8 +15,8 @@
             <div class="row pl-3">
 
                 <div class="col-md-6 col-lg-3 col-12 mb-2 col-sm-6">
-                    <div class="media shadow-sm p-0 bg-white rounded text-primary ">
-                        <span class="oi top-0 rounded-left bg-primary text-light h-100 p-4 oi-laptop fs-5"></span>
+                    <div class="media shadow-sm p-0 bg-primary rounded text-light ">
+                        <span class="oi top-0 rounded-left bg-white text-primary h-100 p-4 oi-laptop fs-5"></span>
                         <div class="media-body p-2">
                         <h6 class="media-title m-0">Products</h6>
                             <div class="media-text">
@@ -27,8 +27,8 @@
                 </div>
                 
                 <div class="col-md-6 col-lg-3 col-12 mb-2 col-sm-6">
-                    <div class="media shadow-sm p-0 bg-white rounded text-primary ">
-                        <span class="oi top-0 rounded-left bg-success text-light h-100 p-4 oi-dollar fs-5"></span>
+                    <div class="media shadow-sm p-0 bg-success rounded text-light ">
+                        <span class="oi top-0 rounded-left bg-white text-success h-100 p-4 oi-dollar fs-5"></span>
                         <div class="media-body p-2">
                         <h6 class="media-title m-0">Pricing</h6>
                             <div class="media-text">
@@ -39,12 +39,12 @@
                 </div>
 
                 <div class="col-md-6 col-lg-3 col-12 mb-2 col-sm-6">
-                    <div class="media shadow-sm p-0 bg-warning-lighter text-primary-darker rounded ">
-                        <span class="oi top-0 rounded-left bg-white text-warning h-100 p-4 oi-cart fs-5"></span>
+                    <div class="media shadow-sm p-0 bg-dark-lighter text-white rounded ">
+                        <span class="oi top-0 rounded-left bg-white text-dark h-100 p-4 oi-people fs-5"></span>
                         <div class="media-body p-2">
-                            <h6 class="media-title m-0">Store Visits</h6>
+                            <h6 class="media-title m-0">Total Users</h6>
                             <div class="media-text">
-                                <h3>58493</h3>
+                                <h3>{{ $users }}</h3>
                             </div>
                         </div>
                     </div>
