@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Product;
 use App\Pricing;
+use App\User;
 
 class PageController extends Controller
 {
@@ -18,6 +19,7 @@ class PageController extends Controller
     {
         $products = Product::all()->count();
         $pricing = Pricing::all()->count();
-        return view('site.dashboard', compact('products', 'pricing'));
+        $users = User::all()->count();
+        return view('site.dashboard', compact('products', 'pricing', 'users'));
     }
 }
