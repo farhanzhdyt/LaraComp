@@ -17,12 +17,10 @@
                     Create New User
                 </div>
                 <div class="float-right">
-                    <a href="{{ route('users.index') }}" class="btn btn-outline-warning">Home</a>
+                    <a href="{{ route('users.index') }}" class="btn btn-outline-warning"><span class="oi oi-home"></span> Home</a>
                 </div>
-			</div>
-            
+			</div>        
         </div>
-
     <div class="card-body">
         <form action="{{ route('users.store') }}" enctype="multipart/form-data" method="POST">
             @csrf
