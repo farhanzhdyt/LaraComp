@@ -61,17 +61,29 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
-        // Handle File Upload
+        $this->validate($request, [
+            'image' => 'nullable|image|max:2040',
+            'name' => 'required|max:50|unique:users,name',
+            'address' => 'required|max:255',
+            'email' => 'required|email|unique:users,email' ,
+            'phone' => 'required|numeric|digits_between:1,13|unique:users,phone',
+            'password' => 'required|min:8|max:20',
+            'password_confirmation' => 'required|same:password',
+            'level' => 'required',
+            'status' => 'required'
+        ]);
+
+
         if($request->hasFile('image')) {
-            // Get File Name
+
             $fileNameWithExt = $request->file('image')->getClientOriginalName();
-            // Get File name
+
             $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-            // Get File Ext
+
             $ext = $request->file('image')->getClientOriginalExtension();
-            // File Name To Store
+
             $fileNameToStore = $fileName . '-' . rand() . '.' . $ext;
-            // Path
+
             $path = $request->file('image')->move('images/users_images/', $fileNameToStore);
         } else {
             $fileNameToStore = "noimage.png";
@@ -138,17 +150,27 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
-        // Handle File Upload
+        $this->validate($request, [
+            'image' => 'nullable|image|max:2040',
+            'name' => 'required|unique:users,name,' . $id,
+            'address' => 'required',
+            'email' => 'required|email|unique:users,email,'. $id,
+            'phone' => 'required|numeric|digits_between:1,13|unique:users,phone,' . $id,
+            'level' => 'required',
+            'status' => 'required'
+        ]);
+
+
         if($request->hasFile('image')) {
-            // Get File Name
+
             $fileNameWithExt = $request->file('image')->getClientOriginalName();
-            // Get File name
+
             $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-            // Get File Ext
+
             $ext = $request->file('image')->getClientOriginalExtension();
-            // File Name To Store
+
             $fileNameToStore = $fileName . '-' . rand() . '.' . $ext;
-            // Path
+
             $path = $request->file('image')->move('images/users_images/', $fileNameToStore);
         } else {
             $fileNameToStore = "noimage.png";
@@ -169,7 +191,6 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->address = $request->input('address');
         $user->phone = $request->input('phone');
-        $user->password = \Hash::make($request->input('password'));
         
         $user->save();
         return redirect()->route('users.index')->with('edit', 'User successfully updated');
