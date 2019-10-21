@@ -197,4 +197,17 @@ class UserController extends Controller
 
         return redirect()->route('users.index')->with('delete', 'User Has Been Removed');
     }
+
+    public function profile($id)
+    {
+        $user = User::findOrFail($id);
+
+        if(auth()->user()->level !== "ADMIN") {
+            if(auth()->user()->id !== $user->id) {
+                return redirect()->back()->with('error', 'You Cant Access This Page');
+            }
+        }
+        
+        return view('site.users.profile.my_profile', compact('user'));
+    }
 }
