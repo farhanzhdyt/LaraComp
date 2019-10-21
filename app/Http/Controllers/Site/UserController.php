@@ -26,7 +26,7 @@ class UserController extends Controller
         }
 
         $keyword = $request->get('keyword');
-        $users = User::orderBy('id')->paginate(10);
+        $users = User::all();
         
         if($keyword) {
             $users = User::where('name', 'LIKE', '%' . $keyword . '%')->orderBy('name', 'asc')->paginate(10);
@@ -85,6 +85,7 @@ class UserController extends Controller
         $user->address = $request->get('address');
         $user->phone = $request->get('phone');
         $user->password = \Hash::make($request->input('password'));
+        $user->status = $request->input('status');
 
         $user->save();
         return redirect()->route('users.index')->with('success', 'User successfully created');
