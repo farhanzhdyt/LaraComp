@@ -32,6 +32,7 @@ Route::group(['prefix' => 'site'], function (){
     // User Management
     Route::resource('users', 'Site\\UserController');
     Route::get('users/my_profile/{id}', 'Site\\UserController@profile')->name('my-profile');
+    Route::patch('users/update-profile/{id}', 'Site\\UserController@changeProfile')->name('update-profile');
 
     // Company
     Route::get('company', [\App\Http\Controllers\Site\CompanyController::class, 'index'])->name('company.index');
