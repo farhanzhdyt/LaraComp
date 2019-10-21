@@ -10,9 +10,6 @@
 
         <title>LaraComp @yield('title')</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
         {{-- stylesheets --}}
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
@@ -39,7 +36,7 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <div class="navbar-brand">
-                    <a class="navbar-logo" href="{{ route('index') }}">LARA<b>COMP</b></a>
+                    <a class="navbar-logo bold" href="{{ route('index') }}">LARA<b>COMP</b></a>
                 </div>
                 <button class="navbar-toggler hamburger hamburger--squeeze" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <div class="hamburger-box">
@@ -48,29 +45,29 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav m-auto">
-                        <li class="nav-item">
+                        <li class="nav-item bold">
                             <a class="nav-link" href="#about">Tentang</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item bold">
                             <a class="nav-link" href="#service">Layanan</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item bold">
                             <a class="nav-link" href="#">Produk</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item bold">
                             <a class="nav-link" href="#">Harga</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item bold">
                             <a class="nav-link" href="#">Testimonial</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item bold">
                             <a class="nav-link" href="{{ route('blog') }}">Artikel</a>
                         </li>
                         
-                        <li class="nav-item item-button2">
+                        <li class="nav-item bold item-button2">
                             <a class="btn btn-career" href="#">Karir</a>
                         </li>
-                        <li class="nav-item item-button2">
+                        <li class="nav-item bold item-button2">
                             <a class="btn btn-contact" href="{{ route('contact.create') }}">Kontak</a>
                         </li>
                     </ul>

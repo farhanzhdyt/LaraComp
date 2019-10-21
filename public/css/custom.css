@@ -1,12 +1,16 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: "Palanquin Dark", Nunito;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
     scroll-behavior: smooth;
     background-color: #fff;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 /* Jumbotron */
