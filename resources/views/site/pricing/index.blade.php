@@ -21,7 +21,7 @@
         </div>
         <div class="float-right">
             <form action="{{ url()->current() }}">
-                <input type="search" name="keyword" style="width: 20rem;" class="form-control" id="" placeholder="@lang('cari berdasarkan nama')" autocomplet="off" autofocus>
+                <input type="search" name="keyword" style="width: 20rem;" class="form-control" id="" placeholder="@lang('Search based on name')" autocomplet="off" autofocus>
             </form>
         </div>
     </div>
@@ -36,10 +36,10 @@
             <thead class="border-0">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nama Layanan</th>
-                    <th scope="col">Opsional Deskripsi</th>
-                    <th scope="col">Harga</th>
-                    <th>Aksi</th>
+                    <th scope="col">Name of Service</th>
+                    <th scope="col">Description (Optional)</th>
+                    <th scope="col">Price</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             @php $i = 1; @endphp
@@ -63,13 +63,11 @@
             </tbody>
             @php $i++; @endphp
             @endforeach
-
-            <tfoot>
-                {{ $pricing->links() }}
-            </tfoot>
-
         </table>
         @endif
+
+        {{-- Pagination --}}
+        {{ $pricing->links() }}
     </section>
 </div>
 @endsection

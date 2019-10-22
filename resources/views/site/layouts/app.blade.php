@@ -65,7 +65,7 @@
 
 {{-- NavBar --}}
     
-<nav class="navbar navbar-expand p-0">
+<nav class="navbar navbar-expand p-2">
     <a class="navbar-brand text-center col-xs-12 col-md-3 col-lg-2 mr-0" href="index.html">
         LARACOMP
     </a>
@@ -75,7 +75,6 @@
     
     @if( auth()->user() )
     <div class="d-none d-md-block w-50 ml-3 mr-2">
-        <i class="oi oi-calendar mr-2 text-white"></i><span class="time text-white">{{ \Carbon\Carbon::now()->format('Y-m-d') }}</span>
     </div>
     @endif
 
