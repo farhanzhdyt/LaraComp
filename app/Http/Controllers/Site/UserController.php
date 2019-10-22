@@ -248,7 +248,6 @@ class UserController extends Controller
             'address' => "nullable|max:200",
             'phone' => "nullable|numeric|digits_between:10,13",
             'image' => 'nullable|image|max:2040',
-            'level' => 'nullable'
         ]);
 
         if($request->hasFile('image')) {
@@ -277,9 +276,45 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->address = $request->input('address');
         $user->phone = $request->input('phone');
-        $user->level = strtoupper($request->input('level'));
         $user->save();
 
         return back()->with('success', 'Your change profile');
+    }
+
+    public function profilePassword($id)
+    {
+        $user = User::findOrFail($id);
+
+        if(auth()->user()->level !== "ADMIN") {
+            if(auth()->user()->id !== $user->id) {
+                return redirect()->back()->with('error', 'You Cant Access This Page');
+            }
+        }
+
+        return view('site.users.profile.change_password', compact('user'));
+    }
+
+    public function changePassword(Request $request, $id)
+    {
+        $this->validate($request, [
+            'password' => 'required|min:8|max:20',
+            'password_confirmation' => 'required|same:password'
+        ]);
+
+        $user = User::findOrFail($id);
+        
+        if(auth()->user()->level !== "ADMIN") {
+            if(auth()->user()->id !== $user->id) {
+                return redirect()->back()->with('error', 'You Cant Access This Page');
+            }
+        }
+
+        $user->password = \Hash::make($request->input('password'));
+
+        if($user->save()) {
+            return redirect()->back()->with('success', 'Your Password Has Been Changed');
+        } else {
+            return redirect()->back()->with('error', 'Failed To Change Password');
+        }
     }
 }
