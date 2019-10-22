@@ -15,10 +15,10 @@ class CreateTeamTable extends Migration
     {
         Schema::create('team', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nik');
+            $table->char('nik', 9);
             $table->string('name');
             $table->text('address');
-            $table->integer('phone_num');
+            $table->string('phone_num', 12);
             $table->string('email');
             $table->string('position');
             $table->timestamps();

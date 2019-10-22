@@ -19,6 +19,7 @@ Route::group(['prefix' => 'site'], function (){
     Route::get('products', [\App\Http\Controllers\Site\ProductController::class, 'index'])->name('products.index');
     Route::get('products/{id}', [\App\Http\Controllers\Site\ProductController::class, 'show'])->name('products.detail');
     Route::get('products/create', [\App\Http\Controllers\Site\ProductController::class, 'create'])->name('products.create');
+    Route::post('products/store', [\App\Http\Controllers\Site\ProductController::class, 'store'])->name('products.store');
 
     // Pricing
     Route::get('pricing', [\App\Http\Controllers\Site\PricingController::class, 'index'])->name('pricing.index');
@@ -46,6 +47,12 @@ Route::group(['prefix' => 'site'], function (){
 
     // Team
     Route::get('team', [\App\Http\Controllers\Site\TeamController::class, 'index'])->name('team.index');
+    Route::get('team/show/{id}', [\App\Http\Controllers\Site\TeamController::class, 'show'])->name('team.show');
+    Route::get('team/create', [\App\Http\Controllers\Site\TeamController::class, 'create'])->name('team.create');
+    Route::post('team/store', [\App\Http\Controllers\Site\TeamController::class, 'store'])->name('team.store');
+    Route::get('team/edit/{id}', [\App\Http\Controllers\Site\TeamController::class, 'edit'])->name('team.edit');
+    Route::patch('team/update', [\App\Http\Controllers\Site\TeamController::class, 'update'])->name('team.update');
+    Route::delete('team/destroy/{id}', [\App\Http\Controllers\Site\TeamController::class, 'destroy'])->name('team.destroy');
 });
 
 // Route Front End
