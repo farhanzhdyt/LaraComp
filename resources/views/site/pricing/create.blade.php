@@ -1,85 +1,76 @@
 @extends('site.layouts.app')
 
 @section('title')
-    Harga Layanan
+    Pricing
 @endsection
 
 @section('page-title')
-    Tambah Harga
+    Insert New Service Price
 @endsection
 
 @section('content-page')
 
-<div style="margin-top: 20px; margin-bottom: 20px;">
-    @include('message.flash-message')
+<div class="message mt-3 mb-3">
+    @include('message.flash-message')    
 </div>
 
-<div class="form-pricing-input card">
+<div class="card">
     <div class="card-header">
-        <a href="{{ route('pricing.index') }}">
-            <button class="btn btn-primary"><i class="oi oi-chevron-left"></i></button>
-        </a>
+        <div class="row">
+            <div class="col-md-4 my-3">
+                <a href="{{ route('pricing.index') }}" class="btn btn-primary"><i class="oi oi-chevron-left"></i></a>
+            </div>
+        </div>
     </div>
-    <div class="card-body">
-        {!! Form::open(['route' => 'pricing.store']) !!}
 
-        <div class="form-group">
-            {!! Form::label('title', 'Nama Layanan :') !!}
-            {!! Form::text('title', '', ['class' => 'form-control']) !!}
+    <section class="price card-body">
+        <form action="{{ route('pricing.store') }}" method="post">
+            @csrf
 
-            @error('title')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-        </div>
+            <table class="table">
+                <tr>
+                    <td>Name</td>
+                    <td>:</td>
+                    <td><input type="text" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" name="title" ></td>
+                </tr>
+                <tr>
+                    <td>Optional Description</td>
+                    <td>:</td>
+                    <td><input type="text" class="form-control @error('optional_description') is-invalid @enderror" value="{{ old('optional_description') }}" name="optional_description"></td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>:</td>
+                    <td><input type="text" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}" name="price"></td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td>:</td>
+                    <td>
+                        <textarea class="form-control" name="description"></textarea>
+                    </td>
+                </tr>
+            </table>
 
-        <div class="form-group">
-            {!! Form::label('optional_description', 'Deskripsi (Opsional) :') !!}
-            {!! Form::textarea('optional_description', '', ['class' => 'form-control']) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('price', 'Harga :') !!}
-            {!! Form::number('price', '', ['class' => 'form-control']) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('description', 'Deskripsi :') !!}
-            {!! Form::textarea('description', '', ['class' => 'form-control']) !!}
-
-            @error('description')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-        </div>
-        
-        <div class="button mt-4">
-            <button type="submit" class="btn btn-success">Tambah</button>
-        </div>
-
-        {!! Form::close() !!}
-    </div>
+            <div class="button-bottom mt-3">
+                <button type="submit" class="btn btn-outline-primary">Create Data</button>    
+            </div>
+        </form>
+    </section>
 </div>
-
 @endsection
 
 @push('style')
-    <style>
-        label {
-            display: inline-block;
-            margin: 10px auto;
-        }
-
-        input {
-            margin: 10px auto;
-        }
-
-        textarea {
-            height: 80px;
-        }
-
-        .btn-success {
-            width: 150px;
-            padding-top: 9px;
-            padding-bottom: 9px;
+    <style type="text/css">
+        .form-control:focus {
+            border: 1px solid;
         }
     </style>
+@endpush
+
+@push('script')
+    <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('description');
+    </script>
 @endpush
