@@ -23,43 +23,42 @@
         </div>
     </div>
 
-    <section class="team">
+    <section class="team card-body">
         <form action="{{ route('team.store') }}" method="post">
             @csrf
 
             <table class="table">
-            <tr>
-                <td>NIK</td>
-                <td>:</td>
-                <td><input type="number" class="form-control @error('nik') is-invalid @enderror" name="nik" ></td>
-            </tr>
-            <tr>
-                <td>NAMA</td>
-                <td>:</td>
-                <td><input type="text" class="form-control @error('name') is-invalid @enderror" name="name"></td>
-            </tr>
-            <tr>
-                <td>ALAMAT</td>
-                <td>:</td>
-                <td><input type="text" class="form-control @error('address') is-invalid @enderror" name="address"></td>
-            </tr>
-            <tr>
-                <td>NO HANDPHONE</td>
-                <td>:</td>
-                <td><input type="number" class="form-control @error('phone_num') is-invalid @enderror" name="phone_num"></td>
-            </tr>
-            <tr>
-                <td>EMAIL</td>
-                <td>:</td>
-                <td><input type="text" class="form-control @error('email') is-invalid @enderror" name="email"></td>
-            </tr>
-            <tr>
-                <td>POSISI</td>
-                <td>:</td>
-                <td><input type="text" class="form-control @error('position') is-invalid @enderror" name="position"></td>
-            </tr>
-            <tr>
-        </table>
+                <tr>
+                    <td>NIK</td>
+                    <td>:</td>
+                    <td><input type="number" class="form-control @error('nik') is-invalid @enderror" value="{{ old('nik') }}" name="nik" ></td>
+                </tr>
+                <tr>
+                    <td>NAMA</td>
+                    <td>:</td>
+                    <td><input type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" name="name"></td>
+                </tr>
+                <tr>
+                    <td>ALAMAT</td>
+                    <td>:</td>
+                    <td><input type="text" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}" name="address"></td>
+                </tr>
+                <tr>
+                    <td>NO HANDPHONE</td>
+                    <td>:</td>
+                    <td><input type="number" class="form-control @error('phone_num') is-invalid @enderror" value="{{ old('phone_num') }}" name="phone_num"></td>
+                </tr>
+                <tr>
+                    <td>EMAIL</td>
+                    <td>:</td>
+                    <td><input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" name="email"></td>
+                </tr>
+                <tr>
+                    <td>POSISI</td>
+                    <td>:</td>
+                    <td><input type="text" class="form-control @error('position') is-invalid @enderror" value="{{ old('position') }}" name="position"></td>
+                </tr>
+            </table>
 
             <div class="button-bottom mt-3">
                 <button type="submit" class="btn btn-outline-primary">Create Data</button>    

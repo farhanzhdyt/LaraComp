@@ -46,7 +46,7 @@ Route::group(['prefix' => 'site'], function (){
     Route::get('team/create', [\App\Http\Controllers\Site\TeamController::class, 'create'])->name('team.create');
     Route::post('team/store', [\App\Http\Controllers\Site\TeamController::class, 'store'])->name('team.store');
     Route::get('team/edit/{id}', [\App\Http\Controllers\Site\TeamController::class, 'edit'])->name('team.edit');
-    Route::patch('team/update', [\App\Http\Controllers\Site\TeamController::class, 'update'])->name('team.update');
+    Route::patch('team/update/{id}', [\App\Http\Controllers\Site\TeamController::class, 'update'])->name('team.update');
     Route::delete('team/destroy/{id}', [\App\Http\Controllers\Site\TeamController::class, 'destroy'])->name('team.destroy');
 });
 

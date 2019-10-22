@@ -33,10 +33,10 @@ class TeamController extends Controller
     	];
 
     	$this->validate($request, [
-    		'nik' => 'required|numeric|max:9',
+    		'nik' => 'required|max:9',
     		'name' => 'required',
     		'address' => 'required',
-    		'phone_num' => 'required|numeric|max:12',
+    		'phone_num' => 'required|max:12',
     		'email' => 'required|email',
     		'position' => 'required'
     	], $msg);
@@ -60,7 +60,7 @@ class TeamController extends Controller
         return view('site.team.edit', compact("team"));
     }
 
-    public function update(Request $request) 
+    public function update(Request $request, $id) 
     {
         $msg = [
             "required" => "Form tidak boleh kosong",
@@ -68,10 +68,10 @@ class TeamController extends Controller
         ];
 
         $this->validate($request, [
-            'nik' => 'required|numeric|max:9',
+            'nik' => 'required|max:9',
             'name' => 'required',
             'address' => 'required',
-            'phone_num' => 'required|numeric|max:12',
+            'phone_num' => 'required|max:12',
             'email' => 'required|email',
             'position' => 'required'
         ], $msg);
