@@ -13,13 +13,18 @@ class TeamController extends Controller
         $this->middleware('auth');
     }
 
-    public function index() 
+    public function index(Request $request) 
     {
         if (auth()->user()->level !== "ADMIN") {
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
     	$teams = Team::paginate(15);
+        $keyword = $request->get('keyword');
+        if($keyword) {
+            $users = User::where('name', 'LIKE', '%' . $keyword . '%')->orderBy('name', 'asc')->paginate(10);
+        }
+
     	return view('site.team.index', compact("teams"));
     }
 
