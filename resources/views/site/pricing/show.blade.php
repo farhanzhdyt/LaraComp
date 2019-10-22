@@ -19,6 +19,7 @@
             <div class="card-header text-center">
                 <h4 class="text-center text-uppercase">{{ $pricing->title }}</h4>
                 <p>{{ $pricing->optional_description }}</p>
+                <span class="price">Rp.{{ number_format($pricing->price, 0, ',', '.') }}</span>
             </div>
 
             <div class="card-body">
