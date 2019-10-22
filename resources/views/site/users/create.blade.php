@@ -55,8 +55,11 @@
 
                     <div class="form-group">
                         <label for="password_confirmation"><strong> Password Confirmation </strong></label>       
-                        
-                        <input class="form-control" placeholder="Password Confirmation" type="password" name="password_confirmation" id="password_confirmation"/>
+                        <input class="form-control {{ $errors->first('password_confirmation') ? "is-invalid": "" }}" placeholder="Password Confirmation" type="password" name="password_confirmation" id="password_confirmation"/>
+                    
+                        <div class="invalid-feedback">
+                            {{ $errors->first('password_confirmation') }}
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -70,9 +73,9 @@
                 </div>
 
                 <div class="col-md-6">
-                    <div class="form-group {{ $errors->first('level') ? 'is-invalid' : '' }}">
+                    <div class="form-group">
                         <label for="level"><strong> Level </strong></label>
-                        <select name="level" id="level" class="form-control">
+                        <select name="level" id="level" class="form-control {{ $errors->first('level') ? 'is-invalid' : '' }}">
                             <option value="">Choose Level</option>
                             <option value="ADMIN">Super Admin</option>
                             <option value="ADMIN_BERITA">Admin Berita</option>
@@ -84,9 +87,9 @@
                         </div>
                     </div>
 
-                    <div class="form-group {{ $errors->first('status') ? 'is-invalid' : '' }}">
+                    <div class="form-group">
                         <label for="status"><strong> Status </strong></label>
-                        <select name="status" id="status" class="form-control">
+                        <select name="status" id="status" class="form-control {{ $errors->first('status') ? 'is-invalid' : '' }}">
                             <option value="">Choose Status</option>
                             <option value="ACTIVE">ACTIVE</option>
                             <option value="INACTIVE">INACTIVE</option>

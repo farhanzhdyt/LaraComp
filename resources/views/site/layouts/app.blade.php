@@ -86,7 +86,7 @@
         {{ Auth::user()->name }}
         </button>
         <div class="dropdown-menu dropdown-menu-right" id="navbar-dropdown">
-            <a href="#" class="dropdown-item">Profile</a>
+            <a href="{{ route('my-profile', Auth::user()->id) }}" class="dropdown-item">Profile</a>
             <a href="#" class="dropdown-item">Setting</a>
             <div class="dropdown-divider"></div>
             <form action="{{ route("logout") }}" method="POST">
@@ -127,7 +127,7 @@
                 </li>
                 <div class="d-block d-md-none">
                     <div class="dropdown-divider"></div>
-                    <li><a href="#"> Profile</a></li>
+                    <li><a href="{{ route('my-profile', Auth::user()->id) }}"> Profile</a></li>
                     <li><a href="#"> Setting</a></li>
                     <div class="dropdown-divider"></div>           
                     <li>

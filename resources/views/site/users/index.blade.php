@@ -38,7 +38,7 @@
                 List User
             </div>
             <div class="float-right">
-                <a href="{{ route('users.create') }}" class="btn btn-outline-success"><span class="oi oi-plus"></span> Create New User</a>
+                <a href="{{ route('users.create') }}" class="btn btn-outline-success text-white"><span class="oi oi-plus"></span> Create New User</a>
             </div>
         </div>        
     </div>

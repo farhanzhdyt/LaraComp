@@ -67,9 +67,9 @@
                 </div>
 
                 <div class="col-md-6">
-                    <div class="form-group {{ $errors->first('level') ? 'is-invalid' : '' }}">
+                    <div class="form-group">
                         <label for="level"><strong> Level </strong></label>
-                        <select name="level" id="level" class="form-control">
+                        <select name="level" id="level" class="form-control {{ $errors->first('level') ? 'is-invalid' : '' }}">
                             <option value="">Choose Level</option>
                             <option value="ADMIN" {{ $user->level == 'ADMIN' ? 'selected' : '' }}>Admin</option>
                             <option value="ADMIN_BERITA" {{ $user->level == 'ADMIN_BERITA' ? 'selected' : '' }}>Admin Berita</option>
@@ -81,9 +81,9 @@
                         </div>
                     </div>
 
-                    <div class="form-group {{ $errors->first('status') ? 'is-invalid' : '' }}">
+                    <div class="form-group">
                         <label for="status"><strong> Status </strong></label>
-                        <select name="status" id="status" class="form-control">
+                        <select name="status" id="status" class="form-control {{ $errors->first('status') ? 'is-invalid' : '' }}">
                             <option value="">Choose Status</option>
                             <option value="ACTIVE" {{ $user->status == 'ACTIVE' ? 'selected' : '' }}>ACTIVE</option>
                             <option value="INACTIVE" {{ $user->status == 'INACTIVE' ? 'selected' : '' }}>INACTIVE</option>

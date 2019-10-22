@@ -61,17 +61,29 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
-        // Handle File Upload
+        $this->validate($request, [
+            'image' => 'nullable|image|max:2040',
+            'name' => 'required|max:50|unique:users,name',
+            'address' => 'required|max:255',
+            'email' => 'required|email|unique:users,email' ,
+            'phone' => 'required|numeric|digits_between:1,13|unique:users,phone',
+            'password' => 'required|min:8|max:20',
+            'password_confirmation' => 'required|same:password',
+            'level' => 'required',
+            'status' => 'required'
+        ]);
+
+
         if($request->hasFile('image')) {
-            // Get File Name
+
             $fileNameWithExt = $request->file('image')->getClientOriginalName();
-            // Get File name
+
             $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-            // Get File Ext
+
             $ext = $request->file('image')->getClientOriginalExtension();
-            // File Name To Store
+
             $fileNameToStore = $fileName . '-' . rand() . '.' . $ext;
-            // Path
+
             $path = $request->file('image')->move('images/users_images/', $fileNameToStore);
         } else {
             $fileNameToStore = "noimage.png";
@@ -138,17 +150,27 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
-        // Handle File Upload
+        $this->validate($request, [
+            'image' => 'nullable|image|max:2040',
+            'name' => 'required|unique:users,name,' . $id,
+            'address' => 'required',
+            'email' => 'required|email|unique:users,email,'. $id,
+            'phone' => 'required|numeric|digits_between:1,13|unique:users,phone,' . $id,
+            'level' => 'required',
+            'status' => 'required'
+        ]);
+
+
         if($request->hasFile('image')) {
-            // Get File Name
+
             $fileNameWithExt = $request->file('image')->getClientOriginalName();
-            // Get File name
+
             $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-            // Get File Ext
+
             $ext = $request->file('image')->getClientOriginalExtension();
-            // File Name To Store
+
             $fileNameToStore = $fileName . '-' . rand() . '.' . $ext;
-            // Path
+
             $path = $request->file('image')->move('images/users_images/', $fileNameToStore);
         } else {
             $fileNameToStore = "noimage.png";
@@ -169,7 +191,6 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->address = $request->input('address');
         $user->phone = $request->input('phone');
-        $user->password = \Hash::make($request->input('password'));
         
         $user->save();
         return redirect()->route('users.index')->with('edit', 'User successfully updated');
@@ -196,5 +217,69 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('users.index')->with('delete', 'User Has Been Removed');
+    }
+
+    public function profile($id)
+    {
+        $user = User::findOrFail($id);
+
+        if(auth()->user()->level !== "ADMIN") {
+            if(auth()->user()->id !== $user->id) {
+                return redirect()->back()->with('error', 'You Cant Access This Page');
+            }
+        }
+        
+        return view('site.users.profile.my_profile', compact('user'));
+    }
+
+    public function changeProfile(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        if(auth()->user()->level !== "ADMIN") {
+            if(auth()->user()->id !== $user->id) {
+                return redirect()->back()->with('error', 'You Cant Access This Page');
+            }
+        }
+
+        $this->validate($request, [
+            "name" => "nullable|unique:users,name," . $id,
+            "email" => "required|email|unique:users,email," . $id,
+            'address' => "nullable|max:200",
+            'phone' => "nullable|numeric|digits_between:10,13",
+            'image' => 'nullable|image|max:2040',
+            'level' => 'nullable'
+        ]);
+
+        if($request->hasFile('image')) {
+
+            $fileNameWithExt = $request->file('image')->getClientOriginalName();
+
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+
+            $ext = $request->file('image')->getClientOriginalExtension();
+
+            $fileNameToStore = $fileName . '-' . rand() . '.' . $ext;
+
+            $path = $request->file('image')->move('images/users_images/', $fileNameToStore);
+        } else {
+            $fileNameToStore = "noimage.png";
+        }
+
+        if ( $request->hasFile("image") ) {
+            if ( $user->image !== "noimage.png" ) {
+                File::delete('images/users_images/' . $user->image);
+            }
+                $user->image = $fileNameToStore;
+        }
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->address = $request->input('address');
+        $user->phone = $request->input('phone');
+        $user->level = strtoupper($request->input('level'));
+        $user->save();
+
+        return back()->with('success', 'Your change profile');
     }
 }
