@@ -125,6 +125,12 @@
                 <li>
                     <a href="{{ route('pricing.index') }}"><span class="oi oi-dollar"></span> Pricing</a>
                 </li>
+                <li>
+                    <a href=""><span class="oi oi-signpost"></span> News</a>
+                </li>
+                <li>
+                    <a href=""><span class="oi oi-tag"></span> Category News</a>
+                </li>
                 <div class="d-block d-md-none">
                     <div class="dropdown-divider"></div>
                     <li><a href="{{ route('my-profile', Auth::user()->id) }}"> Profile</a></li>
