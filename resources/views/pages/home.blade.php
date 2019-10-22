@@ -103,7 +103,7 @@
                                 <span class="price">Rp. {{ number_format($price->price, 0, ',', '.') }}</span>
                             </div>
                             <div class="card-body">
-                                <p>{{ $price->description }}</p>
+                                <p>{!! $price->description !!}</p>
                             </div>
                             <div class="card-button">
                                 <a href="https://api.whatsapp.com/send?phone=6287744411262&text=Hallo%Cungur" class="btn btn-primary btn-order">ORDER VIA WHATSAPP</a>
