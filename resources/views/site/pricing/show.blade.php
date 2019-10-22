@@ -1,49 +1,56 @@
 @extends('site.layouts.app')
 
 @section('title')
-    Harga Layanan
+    Pricing
 @endsection
 
 @section('page-title')
-    Detail Harga
+    Detail Service Price
 @endsection
 
 @section('content-page')
 
-<div class="card">
-    <div class="card-header">
-        <a href="{{ route('pricing.index') }}">
-            <button class="btn btn-primary"><i class="oi oi-chevron-left"></i></button>
-        </a>
+    <div class="button-back mt-3">
+        <a href="{{ route('pricing.index') }}" class="btn btn-primary"><i class="oi oi-chevron-left"></i></a>
     </div>
-    
-    <div class="card-body">
-        <table class="table">
-            <tr>
-                <td>Nama Layanan</td>
-                <td>:</td>
-                <td>{{ $pricing->title }}</td>
-            </tr>
 
-            <tr>
-                <td>Deskripsi (opsional)</td>
-                <td>:</td>
-                <td>{{ $pricing->optional_description }}</td>
-            </tr>
+    <section class="detail-price mt-4 mb-4">
+        <div class="card">
+            <div class="card-header text-center">
+                <h4 class="text-center text-uppercase">{{ $pricing->title }}</h4>
+                <p>{{ $pricing->optional_description }}</p>
+            </div>
 
-            <tr>
-                <td>Harga</td>
-                <td>:</td>
-                <td>{{ $pricing->price }}</td>
-            </tr>
-
-            <tr>
-                <td>Deskripsi</td>
-                <td>:</td>
-                <td>{{ $pricing->description }}</td>
-            </tr>
-        </table>
-    </div>
-</div>
+            <div class="card-body">
+                {!! $pricing->description !!}
+            </div>
+        </div>
+    </section>
 
 @endsection
+
+@push('style')
+    <style>
+        .detail-price {
+            margin: auto;
+        }
+
+        .card {
+            width: 20rem;
+        }
+
+        .card .card-header h4 {
+            font-size: 16pt;
+            padding: 20px;
+        }
+
+        .card .card-header p {
+            color: #888;
+        }
+
+        .card .card-body ul li{
+            margin: 10px auto;
+            font-size: 10pt;
+        }
+    </style>
+@endpush

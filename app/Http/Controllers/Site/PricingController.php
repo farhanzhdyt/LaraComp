@@ -76,7 +76,7 @@ class PricingController extends Controller
 
         $pricing->save();
 
-        return redirect()->back()->with('success', 'Data harga berhasil ditambah!');
+        return redirect()->back()->with('success', 'Data successfully created!');
     }
 
     /**
@@ -142,7 +142,7 @@ class PricingController extends Controller
 
         $pricing->save();
 
-        return redirect()->back()->with('success', 'Data harga berhasil diubah!');
+        return redirect()->back()->with('success', 'Data successfully updated!');
     }
 
     /**
@@ -159,6 +159,6 @@ class PricingController extends Controller
         
         $pricing = Pricing::findOrFail($id);
         $pricing->delete();
-        return redirect()->back()->with('success', 'Data berhasil dihapus!');
+        return redirect()->back()->with('success', 'Data successfully deleted!');
     }
 }
