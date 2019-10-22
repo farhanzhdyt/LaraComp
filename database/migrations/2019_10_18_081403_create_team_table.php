@@ -15,6 +15,7 @@ class CreateTeamTable extends Migration
     {
         Schema::create('team', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('image')->default('gorilla.jpg');
             $table->string('nik');
             $table->string('name');
             $table->text('address');

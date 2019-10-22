@@ -24,11 +24,18 @@
     </div>
 
     <section class="team card-body">
-        <form action="{{ route('team.update', $team->id) }}" method="post">
+        <form action="{{ route('team.update', $team->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
 
-            <table class="table">
+            <div class="form-group">
+                <label for="" style="display: block;">Image : </label>
+                <img src="{{ asset('images/teams/' . $team->image) }}" width="100" alt="" srcset="">
+
+                <input type="file" name="image" id="" class="form-control mt-2">
+            </div>
+
+            <table class="table table-bordered">
                 <tr>
                     <td>NIK</td>
                     <td>:</td>

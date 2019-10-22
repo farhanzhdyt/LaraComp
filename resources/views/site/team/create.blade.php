@@ -24,10 +24,17 @@
     </div>
 
     <section class="team card-body">
-        <form action="{{ route('team.store') }}" method="post">
+        <form action="{{ route('team.store') }}" method="post" enctype="multipart/form-data">
             @csrf
 
-            <table class="table">
+            <table class="table table-bordered">
+                <tr>
+                    <td>Image</td>
+                    <td>:</td>
+                    <td>
+                        <input type="file" name="image" id="" class="form-control">
+                    </td>
+                </tr>
                 <tr>
                     <td>NIK</td>
                     <td>:</td>
