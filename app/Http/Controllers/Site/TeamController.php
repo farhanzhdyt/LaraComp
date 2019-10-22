@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Team;
+use File;
 
 class TeamController extends Controller
 {
@@ -19,11 +20,9 @@ class TeamController extends Controller
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
-    	$teams = Team::paginate(15);
-        $keyword = $request->get('keyword');
-        if($keyword) {
-            $users = User::where('name', 'LIKE', '%' . $keyword . '%')->orderBy('name', 'asc')->paginate(10);
-        }
+        $teams = Team::when($request->keyword, function ($query) use ($request) {
+            $query->where('name', 'LIKE', "%{$request->keyword}%");
+        })->paginate();
 
     	return view('site.team.index', compact("teams"));
     }
@@ -59,15 +58,34 @@ class TeamController extends Controller
     	];
 
     	$this->validate($request, [
+            'image' => 'image|max:2040',
     		'nik' => 'required|max:9',
     		'name' => 'required',
     		'address' => 'required',
     		'phone_num' => 'required|max:12',
     		'email' => 'required|email',
     		'position' => 'required'
-    	], $msg);
+        ], $msg);
+        
+        // File Handler
+        if ($request->hasFile('image')) {
 
-    	$team = new Team;
+            $fileNameWithExt = $request->file('image')->getClientOriginalName();
+            
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            
+            $ext = $request->file('image')->getClientOriginalExtension();
+
+            $fileNameToStore = $fileName . '-' . rand() . '.' .$ext;
+
+            $path = $request->file('image')->move('images/teams/', $fileNameToStore);
+
+        } else {
+            $fileNameToStore = "gorilla.jpg";
+        }
+
+        $team = new Team;
+        $team->image = $fileNameToStore;
     	$team->nik = $request->input('nik');
     	$team->name = $request->input('name');
     	$team->address = $request->input('address');
@@ -102,6 +120,7 @@ class TeamController extends Controller
         ];
 
         $this->validate($request, [
+            'image' => 'image|max:2040',
             'nik' => 'required|max:9',
             'name' => 'required',
             'address' => 'required',
@@ -110,7 +129,35 @@ class TeamController extends Controller
             'position' => 'required'
         ], $msg);
 
+        // File Handler
+        if ($request->hasFile('image')) {
+
+            $fileNameWithExt = $request->file('image')->getClientOriginalName();
+            
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            
+            $ext = $request->file('image')->getClientOriginalExtension();
+
+            $fileNameToStore = $fileName . '-' . rand() . '.' .$ext;
+
+            $path = $request->file('image')->move('images/teams/', $fileNameToStore);
+
+        } else {
+            $fileNameToStore = "gorilla.jpg";
+        }
+
         $team = Team::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+
+            if ($team->image !== "gorilla.jpg") {
+                File::delete('images/teams/' . $team->image);
+            }
+
+            $team->image = $fileNameToStore;
+
+        }
+
         $team->nik = $request->input('nik');
         $team->name = $request->input('name');
         $team->address = $request->input('address');
@@ -130,6 +177,12 @@ class TeamController extends Controller
         }
 
         $team = Team::findOrFail($id);
+
+        // Check image
+        if ($team->image !== "gorilla.jpg") {
+            File::delete('images/teams/' . $team->image);
+        }
+
         $team->delete();
 
         return redirect()->back()->with('success', 'Data successfully deleted!');

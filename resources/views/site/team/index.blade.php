@@ -17,23 +17,30 @@
 <div class="card">
     <div class="card-header">
         <div class="float-left">
-            <a href="" class="btn btn-primary"><i class="oi oi-plus mr-1"></i> Create New Team</a>
+            <a href="{{ route('team.create') }}" class="btn btn-primary"><i class="oi oi-plus mr-1"></i> Create New Team</a>
+        </div>
+
+        <div class="float-right">
+            <form action="{{ url()->current() }}">
+                <input type="search" style="width: 20rem;" name="keyword" class="form-control" placeholder="@lang('Search based on name')" autocomplete="off" autofocus>
+            </form>
         </div>
     </div>
 
     <section class="team card-body">
         <div class="table table-responsive">
-            <table class="table table-striped" id="datatable">
+            <table class="table table-hovered">
                 <thead class="border-0 text-center">
                     <tr>
                         <th>#</th>
+                        <th>Image</th>
                         <th>NIK</th>
-                        <th>Nama</th>
-                        <th>Alamat</th>
-                        <th>No Telp</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Phone Number</th>
                         <th>Email</th>
                         <th>Position</th>
-                        <th>Aksi</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 @php $i = 1; @endphp
@@ -41,6 +48,7 @@
                 <tbody class="text-center">
                     <tr>
                         <td>{{ $i }}</td>
+                        <td><img src="{{ asset('images/teams/' . $team->image) }}" class="rounded-circle" width="60" alt="" srcset=""></td>
                         <td>{{ $team->nik }}</td>
                         <td>{{ $team->name }}</td>
                         <td>{{ $team->address }}</td>
