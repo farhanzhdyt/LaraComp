@@ -18,7 +18,7 @@ class CreateTeamTable extends Migration
             $table->string('nik');
             $table->string('name');
             $table->text('address');
-            $table->integer('phone_num');
+            $table->string('phone_num');
             $table->string('email');
             $table->string('position');
             $table->timestamps();
