@@ -19,18 +19,13 @@ class UserController extends Controller
         return $this->middleware('auth');
     }
 
-    public function index(Request $request)
+    public function index()
     {
         if(auth()->user()->level !== "ADMIN"){
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
-
-        $keyword = $request->get('keyword');
-        $users = User::all();
         
-        if($keyword) {
-            $users = User::where('name', 'LIKE', '%' . $keyword . '%')->orderBy('name', 'asc')->paginate(10);
-        }
+        $users = User::all();
 
         return view('site.users.index', compact('users'));
     }
