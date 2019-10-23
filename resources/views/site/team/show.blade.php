@@ -24,6 +24,11 @@
     </div>
 
     <section class="pricing card-body">
+
+        <div class="image-team text-center mb-5">
+            <img src="{{ asset('images/teams/' .$teams->image) }}" width="200" height="200" alt="" srcset="">
+        </div>
+
         <table class="table table-bordered">
             <tr>
                 <td>NIK</td>
