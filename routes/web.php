@@ -14,12 +14,15 @@
 // Route BackEnd
 Route::group(['prefix' => 'site'], function (){
     Route::get('/', [\App\Http\Controllers\Site\PageController::class, 'index'])->name('dashboard');
-    
+
     // Products
-    Route::get('products', [\App\Http\Controllers\Site\ProductController::class, 'index'])->name('products.index');
-    Route::get('products/{id}', [\App\Http\Controllers\Site\ProductController::class, 'show'])->name('products.detail');
-    Route::get('products/create', [\App\Http\Controllers\Site\ProductController::class, 'create'])->name('products.create');
-    Route::post('products/store', [\App\Http\Controllers\Site\ProductController::class, 'store'])->name('products.store');
+    Route::get('product', [\App\Http\Controllers\Site\ProductController::class, 'index'])->name('product.index');
+    Route::get('product/create', [\App\Http\Controllers\Site\ProductController::class, 'create'])->name('product.create');
+    Route::post('product/store', [\App\Http\Controllers\Site\ProductController::class, 'store'])->name('product.store');
+    Route::get('product/show/{id}', [\App\Http\Controllers\Site\ProductController::class, 'show'])->name('product.show');
+    Route::get('product/edit/{id}', [\App\Http\Controllers\Site\ProductController::class, 'edit'])->name('product.edit');
+    Route::patch('product/update/{id}', [\App\Http\Controllers\Site\ProductController::class, 'update'])->name('product.update');
+    Route::delete('product/destroy/{id}', [\App\Http\Controllers\Site\ProductController::class, 'destroy'])->name('product.destroy');
 
     // Pricing
     Route::get('pricing', [\App\Http\Controllers\Site\PricingController::class, 'index'])->name('pricing.index');
