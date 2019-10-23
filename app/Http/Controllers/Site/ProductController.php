@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Carbon\Carbon;
+use File;
 
 class ProductController extends Controller
 {
@@ -19,14 +20,17 @@ class ProductController extends Controller
         return $this->middleware('auth');
     }
     
-    public function index()
+    public function index(Request $request)
     {
         if (auth()->user()->level !== "ADMIN") {
 			return redirect()->back()->with('error', 'Unauthorized Page');
         }
         
-        $products = Product::paginate();
-        return view('site.products.index', compact('products'));
+        $products = Product::when($request->keyword, function($query) use ($request) {
+            $query->where('name', 'LIKE', "%{$request->keyword}%");
+        })->paginate();
+
+        return view('site.product.index', compact('products'));
     }
 
     /**
@@ -36,7 +40,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        if (auth()->user()->level !== "ADMIN") {
+			return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+
+        return view('site.product.create');
     }
 
     /**
@@ -47,7 +55,40 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (auth()->user()->level !== "ADMIN") {
+            return redirect()->back()->with('error', 'Unauthorized Page');            
+        }
+
+        $this->validate($request, [
+            'image' => 'image|max:2040',
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
+        // Upload Image
+        if ($request->hasFile('image')) {
+            // get image name with extension
+            $fileNameWithExt = $request->file('image')->getClientOriginalName();
+
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+
+            $ext = $request->file('image')->getClientOriginalExtension();
+
+            $fileNameToStore = $fileName . '-' . rand() . '.' . $ext;
+
+            $path = $request->file('image')->move('images/products/', $fileNameToStore);
+        } else {
+            $fileNameToStore = "noimage.png";
+        }
+
+        $product = New Product;
+        $product->image = $fileNameToStore;
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        
+        $product->save();
+
+        return redirect()->back()->with('success', 'Data successfully created');
     }
 
     /**
@@ -63,7 +104,7 @@ class ProductController extends Controller
         }
         
         $product = Product::findOrFail($id);
-        return view('site.products.show', compact('product'));
+        return view('site.product.show', compact('product'));
     }
 
     /**
@@ -74,7 +115,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        if (auth()->user()->level !== "ADMIN") {
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+
+        $product = Product::findOrFail($id);
+
+        return view('site.product.edit', compact("product"));
     }
 
     /**
@@ -86,7 +133,48 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (auth()->user()->level !== "ADMIN") {
+            return redirect()->back()->with('error', 'Unauthorized Page');            
+        }
+        
+        $this->validate($request, [
+            'image' => 'image|max:2040',
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
+        // Upload Image
+        if ($request->hasFile('image')) {
+            // get image name with extension
+            $fileNameWithExt = $request->file('image')->getClientOriginalName();
+
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+
+            $ext = $request->file('image')->getClientOriginalExtension();
+
+            $fileNameToStore = $fileName . '-' . rand() . '.' . $ext;
+
+            $path = $request->file('image')->move('images/products/', $fileNameToStore);
+        } else {
+            $fileNameToStore = "noimage.png";
+        }
+
+        $product = Product::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            if ($product->image !== "noimage.png") {
+                File::delete('images/products/' . $product->image);
+            }
+            $product->image = $fileNameToStore;
+        }
+
+        $product->image = $fileNameToStore;
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        
+        $product->save();
+
+        return redirect()->back()->with('success', 'Data successfully updated');
     }
 
     /**
@@ -97,6 +185,20 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (auth()->user()->level !== "ADMIN") {
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+
+        $product = Product::findOrFail($id);
+        
+        // Check image
+        if ($product->image !== "noimage.png") {
+            File::delete('images/products' . $product->image);
+        }
+
+        $product->delete();
+
+        return redirect()->back()->with('success', 'Data successfully deleted');
+
     }
 }
