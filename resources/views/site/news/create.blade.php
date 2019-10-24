@@ -37,11 +37,16 @@
 
                     <div class="form-group">
                         <label for="description"><strong> Description </strong></label>
-                        <input type="text" value="{{ old('description') }}" class="form-control {{ $errors->first('description') ? "is-invalid": "" }}" name="description" placeholder="description">
+                        <textarea class="form-control {{ $errors->first('description') ? "is-invalid": "" }}" name="description" placeholder="description">{{ old('description') }}</textarea>
                         
                         <div class="invalid-feedback">
                             {{ $errors->first('description') }}
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="content"><strong> Content </strong></label>
+                        <input type="text" class="form-control" name="content">
                     </div>
 
                     <div class="form-group">
@@ -58,3 +63,10 @@
     </div>
 </div>
 @endsection
+
+@push('script')
+<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('description');
+</script>
+@endpush
