@@ -61,7 +61,7 @@
                             <a class="nav-link" href="#">Testimonial</a>
                         </li>
                         <li class="nav-item bold">
-                            <a class="nav-link" href="{{ route('blog') }}">Artikel</a>
+                            <a class="nav-link" href="{{ route('news') }}">Artikel</a>
                         </li>
                         
                         <li class="nav-item bold item-button2">
@@ -118,7 +118,7 @@
                                 <h2>Kegiatan Umum</h2>
                                 <ul>
                                     <li>
-                                        <a class="nav-link" href="{{ route('blog') }}">Blog</a>
+                                        <a class="nav-link" href="{{ route('news') }}">Artikel</a>
                                     </li>
                                 </ul>
                             </div>

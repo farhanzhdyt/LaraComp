@@ -59,7 +59,8 @@ Route::group(['prefix' => 'site'], function (){
 
 // Route Front End
 Route::get('/', 'PageController@index')->name('index');
-Route::get('/blog', 'PageController@blog')->name('blog');
+Route::get('/news', 'PageController@news')->name('news');
+Route::get('/news/show', 'PageController@showNews')->name('news.show');
 
 // Contact
 Route::get('/contact', 'ContactController@create')->name('contact.create');
