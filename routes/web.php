@@ -42,6 +42,9 @@ Route::group(['prefix' => 'site'], function (){
     Route::patch('users/update-profile/{id}', 'Site\\UserController@changeProfile')->name('update-profile');
     Route::patch('users/update-password/{id}', 'Site\\UserController@changePassword')->name('update-password');
 
+    // News Management
+    Route::resource('news', 'Site\\NewsController');
+
     // Company
     Route::get('company', [\App\Http\Controllers\Site\CompanyController::class, 'index'])->name('company.index');
     Route::get('company/create', [\App\Http\Controllers\Site\CompanyController::class, 'create'])->name('company.create');
@@ -66,6 +69,10 @@ Route::get('/news/show', 'PageController@showNews')->name('news.show');
 Route::get('/contact', 'ContactController@create')->name('contact.create');
 Route::post('/contact-send', 'ContactController@store')->name('contact-send');
 
+// News
+// Route::get('sesanamahbebaskumahamaneh/{slug}', 'Site\\NewsController@showClient')->name();
+
+// Login
 Auth::routes();
 
 // Remove Register
