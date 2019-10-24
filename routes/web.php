@@ -45,6 +45,9 @@ Route::group(['prefix' => 'site'], function (){
     // News Management
     Route::resource('news', 'Site\\NewsController');
 
+    // Categories Management
+    Route::resource('category', 'Site\\CategoryController');
+
     // Company
     Route::get('company', [\App\Http\Controllers\Site\CompanyController::class, 'index'])->name('company.index');
     Route::get('company/create', [\App\Http\Controllers\Site\CompanyController::class, 'create'])->name('company.create');

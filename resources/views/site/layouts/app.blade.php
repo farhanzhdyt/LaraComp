@@ -125,7 +125,7 @@
                     <a href="{{ route('pricing.index') }}"><span class="oi oi-dollar"></span> Pricing</a>
                 </li>
                 <li>
-                    <a href=""><span class="oi oi-signpost"></span> News</a>
+                    <a href="{{ route('news.index') }}"><span class="oi oi-signpost"></span> News</a>
                 </li>
                 <li>
                     <a href=""><span class="oi oi-tag"></span> Category News</a>

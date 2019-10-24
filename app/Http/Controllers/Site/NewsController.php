@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\News;
+use Illuminate\Support\Str;
+use File;
 
 class NewsController extends Controller
 {
@@ -54,14 +56,14 @@ class NewsController extends Controller
     {
         if (auth()->user()->level !== "ADMIN") {
             return redirect()->back()->with('error', 'Unauthorized Page');
-        } elseif (auth()->user()->level !== "ADMIN_BERITA") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
         }
+
+        // dd($request);
 
         $this->validate($request, [
             'title' => 'required|max:50|unique:news,title',
             'description' => 'required|max:255',
-            'content' => 'required' ,
+            'content' => 'required',
             'image' => 'nullable|image|max:2040',
         ]);
 
@@ -81,11 +83,11 @@ class NewsController extends Controller
         }
 
         $news = new News;
+        $news->image = $fileNameToStore;
         $news->title = $request->get('title');
-        $news->slug = Str::slug($request->input('title'));
+        $news->slug = Str::slug($request->get('title'));
         $news->description = $request->get('description');
         $news->content = $request->get('content');
-        $news->image = $fileNameToStore;
         $news->created_by = auth()->user()->id;
         $news->save();
 
@@ -101,8 +103,6 @@ class NewsController extends Controller
     public function show($id)
     {
         if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
-        } elseif (auth()->user()->level !== "ADMIN_BERITA") {
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
@@ -121,8 +121,6 @@ class NewsController extends Controller
     {
         if (auth()->user()->level !== "ADMIN") {
             return redirect()->back()->with('error', 'Unauthorized Page');
-        } elseif (auth()->user()->level !== "ADMIN_BERITA") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
         $news = News::findOrFail($id);
@@ -140,8 +138,6 @@ class NewsController extends Controller
     public function update(Request $request, $id)
     {
         if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
-        } elseif (auth()->user()->level !== "ADMIN_BERITA") {
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
@@ -189,8 +185,6 @@ class NewsController extends Controller
     public function destroy($id)
     {
         if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
-        } elseif (auth()->user()->level !== "ADMIN_BERITA") {
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
