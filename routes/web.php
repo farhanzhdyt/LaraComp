@@ -42,11 +42,29 @@ Route::group(['prefix' => 'site'], function (){
     Route::patch('users/update-profile/{id}', 'Site\\UserController@changeProfile')->name('update-profile');
     Route::patch('users/update-password/{id}', 'Site\\UserController@changePassword')->name('update-password');
 
+
+     //Trashed
+	Route::get('news/trashed', 'Site\\NewsController@newsTrashed')->name('news.trashed');
+	// Restore Trashed News
+	Route::get('news/restore/{id}', 'Site\\NewsController@restoreNews')->name('news.restore');
+	// Delete Permanent News
+	Route::delete('news/delete-permanent/{id}', 'Site\\NewsController@deletePermanent')->name('news.delete-permanent');
+
     // News Management
     Route::resource('news', 'Site\\NewsController');
 
+    //Trashed
+	Route::get('categories/trashed', 'Site\\CategoryController@categoryTrashed')->name('categories.trashed');
+	// Restore Trashed Category
+	Route::get('category/restore/{id}', 'Site\\CategoryController@restoreCategory')->name('category.restore');
+	// Delete Permanent category
+	Route::delete('category/delete-permanent/{id}', 'Site\\CategoryController@deletePermanent')->name('category.delete-permanent');
+
+    // Get Category
+    Route::get('categories/get-all', 'Site\\CategoryController@getCategories')->name('categories.get-all');
+
     // Categories Management
-    Route::resource('category', 'Site\\CategoryController');
+    Route::resource('categories', 'Site\\CategoryController');
 
     // Company
     Route::get('company', [\App\Http\Controllers\Site\CompanyController::class, 'index'])->name('company.index');

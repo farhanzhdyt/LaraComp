@@ -63,7 +63,6 @@ class NewsController extends Controller
         $this->validate($request, [
             'title' => 'required|max:50|unique:news,title',
             'description' => 'required|max:255',
-            'content' => 'required',
             'image' => 'nullable|image|max:2040',
         ]);
 
@@ -87,9 +86,9 @@ class NewsController extends Controller
         $news->title = $request->get('title');
         $news->slug = Str::slug($request->get('title'));
         $news->description = $request->get('description');
-        $news->content = $request->get('content');
         $news->created_by = auth()->user()->id;
         $news->save();
+        $news->category_news()->attach($request->input('categories'));
 
         return redirect()->route('news.index')->with('success', ' News successfully created');
     }
@@ -142,9 +141,8 @@ class NewsController extends Controller
         }
 
         $this->validate($request, [
-            'title' => 'required|max:50|unique:news,title',
+            'title' => 'required|unique:news,title,' . $id,
             'description' => 'required|max:255',
-            'content' => 'required' ,
             'image' => 'nullable|image|max:2040',
         ]);
 
@@ -165,9 +163,9 @@ class NewsController extends Controller
 
         $news = News::findOrFail($id);
 
-        if ($request->hasFile("image")) {
+        if ($request->hasFile('image')) {
             if ($news->image !== "noimage.png") {
-                File::delete('images/news_images'. $news->image);
+                File::delete('images/news_image/' .$news->image);
             }
             $news->image = $fileNameToStore;
         }
@@ -175,10 +173,9 @@ class NewsController extends Controller
         $news->title = $request->get('title');
         $news->slug = Str::slug($request->input('title'));
         $news->description = $request->get('description');
-        $news->content = $request->get('content');
-        $news->image = $fileNameToStore;
         $news->created_by = auth()->user()->id;
         $news->save();
+        $news->category_news()->sync($request->input('categories'));
 
         return redirect()->route('news.index')->with('edit', 'News successfully update');
     }
@@ -197,9 +194,41 @@ class NewsController extends Controller
 
         $news = News::findOrFail($id);
 
+        if($news->image !== "noimage.png") {
+            File::delete('images/news_images/' . $news->image);
+        }
+
         $news->delete();
 
-        return redirect()->route('news.index')->with('delete', 'News Has Been Removed');
+        return redirect()->route('news.index')->with('delete', 'News moved to trash');
+    }
+
+    public function newsTrashed()
+    {
+        $news = News::onlyTrashed()->get();
+        return view('site.news.trash.index', compact('news'));
+    }
+
+    public function restoreNews($id)
+    {
+        $news = News::withTrashed()->findOrFail($id);
+
+        if ($news->trashed()) {
+            $news->restore();
+        }
+
+        return redirect()->route('news.trashed')->with('restore', 'News successfully restored');
+    }
+
+    public function deletePermanent($id)
+    {
+        $news = News::withTrashed()->findOrFail($id);
+
+        if ($news->trashed()) {
+            $news->forceDelete();
+        }
+
+        return redirect()->route('news.trashed')->with('delete', 'News permanently deleted!');
     }
 
     public function showClient($slug)

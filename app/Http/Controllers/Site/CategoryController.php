@@ -44,12 +44,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name_category' => 'required|unique:categories,name_category|max:20'
+        ]);
+
         $category = new Category;
         $category->name_category = $request->get('name_category');
         $category->created_by = auth()->user()->id;
         $category->save();
 
-        return redirect()->route('category.index')->with('success', 'Category successfully created');
+        return redirect()->route('categories.index')->with('success', 'Category successfully created');
     }
 
     /**
@@ -87,13 +91,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name_category' => 'required|unique:categories,name_category|max:20'
+        ]);
+
         $category = Category::findOrFail($id);
 
         $category->name_category = $request->input('name_category');
         $category->updated_by = auth()->user()->id;
         $category->save();
 
-        return redirect()->route('category.index')->with('edit', 'Category successfully updated');
+        return redirect()->route('categories.index')->with('edit', 'Category successfully updated');
     }
 
     /**
@@ -107,6 +115,41 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
 
-        return redirect()->route('category.index')->with('delete', 'Category successfully deleted');
+        return redirect()->route('categories.index')->with('delete', 'Category moved to trash');
+    }
+
+    public function getCategories(Request $request)
+    {
+        $keyword = $request->get('q');
+        $categories = Category::where('name_category', 'LIKE', '%' . $keyword . '%')->get();
+        return $categories;
+    }
+
+    public function categoryTrashed()
+    {
+        $categories = Category::onlyTrashed()->get();
+        return view('site.category.trash.index', compact('categories'));
+    }
+
+    public function restoreCategory($id)
+    {
+        $category = Category::withTrashed()->findOrFail($id);
+
+        if ($category->trashed()) {
+            $category->restore();
+        }
+
+        return redirect()->route('categories.trashed')->with('restore', 'Category successfully restored');
+    }
+
+    public function deletePermanent($id)
+    {
+        $category = Category::withTrashed()->findOrFail($id);
+
+        if ($category->trashed()) {
+            $category->forceDelete();
+        }
+
+        return redirect()->route('categories.trashed')->with('delete', 'Category permanently deleted!');
     }
 }

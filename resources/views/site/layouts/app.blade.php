@@ -17,6 +17,8 @@
     <link rel="icon" href="{{ asset('assets/polished-logo-small.png') }}">
     <!-- DataTables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
+    {{-- Select2 --}}
+    <link rel="stylesheet" href="{{ asset('bower_components/select2/dist/css/select2.min.css') }}">
 
     @stack('style')
 
@@ -128,7 +130,7 @@
                     <a href="{{ route('news.index') }}"><span class="oi oi-signpost"></span> News</a>
                 </li>
                 <li>
-                    <a href="{{ route('category.index') }}"><span class="oi oi-tag"></span> Category News</a>
+                    <a href="{{ route('categories.index') }}"><span class="oi oi-tag"></span> Category News</a>
                 </li>
                 <div class="d-block d-md-none">
                     <div class="dropdown-divider"></div>
@@ -167,9 +169,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+    
+    {{-- Jquery --}}
+    <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
+
     <!-- DataTables -->
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
-   
+    
+    {{-- Select2 --}}
+    <script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+    
     @stack('script')
 
 </body>
