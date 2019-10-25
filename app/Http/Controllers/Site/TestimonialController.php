@@ -13,9 +13,13 @@ class TestimonialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('site.testimonial.index');
+        $testimonials = Testimonial::when($request->keyword, function($query) use ($request) {
+            $query->where('client_name', 'LIKE', "%{$request->keyword}%");
+        })->paginate(10);
+
+        return view('site.testimonial.index', compact('testimonials'));
     }
 
     /**
@@ -57,7 +61,8 @@ class TestimonialController extends Controller
      */
     public function show($id)
     {
-        //
+        $testimonial = Testimonial::findOrFail($id);
+        return view('site.testimonial.show', compact('testimonial'));
     }
 
     /**
@@ -68,7 +73,8 @@ class TestimonialController extends Controller
      */
     public function edit($id)
     {
-        //
+        $testimonial = Testimonial::findOrFail($id);
+        return view('site.testimonial.edit', compact('testimonial'));
     }
 
     /**
@@ -80,7 +86,17 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'client_name' => 'required',
+            'review' => 'required'
+        ]);
+
+        $testi = Testimonial::findOrFail($id);
+        $testi->client_name = $request->input('client_name');
+        $testi->review = $request->input('review');
+        $testi->save();
+
+        return redirect()->back()->with('success', 'Data successfully updated');
     }
 
     /**
@@ -91,6 +107,9 @@ class TestimonialController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $testi = Testimonial::findOrFail($id);
+        $testi->delete();
+
+        return redirect()->back()->with('success', 'Data succesffuly deleted');
     }
 }

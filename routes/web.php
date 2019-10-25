@@ -66,6 +66,10 @@ Route::group(['prefix' => 'site'], function (){
     Route::get('testimonial', [\App\Http\Controllers\Site\TestimonialController::class, 'index'])->name('testimonial.index');
     Route::get('testimonial/create', [\App\Http\Controllers\Site\TestimonialController::class, 'create'])->name('testimonial.create');
     Route::post('testimonial/store', [\App\Http\Controllers\Site\TestimonialController::class, 'store'])->name('testimonial.store');
+    Route::get('testimonial/show/{id}', [\App\Http\Controllers\Site\TestimonialController::class, 'show'])->name('testimonial.show');
+    Route::get('testimonial/edit/{id}', [\App\Http\Controllers\Site\TestimonialController::class, 'edit'])->name('testimonial.edit');
+    Route::patch('testimonial/update/{id}', [\App\Http\Controllers\Site\TestimonialController::class, 'update'])->name('testimonial.update');
+    Route::delete('testimonial/destroy/{id}', [\App\Http\Controllers\Site\TestimonialController::class, 'destroy'])->name('testimonial.destroy');
 });
 
 // Route Front End

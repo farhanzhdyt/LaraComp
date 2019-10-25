@@ -5,7 +5,7 @@
 @endsection
 
 @section('page-title')
-    Create New Testimonial
+    Edit Testimonial Data
 @endsection
 
 @section('content-page')
@@ -23,33 +23,35 @@
         </div>
     </div>
 
-    <div class="card-body">
-        <form action="{{ route('testimonial.store') }}" method="post">
-            
+    <section class="card-body">
+        <form action="{{ route('testimonial.update', $testimonial->id) }}" method="post">
             @csrf
+            @method('PATCH')
 
             <table class="table">
                 <tr>
-                    <td>Client Name</td>
+                    <td>Client Name </td>
                     <td>:</td>
                     <td>
-                        <input type="text" name="client_name" class="form-control @error('client_name') is-invalid @enderror" id="">
+                        <input type="text" value="{{ $testimonial->client_name }}" class="form-control @error('client_name') is-invalid @enderror" name="client_name">
                     </td>
                 </tr>
                 <tr>
                     <td>Review</td>
                     <td>:</td>
                     <td>
-                        <textarea name="review" class="form-control @error('review') is-invalid @enderror" id="" cols="30" rows="10">
-
+                        <textarea name="review" class="form-control @error('client_name') is-invalid @enderror" cols="30" rows="10">
+                            {{ $testimonial->review }}
                         </textarea>
                     </td>
                 </tr>
             </table>
 
-            <button type="submit" class="btn btn-outline-primary">Create Data</button>
+            <div class="button-bottom mt-3">
+                <button type="submit" class="btn btn-outline-primary">Edit Data</button>    
+            </div>
         </form>
-    </div>
+    </section>
 </div>
 @endsection
 
