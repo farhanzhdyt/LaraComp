@@ -165,6 +165,13 @@ class NewsController extends Controller
 
         $news = News::findOrFail($id);
 
+        if ($request->hasFile("image")) {
+            if ($news->image !== "noimage.png") {
+                File::delete('images/news_images'. $news->image);
+            }
+            $news->image = $fileNameToStore;
+        }
+
         $news->title = $request->get('title');
         $news->slug = Str::slug($request->input('title'));
         $news->description = $request->get('description');
