@@ -45,21 +45,24 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="content"><strong> Content </strong></label>
-                        <input type="text" class="form-control" name="content" value="{{ $news->content }}">
-                    </div>
+                    <div class="form-group {{ $errors->first('') ? 'is-invalid' : '' }}">
+						<label for="categories"><strong> Content </strong></label>
+						<select name="categories[]" id="categories" class="form-control" style="width:100%" multiple>
+
+						</select>
+					</div>
 
                     <div class="form-group">
-                        <label for="image"><strong> Image </strong></label>
-                        
+                        <label for="image"><strong> Image </strong></label>                        
                         <input type="file" class="form-control" name="image">
+
+                        <img src="{{ asset('images/news_images/' .$news->image) }}" width="100" style="margin-top: 10px;" alt="" srcset="">
                     </div>
                 </div>
             </div>
         </div>
         <div class="card-footer">
-            <button class="btn btn-outline-primary float-right">Create User</button>
+            <button class="btn btn-outline-primary float-right">Update News</button>
         </form>
     </div>
 </div>
@@ -69,5 +72,26 @@
 <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('description');
+    $(function() {
+        $('#categories').select2({
+            placeholder: 'Choose Categories',
+            ajax : {
+                url : '{{ route("categories.get-all") }}',
+                processResults : function(data){
+                    return {
+                        results : data.map(function(category){
+                            return {id:category.id, text:category.name_category}
+                        })
+                    }
+                }
+            }
+        });
+
+        var categories = {!! $news->category_news !!}
+        categories.forEach(function(category){
+            var option = new Option(category.name_category, category.id, true, true);
+            $('#categories').append(option).trigger('change');
+        });
+    })
 </script>
 @endpush
