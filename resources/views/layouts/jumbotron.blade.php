@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row mt-3">
                 <div class="col-md-6 col-sm-12 jumbo-content mt-5 text-white">
-                    <h3 class="display-4 bold" style="font-size: 35pt;">IT SOLUTION</h3>
+                    <h3 class="display-4 helvetica-bold" style="font-size: 35pt;">IT SOLUTION</h3>
                     <p class="lead">
                         brand usaha kami di bidang IT yang memberikan layanan professional dan dibekali dengan tenaga ahli yang berpengalaman. Info lebih lanjut hubungi kami!
                     </p>
