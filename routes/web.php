@@ -64,6 +64,8 @@ Route::group(['prefix' => 'site'], function (){
 
     // Testimonial
     Route::get('testimonial', [\App\Http\Controllers\Site\TestimonialController::class, 'index'])->name('testimonial.index');
+    Route::get('testimonial/create', [\App\Http\Controllers\Site\TestimonialController::class, 'create'])->name('testimonial.create');
+    Route::post('testimonial/store', [\App\Http\Controllers\Site\TestimonialController::class, 'store'])->name('testimonial.store');
 });
 
 // Route Front End

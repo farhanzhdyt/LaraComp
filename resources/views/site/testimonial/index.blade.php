@@ -17,7 +17,7 @@
 <div class="card">
     <div class="card-header">
         <div class="float-left">
-            <a href="#" class="btn btn-primary"><i class="oi oi-plus mr-1"></i> Create New Testimonials</a>
+            <a href="{{ route('testimonial.create') }}" class="btn btn-primary"><i class="oi oi-plus mr-1"></i> Create New Testimonials</a>
         </div>
 
         <div class="float-right">

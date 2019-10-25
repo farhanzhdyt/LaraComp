@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Testimonial;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -24,7 +25,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        //
+        return view('site.testimonial.create');
     }
 
     /**
@@ -35,7 +36,17 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'client_name' => 'required',
+            'review' => 'required'
+        ]);
+
+        $testi = New Testimonial;
+        $testi->client_name = $request->input('client_name');
+        $testi->review = $request->input('review');
+        $testi->save();
+
+        return redirect()->back()->with('success', 'Data successfully created');
     }
 
     /**
