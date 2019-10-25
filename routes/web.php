@@ -61,6 +61,9 @@ Route::group(['prefix' => 'site'], function (){
     Route::get('team/edit/{id}', [\App\Http\Controllers\Site\TeamController::class, 'edit'])->name('team.edit');
     Route::patch('team/update/{id}', [\App\Http\Controllers\Site\TeamController::class, 'update'])->name('team.update');
     Route::delete('team/destroy/{id}', [\App\Http\Controllers\Site\TeamController::class, 'destroy'])->name('team.destroy');
+
+    // Testimonial
+    Route::get('testimonial', [\App\Http\Controllers\Site\TestimonialController::class, 'index'])->name('testimonial.index');
 });
 
 // Route Front End
