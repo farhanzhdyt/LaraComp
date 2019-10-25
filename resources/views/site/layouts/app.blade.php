@@ -131,7 +131,7 @@
                     <a href="{{ route('news.index') }}"><span class="oi oi-signpost"></span> News</a>
                 </li>
                 <li>
-                    <a href=""><span class="oi oi-tag"></span> Category News</a>
+                    <a href="{{ route('category.index') }}"><span class="oi oi-tag"></span> Category News</a>
                 </li>
                 <div class="d-block d-md-none">
                     <div class="dropdown-divider"></div>

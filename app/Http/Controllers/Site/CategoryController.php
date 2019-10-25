@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+
+        return view('site.category.index', compact('categories'));
     }
 
     /**
@@ -24,7 +32,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('site.category.create');
     }
 
     /**
@@ -35,7 +44,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category;
+        $category->name_category = $request->get('name_category');
+        $category->created_by = auth()->user()->id;
+        $category->save();
+
+        return redirect()->route('category.index')->with('success', 'Category successfully created');
     }
 
     /**
@@ -46,7 +60,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        return view('site.category.show', compact('category'));
     }
 
     /**
@@ -57,7 +73,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        return view('site.category.edit', compact('category'));
     }
 
     /**
@@ -69,7 +87,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        $category->name_category = $request->input('name_category');
+        $category->updated_by = auth()->user()->id;
+        $category->save();
+
+        return redirect()->route('category.index')->with('edit', 'Category successfully updated');
     }
 
     /**
@@ -80,6 +104,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return redirect()->route('category.index')->with('delete', 'Category successfully deleted');
     }
 }
