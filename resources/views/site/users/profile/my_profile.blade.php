@@ -77,7 +77,8 @@
                 <div class="form-group">
                     <label for="image"><strong> Image </strong></label>
                     <br>
-                    <input type="file" name="image">
+                    <input type="file" name="image" class="form-control">
+                    <img src="{{ asset('images/users_images/' .$user->image) }}" width="100" style="margin-top: 10px;" alt="" srcset="">
                 </div>
             </div>
         </div>

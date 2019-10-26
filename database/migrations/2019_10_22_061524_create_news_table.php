@@ -18,7 +18,6 @@ class CreateNewsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('description');
-            $table->string('content');
             $table->string('image')->default("noimage.png");
             $table->bigInteger('created_by')->unsigned();
             $table->bigInteger('updated_by')->nullable()->unsigned();

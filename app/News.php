@@ -25,4 +25,9 @@ class News extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public function category_news()
+	{
+		return $this->belongsToMany('App\Category');
+	}
 }

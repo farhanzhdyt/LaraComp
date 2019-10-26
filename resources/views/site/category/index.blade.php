@@ -1,7 +1,7 @@
 @extends('site.layouts.app')
 
 @section('title')
-    Category
+    Categories
 @endsection
 
 @section('page-title')
@@ -38,7 +38,7 @@
                 List Category
             </div>
             <div class="float-right">
-                <a href="{{ route('category.create') }}" class="btn btn-outline-success text-white"><span class="oi oi-plus"></span> Create Category</a>
+                <a href="{{ route('categories.create') }}" class="btn btn-outline-success text-white"><span class="oi oi-plus"></span> Create Category</a>
             </div>
         </div>        
     </div>
@@ -62,9 +62,9 @@
                             <td>{{ $category->name_category }}</td>
                             <td>{{ $category->getUser->name }}</td>
                             <td>
-                                <a href="{{ route('category.show', $category->id) }}" class="btn btn-sm btn-info" style="border: transparent;"><i class="oi oi-eye"></i></a>
-                                <a href="{{ route('category.edit', $category->id) }}" class="btn btn-sm btn-warning" style="border: transparent;"><i class="oi oi-pencil"></i></a>
-                                <form action="{{ route('category.destroy', $category->id) }}" method="post" style="display: inline;" onsubmit="return confirm('Delete Data ?')">
+                                <a href="{{ route('categories.show', $category->id) }}" class="btn btn-sm btn-info" style="border: transparent;"><i class="oi oi-eye"></i></a>
+                                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-sm btn-warning" style="border: transparent;"><i class="oi oi-pencil"></i></a>
+                                <form action="{{ route('categories.destroy', $category->id) }}" method="post" style="display: inline;" onsubmit="return confirm('Delete Data ?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger"><i class="oi oi-trash"></i></button>
@@ -76,6 +76,9 @@
                 </tbody>
             </table>
         </div>
+    </div>
+<div class="card-footer">
+        <a href="{{ route('categories.trashed') }}" class="btn btn-outline-danger float-right">Trashed News</a>
     </div>
 </div>
 @endsection

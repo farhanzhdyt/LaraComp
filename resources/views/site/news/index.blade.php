@@ -61,7 +61,7 @@
                         <tr>
                             <td>{{ $no }}.</td>
                             <td>{{ $item->title }}</td>
-                            <td>{{ $item->description }}</td>
+                            <td>{!! $item->description !!}</td>
                             <td>
                                 <img src="{{ asset('images/news_images/' . $item->image) }}" width="48px">
                             </td>
@@ -80,6 +80,9 @@
                 </tbody>
             </table>
         </div>
+    </div>
+<div class="card-footer">
+    <a href="{{ route('news.trashed') }}" class="btn btn-outline-danger float-right">Trashed News</a>
     </div>
 </div>
 @endsection
