@@ -106,7 +106,7 @@
                                 {!! $price->description !!}
                             </div>
                             <div class="card-button">
-                                <a href="https://api.whatsapp.com/send?phone=6287744411262&text=Hallo%Cungur" class="btn btn-primary btn-order">Order via whatsapp</a>
+                                <a href="https://api.whatsapp.com/send?phone=6287778630344&text=Hallo%Cungur" class="btn btn-primary btn-order">Order via whatsapp</a>
                             </div>
                         </div>
                     </div>
