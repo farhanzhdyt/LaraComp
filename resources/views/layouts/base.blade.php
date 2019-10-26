@@ -127,7 +127,7 @@
                                 <h2>Ekstra</h2>
                                 <ul>
                                     <li>
-                                        <a class="nav-link" href="#">Testimonial</a>
+                                        <a class="nav-link" href="{{ route('contact.create') }}">Kontak</a>
                                     </li>
                                     <li>
                                         <a class="nav-link" href="#">Karir</a>
@@ -145,7 +145,6 @@
         </footer>
 
         {{-- script --}}
-        @stack('script')
         <script src="{{ asset('js/script.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/scrollreveal.min.js') }}"></script>

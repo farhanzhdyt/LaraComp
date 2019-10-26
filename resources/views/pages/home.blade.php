@@ -28,7 +28,7 @@
             </div>
 
             {{-- tongue svg --}}
-            <img src="{{ asset('images/tongue.svg') }}" class="tongue" alt="" srcset="">
+            {{-- <img src="{{ asset('images/tongue.svg') }}" class="tongue" alt="" srcset=""> --}}
         </div>
     </section>
     {{-- END About Section --}}
@@ -100,13 +100,13 @@
                                 <h2>{{ $price->title }}</h2>
                                 <span class="optional_description">{{ $price->optional_description }}</span>
                                 <br>
-                                <span class="price">Rp. {{ number_format($price->price, 0, ',', '.') }}</span>
+                                <span class="price">Rp.{{ number_format($price->price, 0, ',', '.') }}</span>
                             </div>
                             <div class="card-body">
-                                <p>{!! $price->description !!}</p>
+                                {!! $price->description !!}
                             </div>
                             <div class="card-button">
-                                <a href="https://api.whatsapp.com/send?phone=6287744411262&text=Hallo%Cungur" class="btn btn-primary btn-order">ORDER VIA WHATSAPP</a>
+                                <a href="https://api.whatsapp.com/send?phone=6287744411262&text=Hallo%Cungur" class="btn btn-primary btn-order">Order via whatsapp</a>
                             </div>
                         </div>
                     </div>
@@ -116,19 +116,30 @@
         </div>
     </section>
     {{-- END Pricing --}}
+
+    {{-- Testimonials --}}
+    <section class="testimonials" id="testimonials">
+        <div class="container owl-carousel">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+        </div>
+    </section>
 @endsection
 
+@push('style')
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+@endpush
+
 @push('script')
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script>
-        function initMap() {
-            var location = {lat: -6.951919, lng: 107.642507};
-            var map = document.getElementById('map-container-google-1');
-            var marker = new google.maps.Marker({
-                position: location,
-                map: map
-            });
-        }
+        $(document).ready(function (){
+            $('.owl-carousel').owlCarousel();
+        });
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqFwQAp7wOiDc1y8YB4_cZp3BkMKUzHwk&callback=initMap"
-    type="text/javascript"></script>
 @endpush
