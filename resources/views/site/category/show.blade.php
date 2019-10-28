@@ -17,7 +17,7 @@
                     Create Category
                 </div>
                 <div class="float-right">
-                    <a href="{{ route('category.index') }}" class="btn btn-outline-warning"><span class="oi oi-home"></span> Home</a>
+                    <a href="{{ route('categories.index') }}" class="btn btn-outline-warning"><span class="oi oi-home"></span> Home</a>
                 </div>
 			</div>        
         </div>

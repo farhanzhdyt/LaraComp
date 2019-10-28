@@ -114,9 +114,9 @@
                 <li>
                     <a href="{{ route('company.index') }}"><span class="oi oi-home"></span> Company</a>
                 </li>
-                {{-- <li>
+                <li>
                     <a href="{{ route('users.index') }}"><span class="oi oi-people"></span> Users</a>
-                </li> --}}
+                </li>
                 <li>
                     <a href="{{ route('team.index') }}"><span class="oi oi-sun"></span> Team</a>
                 </li>
@@ -129,12 +129,12 @@
                 <li>
                     <a href="{{ route('testimonial.index') }}"><span class="oi oi-comment-square"></span> Testimonial</a>
                 </li>
-                {{-- <li>
+                <li>
                     <a href="{{ route('news.index') }}"><span class="oi oi-signpost"></span> News</a>
                 </li>
                 <li>
                     <a href="{{ route('categories.index') }}"><span class="oi oi-tag"></span> Category News</a>
-                </li> --}}
+                </li>
                 <div class="d-block d-md-none">
                     <div class="dropdown-divider"></div>
                     <li><a href="{{ route('my-profile', Auth::user()->id) }}"> Profile</a></li>
