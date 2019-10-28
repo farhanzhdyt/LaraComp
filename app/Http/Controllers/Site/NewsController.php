@@ -58,8 +58,6 @@ class NewsController extends Controller
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
-        // dd($request);
-
         $this->validate($request, [
             'title' => 'required|max:50|unique:news,title',
             'description' => 'required|max:255',
@@ -146,7 +144,7 @@ class NewsController extends Controller
             'image' => 'nullable|image|max:2040',
         ]);
 
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
 
             $fileNameWithExt = $request->file('image')->getClientOriginalName();
 
@@ -164,9 +162,12 @@ class NewsController extends Controller
         $news = News::findOrFail($id);
 
         if ($request->hasFile('image')) {
+
             if ($news->image !== "noimage.png") {
-                File::delete('images/news_image/' .$news->image);
+
+                File::delete('images/news_images/' . $news->image);
             }
+
             $news->image = $fileNameToStore;
         }
 
@@ -194,10 +195,6 @@ class NewsController extends Controller
 
         $news = News::findOrFail($id);
 
-        if($news->image !== "noimage.png") {
-            File::delete('images/news_images/' . $news->image);
-        }
-
         $news->delete();
 
         return redirect()->route('news.index')->with('delete', 'News moved to trash');
@@ -224,6 +221,10 @@ class NewsController extends Controller
     {
         $news = News::withTrashed()->findOrFail($id);
 
+        if ($news->image !== "noimage.png") {
+            File::delete('images/news_images/' .$news->image);
+        }
+        
         if ($news->trashed()) {
             $news->forceDelete();
         }
