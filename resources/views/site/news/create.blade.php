@@ -60,7 +60,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <button class="btn btn-outline-primary float-right">Create User</button>
+            <button class="btn btn-outline-primary float-right">Create News</button>
         </form>
     </div>
 </div>
