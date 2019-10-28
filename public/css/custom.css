@@ -21,10 +21,7 @@ body {
 /* Jumbotron */
 @media (min-width: 992px) {
     .jumbotron {
-        background-image: url('../images/background2.svg');
-		background-position: center;
-		background-size: cover;
-		background-repeat: no-repeat;
+        background-color: #7C32FF;
         height: 600px;
         border-radius: 0;
         position: relative;
@@ -88,10 +85,7 @@ body {
 
 @media (max-width: 600px) {
     .jumbotron {
-        background-image: url('../images/background2.svg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+        background-color: #7C32FF;
         height: 100vh;
         border-radius: 0;
     }
@@ -584,7 +578,6 @@ body {
     }
 
     .pricing .container .pricing-body .row .column .card {
-        height: 30rem;
         box-sizing: border-box;
         text-align: center;
         -webkit-transition: 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
@@ -597,14 +590,17 @@ body {
         line-height: 50px;
     }
 
+    .pricing .container .pricing-body .row .column .card .card-body ul li {
+        list-style: none !important;
+    }
+
     .pricing .container .pricing-body .row .column .card .card-button {
         margin-bottom: 30px;
     }
 
     .pricing .container .pricing-body .row .column .card .card-button .btn-order {
-        width: 70%;
-        height: 50px;
-        line-height: 32px;
+        padding: 12px;
+        border-radius: 0px;
     }
 
     .pricing .container .pricing-body .row .column .card:hover {

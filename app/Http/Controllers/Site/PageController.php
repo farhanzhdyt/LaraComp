@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Team;
+use App\User;
+use App\Company;
+use App\Pricing;
+use App\Product;
+use App\Testimonial;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Product;
-use App\Pricing;
-use App\User;
 
 class PageController extends Controller
 {
@@ -19,7 +22,16 @@ class PageController extends Controller
     {
         $products = Product::all()->count();
         $pricing = Pricing::all()->count();
-        $users = User::all()->count();
-        return view('site.dashboard', compact('products', 'pricing', 'users'));
+        $company = Company::all()->count();
+        $team = Team::all()->count();
+        $testi = Testimonial::all()->count();
+        return view('site.dashboard', compact(
+            'products', 
+            'pricing', 
+            'users',
+            'company',
+            'testi',
+            'team'
+        ));
     }
 }

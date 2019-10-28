@@ -9,7 +9,7 @@
 /* Navigation */
 @media (min-width: 992px) {
     .navbar {
-        padding: 30px;
+        padding: 12px;
         background-color: #7C32FF;
         box-sizing: border-box;
         position: absolute;
@@ -17,7 +17,6 @@
         left: 0;
         width: 100%;
         z-index: 1;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .navbar .container .navbar-brand .navbar-logo {
@@ -102,7 +101,7 @@
 
 @media (max-width: 650px) {
     .navbar {
-        padding: 30px;
+        padding: 12px;
         background-color: #7C32FF;
         position: absolute;
         top: 0;
