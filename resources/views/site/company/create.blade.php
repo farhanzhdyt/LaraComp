@@ -5,7 +5,7 @@
 @endsection
 
 @section('page-title')
-    Tambah Data Profil Perusahaan
+    Create New Profile
 @endsection
 
 @section('content-page')
@@ -22,145 +22,88 @@
     </div>
     <div class="card-body">
         <form action="{{ route('company.store') }}" method="post">
-
             @csrf
 
-            <div class="form-group">
-                <label for="company_name">Nama Perusahaan : </label>
-                <input type="text" name="company_name" id="company_name" class="form-control @error('company_name') is-invalid @enderror ">
-            
-                @error('company_name')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
+            <table class="table">
+                <tr>
+                    <td>Company Name</td>
+                    <td>:</td>
+                    <td>
+                        <input type="text" name="company_name" class="form-control" id="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Company History</td>
+                    <td>:</td>
+                    <td>
+                        <textarea name="company_history" class="form-control" id="" cols="30" rows="10"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Vission</td>
+                    <td>:</td>
+                    <td>
+                        <input type="text" name="vission" class="form-control" id="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mission</td>
+                    <td>:</td>
+                    <td>
+                        <textarea name="mission" class="form-control" id="" cols="30" rows="10"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Type Of Product</td>
+                    <td>:</td>
+                    <td>
+                        <input type="text" name="type_of_products" class="form-control" id="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Owner</td>
+                    <td>:</td>
+                    <td>
+                        <input type="text" name="owner" class="form-control" id="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td>:</td>
+                    <td>
+                        <input type="text" name="country" class="form-control" id="">
+                    </td>
+                </tr>
 
-            <div class="form-group">
-                <label for="company_history">Sejarah Perusahaan : </label>
-                <textarea id="company_history" class="form-control @error('company_history') is-invalid @enderror" name="company_history" rows="10" cols="50"></textarea>
-            
-                @error('company_history')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
+                <tr>
+                    <td>Launched</td>
+                    <td>:</td>
+                    <td>
+                        <input type="date" name="launched" class="form-control" id="">
+                    </td>
+                </tr>
 
-            <div class="form-group">
-                <label for="vision">Visi : </label>
-                <input type="text" name="vission" class="form-control @error('vission') is-invalid @enderror" id="vision">
-            
-                @error('vission')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
+                <tr>
+                    <td>Company Address</td>
+                    <td>:</td>
+                    <td>
+                        <textarea name="company_address" class="form-control" id="" cols="30" rows="10"></textarea>
+                    </td>
+                </tr>
+            </table>
 
-            <div class="form-group">
-                <label for="mission">Misi : </label>
-                <input type="text" name="mission" class="form-control @error('mission') is-invalid @enderror" id="mission">
-                
-                @error('mission')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="type_of_products">Jenis Produk : </label>
-                <input type="text" name="type_of_products" class="form-control @error('type_of_products') is-invalid @enderror" id="type_of_products">
-
-                @error('type_of_products')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="owner">Pemilik : </label>
-                <input type="text" name="owner" id="owner" class="form-control @error('owner') is-invalid @enderror">
-
-                @error('owner')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="country">Negara : </label>
-                <input type="text" name="country" id="country" class="form-control @error('country') is-invalid @enderror">
-                
-                @error('country')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="launched">Diluncurkan : </label>
-                <input type="date" name="launched" id="launched" class="form-control @error('launched') is-invalid @enderror">
-
-                @error('launched')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="company_address">Alamat : </label>
-                <textarea name="company_address" class="form-control @error('company_address') is-invalid @enderror" id="company_address" cols="30" rows="10">
-
-                </textarea>
-
-                @error('company_address')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-
-            <div class="form-footer">
-                <button type="submit" class="btn btn-success">Tambah Data</button>
-                <button type="submit" class="btn btn-secondary">Kosongkan</button>
-            </div>
+            <button type="submit" class="btn btn-outline-primary">Create Data</button>
         </form>
     </div>
 </div>
 
 @endsection
 
-@push('style')
-    <style>
-        label {
-            display: inline-block;
-            margin: 10px auto;
-        }
-
-        input {
-            margin: 10px auto;
-        }
-
-        textarea {
-            height: 80px;
-        }
-
-        .btn-success {
-            width: 150px;
-            padding-top: 9px;
-            padding-bottom: 9px;
-        }
-        
-        .btn-secondary {
-            width: 150px;
-            padding-top: 9px;
-            padding-bottom: 9px;
-        }
-    </style>
+@push('script')
+    <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('mission');
+        CKEDITOR.replace('company_history');
+        CKEDITOR.replace('company_address');
+    </script>
 @endpush

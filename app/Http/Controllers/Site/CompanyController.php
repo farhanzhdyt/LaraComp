@@ -37,10 +37,6 @@ class CompanyController extends Controller
 			return redirect()->back()->with('error', 'Unauthorized Page');
 		}
 
-    	$msg = [
-    		'required' => 'Form tidak boleh kosong'
-    	];
-
     	$this->validate($request, [
     		'company_name' => 'required',
     		'company_history' => 'required',
@@ -51,11 +47,11 @@ class CompanyController extends Controller
     		'country' => 'required',
     		'launched' => 'required',
     		'company_address' => 'required'
-    	], $msg);
+    	]);
 
     	$company = Company::create($request->all());
 
-    	return redirect()->back()->with('success', 'Data berhasil ditambah!');
+    	return redirect()->back()->with('success', 'Data successfully created');
 
     }
 }
