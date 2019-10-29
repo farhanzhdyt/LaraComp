@@ -51,8 +51,8 @@
                 </div>
 
                 <div class="col-md-6 col-lg-3 col-12 mb-2 col-sm-6">
-                    <div class="media shadow-sm p-0 bg-info-lighter text-light rounded ">
-                        <span class="oi top-0 rounded-left bg-white text-info h-100 p-4 oi-comment-square fs-5"></span>
+                    <div class="media shadow-sm p-0 bg-warning-lighter text-light rounded ">
+                        <span class="oi top-0 rounded-left bg-white text-warning h-100 p-4 oi-comment-square fs-5"></span>
                         <div class="media-body p-2">
                             <h6 class="media-title m-0">Testimonial</h6>
                             <div class="media-text">

@@ -1,11 +1,11 @@
 @extends('site.layouts.app')
 
 @section('title')
-    Profil Perusahaan
+    Company
 @endsection
 
 @section('page-title')
-    Profil Perusahaan
+    Company Profile
 @endsection
 
 @section('content-page')
@@ -16,7 +16,7 @@
 
 <div class="row">
     <div class="col-md-6">
-        <a href="{{ route('company.create') }}" class="btn btn-primary"><i class="oi oi-plus"></i> Tambah Data Profil Perusahaan</a>
+        <a href="{{ route('company.create') }}" class="btn btn-primary"><i class="oi oi-plus"></i> Create New Profile</a>
     </div>
 </div>
 
