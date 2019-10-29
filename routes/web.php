@@ -70,6 +70,8 @@ Route::group(['prefix' => 'site'], function (){
     Route::get('company', [\App\Http\Controllers\Site\CompanyController::class, 'index'])->name('company.index');
     Route::get('company/create', [\App\Http\Controllers\Site\CompanyController::class, 'create'])->name('company.create');
     Route::post('company/store', [\App\Http\Controllers\Site\CompanyController::class, 'store'])->name('company.store');
+    Route::get('company/edit/{id}', [\App\Http\Controllers\Site\CompanyController::class, 'edit'])->name('company.edit');
+    Route::patch('company/update/{id}', [\App\Http\Controllers\Site\CompanyController::class, 'update'])->name('company.update');
 
     // Team
     Route::get('team', [\App\Http\Controllers\Site\TeamController::class, 'index'])->name('team.index');

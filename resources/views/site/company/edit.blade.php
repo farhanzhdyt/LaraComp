@@ -5,7 +5,7 @@
 @endsection
 
 @section('page-title')
-    Create New Profile
+    Update Company Profile
 @endsection
 
 @section('content-page')
@@ -21,64 +21,63 @@
         </a>
     </div>
     <div class="card-body">
-        <form action="{{ route('company.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('company.update', $comp->id) }}" method="post" enctype="multipart/form-data">
+            
             @csrf
+            @method('PATCH')
 
             <table class="table">
-                <tr>
-                    <td>Company Image</td>
-                    <td>:</td>
-                    <td>
-                        <input type="file" name="image" class="form-control">
-                    </td>
-                </tr>
                 <tr>
                     <td>Company Name</td>
                     <td>:</td>
                     <td>
-                        <input type="text" name="company_name" class="form-control" id="">
+                        <input type="text" name="company_name" class="form-control" id="" value="{{ $comp->company_name }}">
                     </td>
                 </tr>
                 <tr>
                     <td>Company History</td>
                     <td>:</td>
                     <td>
-                        <textarea name="company_history" class="form-control" id="" cols="30" rows="10"></textarea>
+                        <textarea name="company_history" class="form-control" id="" cols="30" rows="10">
+                            {{ $company_history }}
+                        </textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>Vission</td>
                     <td>:</td>
                     <td>
-                        <input type="text" name="vission" class="form-control" id="">
+                        <input type="text" name="vission" class="form-control" value="{{ $comp->vission }}" id="">
                     </td>
                 </tr>
                 <tr>
                     <td>Mission</td>
                     <td>:</td>
                     <td>
-                        <textarea name="mission" class="form-control" id="" cols="30" rows="10"></textarea>
+                        <textarea name="mission" class="form-control" id="" cols="30" rows="10">
+                            {{ $comp->mission }}
+                        </textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>Type Of Product</td>
                     <td>:</td>
                     <td>
-                        <input type="text" name="type_of_products" class="form-control" id="">
+                        <input type="text" name="type_of_products" class="form-control" id="" value="{{ $comp->type_of_products }}">
                     </td>
                 </tr>
                 <tr>
                     <td>Owner</td>
                     <td>:</td>
                     <td>
-                        <input type="text" name="owner" class="form-control" id="">
+                        <input type="text" name="owner" class="form-control" id="" value="{{ $comp->owner }}">
                     </td>
                 </tr>
                 <tr>
                     <td>Country</td>
                     <td>:</td>
                     <td>
-                        <input type="text" name="country" class="form-control" id="">
+                        <input type="text" name="country" class="form-control" id="" value="{{ $comp->country }}">
                     </td>
                 </tr>
 
@@ -86,7 +85,7 @@
                     <td>Launched</td>
                     <td>:</td>
                     <td>
-                        <input type="date" name="launched" class="form-control" id="">
+                        <input type="date" name="launched" class="form-control" id="" value="{{ $comp->launched }}">
                     </td>
                 </tr>
 
@@ -94,7 +93,9 @@
                     <td>Company Address</td>
                     <td>:</td>
                     <td>
-                        <textarea name="company_address" class="form-control" id="" cols="30" rows="10"></textarea>
+                        <textarea name="company_address" class="form-control" id="" cols="30" rows="10">
+                            {{ $comp->company_address }}
+                        </textarea>
                     </td>
                 </tr>
             </table>

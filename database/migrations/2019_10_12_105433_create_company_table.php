@@ -15,6 +15,7 @@ class CreateCompanyTable extends Migration
     {
         Schema::create('company', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('image')->default('noimage.png');
             $table->string('company_name');
             $table->text('company_history');
             $table->string('vission');
