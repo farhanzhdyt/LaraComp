@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row mt-3">
                 <div class="col-md-6 col-sm-12 jumbo-content mt-5 text-white">
-                    <h3 class="display-4 helvetica-bold" style="font-size: 35pt;">BERITA</h3>
+                    <h3 class="display-4 helvetica-bold" style="font-size: 30pt;">BERITA</h3>
                     <p>Berita terkini yang ada di laracomp. Jangan lewatkan informasi terbaru dari kami!</p>
                 </div>
 

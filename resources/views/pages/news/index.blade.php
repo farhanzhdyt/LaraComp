@@ -11,7 +11,7 @@
                     <div class="card">
                         <img src="{{ asset('images/teams/gorilla.jpg') }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <a href="{{ route('news.show') }}" class="card-title">
+                            <a href="{{ route('blog.show') }}" class="card-title">
                                 <h5>Card title</h5>
                             </a>
                         </div>

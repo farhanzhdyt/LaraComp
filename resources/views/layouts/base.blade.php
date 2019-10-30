@@ -8,7 +8,7 @@
         {{-- CSRF Token --}}
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>LaraComp @yield('title')</title>
+        <title>LARACOMP @yield('title')</title>
 
         {{-- stylesheets --}}
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -36,7 +36,7 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <div class="navbar-brand">
-                    <a class="navbar-logo bold" href="{{ route('index') }}">LARA<b>COMP</b></a>
+                    <a class="navbar-logo helvetica-bold" href="{{ route('index') }}">LARACOMP</a>
                 </div>
                 <button class="navbar-toggler hamburger hamburger--squeeze" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <div class="hamburger-box">
@@ -61,7 +61,7 @@
                             <a class="nav-link" href="#">Testimonial</a>
                         </li>
                         <li class="nav-item bold">
-                            <a class="nav-link" href="{{ route('news') }}">Artikel</a>
+                            <a class="nav-link" href="{{ route('blog') }}">Artikel</a>
                         </li>
                         
                         <li class="nav-item bold item-button2">
@@ -118,7 +118,7 @@
                                 <h2>Kegiatan Umum</h2>
                                 <ul>
                                     <li>
-                                        <a class="nav-link" href="{{ route('news') }}">Artikel</a>
+                                        <a class="nav-link" href="{{ route('blog') }}">Artikel</a>
                                     </li>
                                 </ul>
                             </div>

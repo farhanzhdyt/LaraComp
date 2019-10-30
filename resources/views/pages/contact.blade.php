@@ -1,5 +1,7 @@
 @extends('layouts.base')
 
+@include('layouts.jumbotron-contact')
+
 @section('content')
 {{-- Contact --}}
     <section class="contact" id="contact">

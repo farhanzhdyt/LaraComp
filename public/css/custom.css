@@ -629,7 +629,7 @@ body {
     
     /* show news */
     .detail-news {
-        margin-top: 200px;
+        margin-top: 120px;
         margin-bottom: 100px;
     }
 
@@ -666,7 +666,7 @@ body {
 
 /* Contact */
 .contact {
-    margin-top: 200px;
+    margin-top: 50px;
     margin-bottom: 100px;
 }
 
