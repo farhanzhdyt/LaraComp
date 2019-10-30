@@ -2,13 +2,12 @@
 
 @include('layouts.jumbotron')
 
-{{-- content page here --}}
 @section('content')
     {{-- About Section --}}
     <section class="about" id="about">
         <div class="container">
             <div class="about-header">
-                <h2>Tentang</h2>
+                <h2 class="helvetica-bold">Tentang</h2>
             </div>
 
             <div class="about-body">
@@ -35,10 +34,10 @@
 
     
     {{-- Services --}}
-    <section class="service" id="service">
+    <section class="service helvetica-bold" id="service">
         <div class="container">
             <div class="service-header">
-                <h2 class="text-center">Layanan</h2>
+                <h2 class="text-center helvetica-bold">Layanan</h2>
             </div>
 
             <div class="service-body">
@@ -88,7 +87,7 @@
     <section class="pricing" id="pricing">
         <div class="container">
             <div class="pricing-header">
-                <h2>Harga</h2>
+                <h2 class="helvetica-bold">Harga</h2>
             </div>
 
             <div class="pricing-body">
@@ -104,9 +103,6 @@
                             </div>
                             <div class="card-body">
                                 {!! $price->description !!}
-                            </div>
-                            <div class="card-button">
-                                <a href="https://api.whatsapp.com/send?phone=6287778630344&text=Hallo%Cungur" class="btn btn-primary btn-order">Order via whatsapp</a>
                             </div>
                         </div>
                     </div>
