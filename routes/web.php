@@ -91,6 +91,9 @@ Route::group(['prefix' => 'site'], function (){
     Route::get('testimonial/edit/{id}', [\App\Http\Controllers\Site\TestimonialController::class, 'edit'])->name('testimonial.edit');
     Route::patch('testimonial/update/{id}', [\App\Http\Controllers\Site\TestimonialController::class, 'update'])->name('testimonial.update');
     Route::delete('testimonial/destroy/{id}', [\App\Http\Controllers\Site\TestimonialController::class, 'destroy'])->name('testimonial.destroy');
+
+    // Career
+    Route::get('career', [\App\Http\Controllers\Site\CareerController::class, 'index'])->name('career.index');
 });
 
 // Front Route

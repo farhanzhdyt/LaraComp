@@ -130,6 +130,9 @@
                     <a href="{{ route('testimonial.index') }}"><span class="oi oi-comment-square"></span> Testimonial</a>
                 </li>
                 <li>
+                    <a href="{{ route('testimonial.index') }}"><span class="oi oi-paperclip"></span> Career</a>
+                </li>
+                <li>
                     <a href="{{ route('news.index') }}"><span class="oi oi-signpost"></span> News</a>
                 </li>
                 <li>
