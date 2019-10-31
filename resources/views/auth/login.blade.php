@@ -6,7 +6,9 @@
         <div class="col-md-4"></div>         
         <div class="col-md-4">             
             <div class="card bg-white border"> 
-                 {{-- <div class="card-header bg-transparent border-0">{{ __('Login') }}</div> --}} 
+             <div class="card-header bg-transparent border-0 text-center">
+                 <h4>{{ __('Login') }}</h4>
+             </div> 
  
         <div class="card-body">                     
          <form method="POST" action="{{ route('login') }}" arialabel="{{ __('Login') }}">
