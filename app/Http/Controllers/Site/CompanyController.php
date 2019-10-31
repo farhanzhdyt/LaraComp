@@ -20,7 +20,9 @@ class CompanyController extends Controller
 			return redirect()->back()->with('error', 'Unauthorized Page');
 		}
 
-        return view('site.company.index');
+        $comp = Company::all();
+
+        return view('site.company.index', compact("comp"));
     }
 
     public function create() 
@@ -81,7 +83,7 @@ class CompanyController extends Controller
 
         $comp->save();
 
-    	return redirect()->back()->with('success', 'Data successfully created');
+    	return redirect()->route('company.index')->with('success', 'Data successfully created');
 
     }
 
@@ -130,7 +132,15 @@ class CompanyController extends Controller
         }
 
         $comp = Company::findOrFail($id);
-        $comp->image = $fileNameToStore;
+
+        if($request->hasFile('image')) {
+            if($comp->image !== "noimage.png") {
+                File::delete('images/company/'. $comp->image);
+            }
+
+            $comp->image = $fileNameToStore;
+        }
+
         $comp->company_name = $request->input('company_name');
         $comp->company_history = $request->input('company_history');
         $comp->vission = $request->input('vission');
@@ -143,6 +153,13 @@ class CompanyController extends Controller
 
         $comp->save();
 
-    	return redirect()->back()->with('success', 'Data successfully created');
+    	return redirect()->back()->with('success', 'Data successfully updated');
+    }
+
+    public function destroy($id) {
+        $comp = Company::findOrFail($id);
+        $comp->delete();
+
+        return redirect()->back()->with('success', 'Data successfully deleted');
     }
 }
