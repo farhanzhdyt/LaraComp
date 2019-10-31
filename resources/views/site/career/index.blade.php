@@ -17,7 +17,7 @@
 <div class="card">
     <div class="card-header">
         <div class="float-left">
-            <a href="#" class="btn btn-primary"><i class="oi oi-plus mr-1"></i> Create New Career</a>
+            <a href="{{ route('career.create') }}" class="btn btn-primary"><i class="oi oi-plus mr-1"></i> Create New Career</a>
         </div>
         <div class="float-right">
             <form action="{{ url()->current() }}">
@@ -26,34 +26,32 @@
         </div>
     </div>
 
-    <section class="pricing card-body">
-        {{-- @if ($pricing->isEmpty())
-        <div class="card" style="padding: 15px;">
-            <h4>Data Kosong!</h4>
+    <section class="pricing card-body border-0">
+        @if ($careers->isEmpty())
+        <div style="padding: 15px;">
+            <p class="text-center text-danger">Data is empty!</p>
         </div>
-        @else     --}}
+        @else    
         <table id="datatabled" class="table table-hover">
             <thead class="border-0">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name of Service</th>
-                    <th scope="col">Description (Optional)</th>
-                    <th scope="col">Price</th>
+                    <th scope="col">Job Title</th>
+                    <th scope="col">Job Description</th>
                     <th>Action</th>
                 </tr>
             </thead>
-            {{-- @php $i = 1; @endphp
-            @foreach($pricing as $price)
+            @php $i = 1; @endphp
+            @foreach($careers as $c)
             <tbody>
                 <tr>
                     <td>{{ $i }}</td>
-                    <td>{{ $price->title }}</td>
-                    <td>{{ $price->optional_description }}</td>
-                    <td>Rp. {{ number_format($price->price, 0, ',', '.') }}</td>
+                    <td>{{ $c->job_title }}</td>
+                    <td>{!! $c->job_description !!}</td>
                     <td>
-                        <a href="{{ route('pricing.show', $price->id) }}" class="btn btn-info" style="border: transparent;"><i class="oi oi-eye"></i></a>
-                        <a href="{{ route('pricing.edit', $price->id) }}" class="btn btn-success" style="border: transparent;"><i class="oi oi-pencil"></i></a>
-                        <form action="{{ route('pricing.destroy', $price->id) }}" method="post" style="display: inline;" onsubmit="return confirm('Hapus Data ?')">
+                        <a href="{{ route('career.show', $c->id) }}" class="btn btn-info" style="border: transparent;"><i class="oi oi-eye"></i></a>
+                        <a href="{{ route('career.edit', $c->id) }}" class="btn btn-success" style="border: transparent;"><i class="oi oi-pencil"></i></a>
+                        <form action="{{ route('career.destroy', $c->id) }}" method="post" style="display: inline;" onsubmit="return confirm('Delete data ?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger"><i class="oi oi-trash"></i></button>
@@ -62,7 +60,7 @@
                 </tr>
             </tbody>
             @php $i++; @endphp
-            @endforeach --}}
+            @endforeach
         </table>
         @endif
 

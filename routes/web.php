@@ -94,6 +94,12 @@ Route::group(['prefix' => 'site'], function (){
 
     // Career
     Route::get('career', [\App\Http\Controllers\Site\CareerController::class, 'index'])->name('career.index');
+    Route::get('career/create', [\App\Http\Controllers\Site\CareerController::class, 'create'])->name('career.create');
+    Route::post('career/store', [\App\Http\Controllers\Site\CareerController::class, 'store'])->name('career.store');
+    Route::get('career/show/{id}', [\App\Http\Controllers\Site\CareerController::class, 'show'])->name('career.show');
+    Route::get('career/edit/{id}', [\App\Http\Controllers\Site\CareerController::class, 'edit'])->name('career.edit');
+    Route::patch('career/update/{id}', [\App\Http\Controllers\Site\CareerController::class, 'update'])->name('career.update');
+    Route::delete('career/destroy/{id}', [\App\Http\Controllers\Site\CareerController::class, 'destroy'])->name('career.destroy');
 });
 
 // Front Route

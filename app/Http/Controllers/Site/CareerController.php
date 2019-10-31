@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Career;
 
 class CareerController extends Controller
 {
@@ -14,7 +15,10 @@ class CareerController extends Controller
      */
     public function index()
     {
-        return view('site.career.index');
+        $careers = Career::when($request->keyword, function ($query) use ($request) {
+            $query->where('job_title', 'LIKE', "%{$request->keyword}%");
+        })->paginate();
+        return view('site.career.index', compact("careers"));
     }
 
     /**
@@ -24,7 +28,7 @@ class CareerController extends Controller
      */
     public function create()
     {
-        //
+        return view('site.career.create');
     }
 
     /**
@@ -35,7 +39,14 @@ class CareerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'job_title' => 'required',
+            'job_description' => 'required',
+        ]);
+
+        Career::create($request->all());
+
+        return redirect()->back()->with('success', 'Data successfully created');
     }
 
     /**
@@ -46,7 +57,9 @@ class CareerController extends Controller
      */
     public function show($id)
     {
-        //
+        $career = Career::findOrFail($id);
+
+        return view('site.career.show', compact('career'));
     }
 
     /**
@@ -57,7 +70,9 @@ class CareerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $career = Career::findOrFail($id);
+
+        return view('site.career.edit', compact('career'));
     }
 
     /**
@@ -69,7 +84,17 @@ class CareerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'job_title' => 'required',
+            'job_description' => 'required',
+        ]);
+
+        $career = Career::findOrFail($id);
+        $career->job_title = $request->input('job_title');
+        $career->job_description = $request->input('job_description');
+        $career->save();
+
+        return redirect()->back()->with('success', 'Data successfully updated');
     }
 
     /**
@@ -80,6 +105,9 @@ class CareerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $c = Career::findOrFail($id);
+        $c->delete();
+
+        return redirect()->back()->with('success', 'Data successfully deleted');
     }
 }
