@@ -29,5 +29,10 @@ class News extends Model
     public function category_news()
 	{
 		return $this->belongsToMany('App\Category');
-	}
+    }
+    
+    public function getUser()
+    {
+        return $this->belongsTo('App\User', 'created_by');
+    }
 }

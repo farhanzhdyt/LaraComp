@@ -99,14 +99,11 @@ Route::group(['prefix' => 'site'], function (){
 // Front Route
 Route::get('/', 'PageController@index')->name('index');
 Route::get('/news', 'PageController@news')->name('news');
-Route::get('/news/show', 'PageController@showNews')->name('page.show');
+Route::get('/news/{slug}/show', 'PageController@showNews')->name('page.show');
 
 // Contact
 Route::get('/contact', 'ContactController@create')->name('contact.create');
 Route::post('/contact-send', 'ContactController@store')->name('contact-send');
-
-// News
-// Route::get('sesanamahbebaskumahamaneh/{slug}', 'Site\\NewsController@showClient')->name();
 
 // Login
 Auth::routes();

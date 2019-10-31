@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header border-0 text-center" style="background-color: transparent;">
+                    <h4>{{ __('Reset Password') }}</h4>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -45,3 +47,20 @@
     </div>
 </div>
 @endsection
+
+@push('style')
+    <style type="text/css">
+        @media (min-width: 992px) {
+            .container {
+                max-width: 150rem;
+                display: block;
+                position: relative;
+                left: 9%;
+            }
+        }
+
+        .container {
+            width: 100%;
+        }
+    </style>
+@endpush

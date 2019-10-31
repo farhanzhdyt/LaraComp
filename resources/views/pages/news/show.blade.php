@@ -7,7 +7,7 @@
                 <div class="card-header">
                     <h3 class="card-title article-header text-center">Ini Judul</h3>
                     <p class="text-center creator-info">
-                        Ditulis oleh <span class="created__by helvetica-bold">(saha)</span>, dipublikasi pada <span class="created__at helvetica-bold">(tanggal sabaraha)</span> kategori <span class="category helvetica-bold">(naon)</span>
+                        Ditulis oleh <span class="created__by helvetica-bold">{{ $news->getUser->name }}</span>, dipublikasi pada <span class="created__at helvetica-bold">(tanggal sabaraha)</span> kategori <span class="category helvetica-bold">(naon)</span>
                     </p>
                 </div>
                 <div class="card-body article-body">
