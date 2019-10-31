@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\News;
 use Illuminate\Http\Request;
 use App\Pricing;
 
@@ -15,11 +16,15 @@ class PageController extends Controller
 
     public function news() 
     {
-        return view('pages.news.index');
+        $news = News::all();
+
+        return view('pages.news.index', compact('news'));
     }
 
-    public function showNews() 
+    public function showNews($slug) 
     {
-        return view('pages.news.show');
+        $news = News::where('slug', $slug)->firstOrFail();
+
+        return view('pages.news.show')->with('news', $news);
     }
 }
