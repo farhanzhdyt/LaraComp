@@ -11,7 +11,7 @@
 |
 */
 
-// Route BackEnd
+// Back Route
 Route::group(['prefix' => 'site'], function (){
     Route::get('/', [\App\Http\Controllers\Site\PageController::class, 'index'])->name('dashboard');
 
@@ -72,6 +72,7 @@ Route::group(['prefix' => 'site'], function (){
     Route::post('company/store', [\App\Http\Controllers\Site\CompanyController::class, 'store'])->name('company.store');
     Route::get('company/edit/{id}', [\App\Http\Controllers\Site\CompanyController::class, 'edit'])->name('company.edit');
     Route::patch('company/update/{id}', [\App\Http\Controllers\Site\CompanyController::class, 'update'])->name('company.update');
+    Route::delete('company/destroy/{id}', [\App\Http\Controllers\Site\CompanyController::class, 'destroy'])->name('company.destroy');
 
     // Team
     Route::get('team', [\App\Http\Controllers\Site\TeamController::class, 'index'])->name('team.index');
@@ -92,7 +93,7 @@ Route::group(['prefix' => 'site'], function (){
     Route::delete('testimonial/destroy/{id}', [\App\Http\Controllers\Site\TestimonialController::class, 'destroy'])->name('testimonial.destroy');
 });
 
-// Route Front End
+// Front Route
 Route::get('/', 'PageController@index')->name('index');
 Route::get('/news', 'PageController@news')->name('news');
 Route::get('/news/show', 'PageController@showNews')->name('page.show');

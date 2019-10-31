@@ -26,6 +26,11 @@
             @csrf
             @method('PATCH')
 
+            <div class="form-group">
+                <img src="{{ asset('images/company/'. $comp->image) }}" style="width: 18rem;">
+                <input type="file" name="image" class="form-control">
+            </div>
+
             <table class="table">
                 <tr>
                     <td>Company Name</td>
@@ -39,7 +44,7 @@
                     <td>:</td>
                     <td>
                         <textarea name="company_history" class="form-control" id="" cols="30" rows="10">
-                            {{ $company_history }}
+                            {{ $comp->company_history }}
                         </textarea>
                     </td>
                 </tr>
