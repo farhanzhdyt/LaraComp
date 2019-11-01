@@ -38,7 +38,7 @@
                 <tr>
                     <td>NIK</td>
                     <td>:</td>
-                    <td><input type="number" class="form-control @error('nik') is-invalid @enderror" value="{{ old('nik') }}" name="nik" ></td>
+                    <td><input type="text" class="form-control @error('nik') is-invalid @enderror" value="{{ old('nik') }}" name="nik"></td>
                 </tr>
                 <tr>
                     <td>NAMA</td>
