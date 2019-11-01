@@ -27,7 +27,11 @@
         </div>
     
         <section class="team card-body">
-            @if (!empty($products))
+            @if ($products->isEmpty())
+                <div style="padding: 15px;">
+                    <p class="text-center text-danger">Data is empty!</p>
+                </div>
+            @else
                 <div class="table table-responsive">
                     <table class="table table-hovered">
                         <thead class="border-0 text-center">
@@ -62,8 +66,7 @@
                         @php $i++; @endphp
                         @endforeach
                     </table>
-                @else
-                    <h5 class="text-center" style="opacity: 0.6;">Data is empty!</h5>
+                </div>
                 @endif
         </section>
     </div>

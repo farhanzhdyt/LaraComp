@@ -61,6 +61,42 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="col-md-6 col-lg-3 col-12 mb-2 col-sm-6">
+                    <div class="media shadow-sm p-0 bg-blue text-light rounded ">
+                        <span class="oi top-0 rounded-left bg-white text-blue h-100 p-4 oi-paperclip fs-5"></span>
+                        <div class="media-body p-2">
+                            <h6 class="media-title m-0">Careers</h6>
+                            <div class="media-text">
+                                <h3>{{ $careers }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 col-12 mb-2 col-sm-6">
+                    <div class="media shadow-sm p-0 bg-info-darkest text-light rounded ">
+                        <span class="oi top-0 rounded-left bg-white text-info-darkest h-100 p-4 oi-signpost fs-5"></span>
+                        <div class="media-body p-2">
+                            <h6 class="media-title m-0">News</h6>
+                            <div class="media-text">
+                                <h3>{{ $news }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 col-12 mb-2 col-sm-6">
+                    <div class="media shadow-sm p-0 bg-light-darkest text-light rounded ">
+                        <span class="oi top-0 rounded-left bg-white text-light-darkest h-100 p-4 oi-tag fs-5"></span>
+                        <div class="media-body p-2">
+                            <h6 class="media-title m-0">Category News</h6>
+                            <div class="media-text">
+                                <h3>{{ $categories }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
