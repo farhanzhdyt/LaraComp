@@ -13,7 +13,7 @@ class CareerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $careers = Career::when($request->keyword, function ($query) use ($request) {
             $query->where('job_title', 'LIKE', "%{$request->keyword}%");

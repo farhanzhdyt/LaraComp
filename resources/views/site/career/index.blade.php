@@ -37,7 +37,6 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Job Title</th>
-                    <th scope="col">Job Description</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -47,7 +46,6 @@
                 <tr>
                     <td>{{ $i }}</td>
                     <td>{{ $c->job_title }}</td>
-                    <td>{!! $c->job_description !!}</td>
                     <td>
                         <a href="{{ route('career.show', $c->id) }}" class="btn btn-info" style="border: transparent;"><i class="oi oi-eye"></i></a>
                         <a href="{{ route('career.edit', $c->id) }}" class="btn btn-success" style="border: transparent;"><i class="oi oi-pencil"></i></a>
@@ -65,7 +63,7 @@
         @endif
 
         {{-- Pagination --}}
-        {{ $pricing->links() }}
+        {{ $careers->links() }}
     </section>
 </div>
 @endsection

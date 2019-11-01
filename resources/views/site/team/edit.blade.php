@@ -39,7 +39,7 @@
                 <tr>
                     <td>NIK</td>
                     <td>:</td>
-                    <td><input type="number" value="{{ $team->nik }}" class="form-control @error('nik') is-invalid @enderror" name="nik"></td>
+                    <td><input type="text" class="form-control @error('nik') is-invalid @enderror" value="{{ $team->nik }}" name="nik"></td>
                 </tr>
                 <tr>
                     <td>NAME</td>
