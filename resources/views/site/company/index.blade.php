@@ -21,6 +21,11 @@
 </div>
 
 <div class="container mt-4">
+	@if($comp->isEmpty())
+	<div style="padding: 15px;">
+		<p class="text-center text-danger">Data is empty!</p>
+	</div>
+	@else
 	@foreach($comp as $c)
 		<div class="card">
 			<div class="card-header border-0 text-center">
@@ -115,6 +120,7 @@
 			</div>
 		</div>
 	@endforeach
+	@endif
 </div>
 
 @endsection

@@ -65,7 +65,7 @@
         @endif
 
         {{-- Pagination --}}
-        {{-- {{ $pricing->links() }} --}}
+        {{ $pricing->links() }}
     </section>
 </div>
 @endsection

@@ -28,6 +28,11 @@
     </div>
 
     <section class="card-body">
+        @if($testimonials->isEmpty())
+        <div style="padding: 15px;">
+            <p class="text-center text-danger">Data is empty!</p>
+        </div>
+        @else
         <div class="table table-responsive">
             <table class="table table-hovered">
                 <thead class="border-0">
@@ -65,6 +70,7 @@
                 @endforeach
             </table>
         </div>
+        @endif
     </section>
 </div>
 @endsection

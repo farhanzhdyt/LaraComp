@@ -28,8 +28,8 @@
 
     <section class="pricing card-body">
         @if ($pricing->isEmpty())
-        <div class="card" style="padding: 15px;">
-            <h4>Data Kosong!</h4>
+        <div style="padding: 15px;">
+            <p class="text-center text-danger">Data is empty!</p>
         </div>
         @else    
         <table id="datatabled" class="table table-hover">
