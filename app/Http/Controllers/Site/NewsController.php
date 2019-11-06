@@ -22,10 +22,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        if  (auth()->user()->level !== "ADMIN") {
+        if  (auth()->user()->level == "ADMIN_PROFILE") {
             return redirect()->back()->with('error', 'Unauthorized Page');
-        } 
-
+        }
 
         $news = News::all();
 
@@ -39,7 +38,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        if (auth()->user()->level !== "ADMIN") {
+        if (auth()->user()->level == "ADMIN_PROFILE") {
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
@@ -54,7 +53,7 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        if (auth()->user()->level !== "ADMIN") {
+        if (auth()->user()->level == "ADMIN_PROFILE") {
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
@@ -99,7 +98,7 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        if (auth()->user()->level !== "ADMIN") {
+        if (auth()->user()->level == "ADMIN_PROFILE") {
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
@@ -116,7 +115,7 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        if (auth()->user()->level !== "ADMIN") {
+        if (auth()->user()->level == "ADMIN_PROFILE") {
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
@@ -134,7 +133,7 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (auth()->user()->level !== "ADMIN") {
+        if (auth()->user()->level == "ADMIN_PROFILE") {
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 
@@ -189,7 +188,7 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        if (auth()->user()->level !== "ADMIN") {
+        if (auth()->user()->level == "ADMIN_PROFILE") {
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
 

@@ -13,57 +13,50 @@ class CategoryController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
+        if  (auth()->user()->level == "ADMIN_PROFILE") {
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+
         $categories = Category::all();
 
         return view('site.category.index', compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
+        if  (auth()->user()->level == "ADMIN_PROFILE") {
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
         
         return view('site.category.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
+        if  (auth()->user()->level == "ADMIN_PROFILE") {
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+
         $this->validate($request, [
             'name_category' => 'required|unique:categories,name_category|max:20'
         ]);
 
-        $category = new Category;
-        $category->name_category = $request->get('name_category');
-        $category->created_by = auth()->user()->id;
-        $category->save();
+        Category::create([
+            'name_category' => $request->name_category,
+            'created_by' => auth()->user()->id 
+        ]);
 
         return redirect()->route('categories.index')->with('success', 'Category successfully created');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
+        if  (auth()->user()->level == "ADMIN_PROFILE") {
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+
         $category = Category::findOrFail($id);
 
         return view('site.category.show', compact('category'));
@@ -77,6 +70,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+        if  (auth()->user()->level == "ADMIN_PROFILE") {
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+
         $category = Category::findOrFail($id);
 
         return view('site.category.edit', compact('category'));
@@ -89,17 +86,21 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
+        if  (auth()->user()->level == "ADMIN_PROFILE") {
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+        
         $this->validate($request, [
             'name_category' => 'required|unique:categories,name_category|max:20'
         ]);
 
-        $category = Category::findOrFail($id);
-
-        $category->name_category = $request->input('name_category');
-        $category->updated_by = auth()->user()->id;
-        $category->save();
+        Category::where('id', $category->id)
+            ->update([
+                'name_category' => $request->name_category,
+                'updated_by' => auth()->user()->id,
+        ]);
 
         return redirect()->route('categories.index')->with('edit', 'Category successfully updated');
     }
@@ -112,6 +113,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        if  (auth()->user()->level == "ADMIN_PROFILE") {
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+
         $category = Category::findOrFail($id);
         $category->delete();
 
@@ -127,12 +132,20 @@ class CategoryController extends Controller
 
     public function categoryTrashed()
     {
+        if  (auth()->user()->level == "ADMIN_PROFILE") {
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+
         $categories = Category::onlyTrashed()->get();
         return view('site.category.trash.index', compact('categories'));
     }
 
     public function restoreCategory($id)
     {
+        if  (auth()->user()->level == "ADMIN_PROFILE") {
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+
         $category = Category::withTrashed()->findOrFail($id);
 
         if ($category->trashed()) {
@@ -144,6 +157,10 @@ class CategoryController extends Controller
 
     public function deletePermanent($id)
     {
+        if  (auth()->user()->level == "ADMIN_PROFILE") {
+            return redirect()->back()->with('error', 'Unauthorized Page');
+        }
+
         $category = Category::withTrashed()->findOrFail($id);
 
         if ($category->trashed()) {
