@@ -6,23 +6,31 @@
 @section('content')
     <section class="news">
         <div class="container">
+            <div class="news-header">
+                <h2 class="helvetica-bold">Artikel <span class="helvetica-bold" style="color: #000;">Terbaru</span></h2>
+            </div>
             <div class="row">
+                @foreach ($news as $item)
                 <div class="col-md-3 column">
-                    @foreach ($news as $item)
                     <div class="card">
-                        <img src="{{ asset('images/teams/gorilla.jpg') }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('images/news_images/' .$item->image) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <a href="{{ route('page.show', $item->slug) }}" class="card-title">
-                                <h5>Card title</h5>
+                                <h5>{{ \Illuminate\Support\Str::title($item->title) }}</h5>
                             </a>
                         </div>
                         <div class="card-footer" style="border: none; background: none;">
-                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <small class="text-muted">
+                                {{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }} , By
+                                {{ $item->getUser->name }}
+                            </small>
                         </div>
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
             </div>
+
+            {{ $news->links() }}
         </div>
     </section>
 @endsection

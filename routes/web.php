@@ -104,8 +104,9 @@ Route::group(['prefix' => 'site'], function (){
 
 // Front Route
 Route::get('/', 'PageController@index')->name('index');
+Route::get('/about', 'PageController@about')->name('about');
 Route::get('/news', 'PageController@news')->name('news');
-Route::get('/news/{slug}/show', 'PageController@showNews')->name('page.show');
+Route::get('/news/{slug}', 'PageController@showNews')->name('page.show');
 
 // Contact
 Route::get('/contact', 'ContactController@create')->name('contact.create');

@@ -58,8 +58,8 @@ class NewsController extends Controller
         }
 
         $this->validate($request, [
-            'title' => 'required|max:50|unique:news,title',
-            'description' => 'required|max:255',
+            'title' => 'required|max:255|unique:news,title',
+            'description' => 'required',
             'image' => 'nullable|image|max:2040',
         ]);
 

@@ -28,8 +28,8 @@ class ContactController extends Controller
     		'message' => 'required'
     	], $msg);
 
-    	Mail::to('exampl@laracomp.com')->send(new ContactFormMail($data));
+    	Mail::to('example@laracomp.com')->send(new ContactFormMail($data));
 
-    	return redirect()->route('contact.create')->with('success', 'Pesan anda berhasil dikirim!');
+    	return redirect()->back()->with('success', 'Pesan anda berhasil dikirim!');
     }
 }

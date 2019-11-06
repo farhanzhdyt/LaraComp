@@ -15,6 +15,18 @@
             <div class="row pl-3">
                 
                 <div class="col-md-6 col-lg-3 col-12 mb-2 col-sm-6">
+                    <div class="media shadow-sm p-0 bg-dark rounded text-light ">
+                        <span class="oi top-0 rounded-left bg-white text-dark h-100 p-4 oi-people fs-5"></span>
+                        <div class="media-body p-2">
+                        <h6 class="media-title m-0">Users</h6>
+                            <div class="media-text">
+                                <h3>{{ $users }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 col-12 mb-2 col-sm-6">
                     <div class="media shadow-sm p-0 bg-success rounded text-light ">
                         <span class="oi top-0 rounded-left bg-white text-success h-100 p-4 oi-sun fs-5"></span>
                         <div class="media-body p-2">

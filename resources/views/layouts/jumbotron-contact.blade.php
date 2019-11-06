@@ -14,19 +14,38 @@
 {{-- style for this jumbotron --}}
 @push('style')
     <style>
-        .jumbotron-contact {
-            width: 100%;
-            height: 450px;
-            background-color: #7C32FF !important;
-        }
+        @media (min-width: 992px) {
+            .jumbotron-contact {
+                width: 100%;
+                height: 450px;
+                background-color: #7C32FF !important;
+            }
 
-        .jumbotron-contact .container {
-            position: relative;
-            top: 5.5rem;
-        }
+            .jumbotron-contact .container {
+                position: relative;
+                top: 5.5rem;
+            }
 
-        .jumbotron-contact .container .row .jumbo-img img {
-            width: 30rem;
+            .jumbotron-contact .container .row .jumbo-img img {
+                width: 30rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .jumbotron-contact {
+                width: 100%;
+                height: 450px;
+                background-color: #7C32FF !important;
+            }
+
+            .jumbotron-contact .container {
+                position: relative;
+                top: 5.5rem;
+            }
+
+            .jumbotron-contact .container .row .jumbo-img img {
+                width: 100%;
+            }
         }
     </style>
 @endpush

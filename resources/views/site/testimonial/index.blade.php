@@ -39,7 +39,7 @@
                     <tr>
                         <th>#</th>
                         <th>Client Name</th>
-                        <th>Review</th>
+                        <th>Created At</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -50,7 +50,7 @@
                         <tr>
                             <td>{{ $no }}</td>
                             <td>{{ $testimonial->client_name }}</td>
-                            <td>{!! $testimonial->review !!}</td>
+                            <td>{{ \Carbon\Carbon::parse($testimonial->created_at)->diffForHumans() }}</td>
                             <td>
                                 <a href="{{ route('testimonial.show', $testimonial->id) }}" class="btn btn-info"><i class="oi oi-eye"></i></a>
                                 <a href="{{ route('testimonial.edit', $testimonial->id) }}" class="btn btn-success"><i class="oi oi-pencil"></i></a>

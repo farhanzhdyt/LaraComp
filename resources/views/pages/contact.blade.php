@@ -6,7 +6,7 @@
 {{-- Contact --}}
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="mb-5">Hubungi Kami</h2>
+            <h2 class="mb-5 helvetica-bold">Hubungi <span class="helvetica-bold" style="color: #000;">Kami</span></h2>
 
             @include('message.flash-message')
 
@@ -56,10 +56,7 @@
                 </div>
             </div>
             <div class="row" style="margin-top: 80px;">
-            	<div class="col-md-6 address">
-            		<h5><i class="fa fa-map-pin"></i> Bandung</h5>
-            	</div>
-            	<div class="col-md-6">
+            	<div class="col-md-12">
             		<div class="google-maps-section">
 		                <div id="map-container-google-1" class="z-depth-1-half map-container" style="display:block; height: 25rem;">
 		                    <iframe src="https://maps.google.com/maps?q=Bandung&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
