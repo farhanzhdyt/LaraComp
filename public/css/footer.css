@@ -1,9 +1,6 @@
 @media (max-width: 600px) {
 	.main-footer {
-		background-image: url('../images/background2.svg');
-		background-position: center;
-		background-size: cover;
-		background-repeat: no-repeat;
+		background-color: #7C32FF;
 		width: 100%;
 		border: transparent;
 	}
@@ -71,10 +68,7 @@
 
 @media (min-width: 992px) {
 	.main-footer {
-		background-image: url('../images/background2.svg');
-		background-position: center;
-		background-size: cover;
-		background-repeat: no-repeat;
+		background-color: #7C32FF;
 		width: 100%;
 		border: transparent;
 	}

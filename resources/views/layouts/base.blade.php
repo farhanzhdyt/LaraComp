@@ -46,19 +46,13 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav m-auto">
                         <li class="nav-item bold">
-                            <a class="nav-link" href="#about">Tentang</a>
-                        </li>
-                        <li class="nav-item bold">
-                            <a class="nav-link" href="#service">Layanan</a>
+                            <a class="nav-link" href="{{ route('about') }}">Tentang</a>
                         </li>
                         <li class="nav-item bold">
                             <a class="nav-link" href="#">Produk</a>
                         </li>
                         <li class="nav-item bold">
-                            <a class="nav-link" href="#">Harga</a>
-                        </li>
-                        <li class="nav-item bold">
-                            <a class="nav-link" href="#">Testimonial</a>
+                            <a class="nav-link" href="#">Team</a>
                         </li>
                         <li class="nav-item bold">
                             <a class="nav-link" href="{{ route('news') }}">Artikel</a>
@@ -100,7 +94,7 @@
                                 <h2>Profil</h2>
                                 <ul>
                                     <li>
-                                        <a class="nav-link" href="#about">Tentang</a>
+                                        <a class="nav-link" href="{{ route('about') }}">Tentang</a>
                                     </li>
                                     <li>
                                         <a class="nav-link" href="#service">Layanan</a>
@@ -109,7 +103,7 @@
                                         <a class="nav-link" href="#">Produk</a>
                                     </li>
                                     <li>
-                                        <a class="nav-link" href="#">Harga</a>
+                                        <a class="nav-link" href="#">Team</a>
                                     </li>
                                 </ul>
                             </div>
@@ -151,7 +145,7 @@
         <script src="{{ asset('js/hamburger.js') }}"></script>
         <script src="{{ asset('js/scrollAnimate.js') }}"></script>
         <script src="{{ asset('js/smoothScroll.js') }}"></script>
-        <script src="{{ asset('js/jquery.nicescroll.min.js') }}"></script>
+        {{-- <script src="{{ asset('js/jquery.nicescroll.min.js') }}"></script> --}}
 
         {{-- Custom Javascript --}}
         @stack('script')

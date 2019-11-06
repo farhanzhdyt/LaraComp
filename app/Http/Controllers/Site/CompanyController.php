@@ -29,7 +29,11 @@ class CompanyController extends Controller
     {
 		if (auth()->user()->level !== "ADMIN") {
 			return redirect()->back()->with('error', 'Unauthorized Page');
-		}
+        }
+        
+        if ($_POST > 0) {
+            return redirect()->route('company.index');
+        }
 
         return view('site.company.create');
     }
@@ -38,7 +42,11 @@ class CompanyController extends Controller
     {
 		if (auth()->user()->level !== "ADMIN") {
 			return redirect()->back()->with('error', 'Unauthorized Page');
-		}
+        }
+        
+        if ($_POST > 0) {
+            return redirect()->route('company.index');
+        }
 
     	$this->validate($request, [
     		'company_name' => 'required',

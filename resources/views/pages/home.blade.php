@@ -3,139 +3,110 @@
 @include('layouts.jumbotron')
 
 @section('content')
-    {{-- About Section --}}
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about-header">
-                <h2 class="helvetica-bold">Tentang</h2>
-            </div>
+{{-- Services --}}
+<section class="services">
+    <div class="container">
+        <div class="service-header">
+            <h2 class="helvetica-bold">Pelayanan <span class="helvetica-bold" style="color: #000;">Kami</span></h2>
+        </div>
 
-            <div class="about-body">
-                <div class="row">
-                    <div class="col-md-6 about-info">
-                        <p style="text-align: justify;">Laracomp adalah brand usaha kami di bidang IT yang memberikan layanan professional dan dibekali dengan tenaga ahli yang berpengalaman. Kami telah berkembang menjadi perusahaan IT dengan tenaga ahli yang lebih professional dan berpengalaman di bidangnya.
-                        </p>
-                        <p>
-                        Saat ini perusahaan kami berkembang pesat menjadi salah satu Jasa IT yang banyak dikenal baik secara online maupun offline melalui kunjungan ke perumahan dan perkantoran.</p>
-
-                        <a href="" class="btn btn-primary">Info Lebih Lanjut</a>
-                    </div>
-                    <div class="col-md-6 about-img">
-                        <img src="{{ asset('images/company.svg') }}" class="mt-5" class="animate" alt="company" srcset="">
+        <div class="service-body">
+            <div class="row">
+                <div class="col-md-4 column">
+                    <div class="card">
+                        <div class="text-center">
+                            <img src="{{ asset('images/icons/itsupport.png') }}" alt="" srcset="">
+                        </div>
+                        <div class="description">
+                            <h3 class="small-title bold">IT Support</h3>
+                            <p>Melayani Service & Maintenance Komputer/Laptop, Service Jaringan Komputer, dan Rakit Komputer</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            {{-- tongue svg --}}
-            {{-- <img src="{{ asset('images/tongue.svg') }}" class="tongue" alt="" srcset=""> --}}
-        </div>
-    </section>
-    {{-- END About Section --}}
-
-    
-    {{-- Services --}}
-    <section class="service helvetica-bold" id="service">
-        <div class="container">
-            <div class="service-header">
-                <h2 class="text-center helvetica-bold">Layanan</h2>
-            </div>
-
-            <div class="service-body">
-                <div class="row">
-                    <div class="col-md-4 column">
-                        <div class="card">
-                            <div class="card-logo-and-title">
-                                <img src="{{ asset('images/icons/customer-support.png') }}" class="icon" alt="" srcset="">
-                                <h2>IT Support</h2>
-                            </div>
-                            <div class="card-description">
-                                <p>Melayani Service & Maintenance Komputer/Laptop, Service Jaringan Komputer, Rakit Komputer dan Pengadaan Komputer</p>
-                            </div>
+                <div class="col-md-4 column">
+                    <div class="card">
+                        <div class="text-center">
+                            <img src="{{ asset('images/icons/design.png') }}" alt="" srcset="">
+                        </div>
+                        <div class="description">
+                            <h3 class="small-title bold">Design</h3>
+                            <p>Melayani Pembuatan Katalog Produk, Brosur dan Kartu Nama untuk Perusahaan</p>
                         </div>
                     </div>
-                    <div class="col-md-4 column">
-                        <div class="card">
-                            <div class="card-logo-and-title">
-                                <img src="{{ asset('images/icons/creativity.png') }}" class="icon" alt="" srcset="">
-                                <h2>Corporate Design</h2>
-                            </div>
-                            <div class="card-description">
-                                <p>Melayani Pembuatan Katalog Produk, Brosur dan Kartu Nama untuk Perusahaan</p>
-                            </div>
+                </div>
+
+                <div class="col-md-4 column">
+                    <div class="card">
+                        <div class="text-center">
+                            <img src="{{ asset('images/icons/digitalMarketing.png') }}" alt="" srcset="">
                         </div>
-                    </div>
-                    <div class="col-md-4 column">
-                        <div class="card">
-                            <div class="card-logo-and-title">
-                                <img src="{{ asset('images/icons/digital-marketing.png') }}" class="icon" alt="" srcset="">
-                                <h2>Digital Marketing</h2>
-                            </div>
-                            <div class="card-description">
-                                <p>Melayani Maintenance Digital Marketing Google Ads, Instagram Ads dan Web SEO untuk Meningkatkan Pencarian di Mesin Pencari</p>
-                            </div>
+                        <div class="description">
+                            <h3 class="small-title bold">Digital Marketing</h3>
+                            <p>Melayani Maintenance Digital Marketing Google Ads, Instagram Ads dan Web SEO untuk Meningkatkan Pencarian di Mesin Pencari</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    {{-- END Serices --}}
+    </div>
+</section>
+{{-- END Services --}}
 
-    
+{{-- Pricing --}}
+<section class="price">
+    <div class="container">
+        <div class="price-header">
+            <h2 class="helvetica-bold">Harga <span class="helvetica-bold" style="color: #000;">Pelayanan</span></h2>
+        </div>
 
-    {{-- Pricing --}}
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <div class="pricing-header">
-                <h2 class="helvetica-bold">Harga</h2>
-            </div>
-
-            <div class="pricing-body">
-                <div class="row">
-                    @foreach($pricing as $price)
+        <div class="price-body">
+            <div class="row">
+                @foreach ($pricing as $price)    
                     <div class="col-md-4 column">
                         <div class="card">
-                            <div class="card-header">
-                                <h2>{{ $price->title }}</h2>
-                                <span class="optional_description">{{ $price->optional_description }}</span>
-                                <br>
-                                <span class="price">Rp.{{ number_format($price->price, 0, ',', '.') }}</span>
+                            <div class="card-header border-0">
+                                <h3 class="title">{{ $price->title }}</h3>
+                                <p class="pricing">Rp.{{ number_format($price->price, 0, '.', ',') }}</p>
+                                <p class="optional-description">{{ $price->optional_description }}</p>
                             </div>
+
                             <div class="card-body">
                                 {!! $price->description !!}
                             </div>
                         </div>
                     </div>
-                    @endforeach
-                </div>
+                @endforeach
             </div>
         </div>
-    </section>
-    {{-- END Pricing --}}
+    </div>
+</section>
+{{-- END Pricing --}}
 
-    {{-- Testimonials --}}
-    <section class="testimonials" id="testimonials">
-        <div class="container owl-carousel">
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
-            <div>7</div>
+{{-- Testimonial --}}
+<section class="testimonial">
+    <div class="container">
+        <div class="testi-header">
+            <h2 class="helvetica-bold">Apa kata <span class="helvetica-bold" style="color: #000;">mereka?</span></h2>
         </div>
-    </section>
+
+        <div class="testi-body">
+            <div class="row">
+                @foreach($testi as $t)
+                <div class="column col-md-4">
+                    <div class="card">
+                        <div class="card-body" style="font-style: italic;">
+                            "{!! $t->review !!}"
+                        </div>
+                        <div class="card-footer border-0 bold" style="background-color: unset;">
+                            {{ $t->client_name }}
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section>
+{{-- END Testimonial --}}
 @endsection
-
-@push('style')
-    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
-@endpush
-
-@push('script')
-    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-    <script>
-        $(document).ready(function (){
-            $('.owl-carousel').owlCarousel();
-        });
-    </script>
-@endpush

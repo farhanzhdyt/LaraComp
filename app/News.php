@@ -35,4 +35,9 @@ class News extends Model
     {
         return $this->belongsTo('App\User', 'created_by');
     }
+
+    public function getCategoryName() 
+    {
+        return $this->belongsToMany('App\Category');
+    }
 }
