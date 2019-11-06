@@ -21,7 +21,7 @@ class UserController extends Controller
 
     public function index()
     {
-        if(auth()->user()->level !== "ADMIN"){
+        if (auth()->user()->level !== "ADMIN") {
             return redirect()->back()->with('error', 'Unauthorized Page');
         }
         
@@ -30,11 +30,6 @@ class UserController extends Controller
         return view('site.users.index', compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         if(auth()->user()->level !== "ADMIN"){
@@ -44,12 +39,6 @@ class UserController extends Controller
         return view('site.users.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         if(auth()->user()->level !== "ADMIN"){
@@ -98,12 +87,6 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'User successfully created');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         if(auth()->user()->level !== "ADMIN"){
@@ -115,12 +98,6 @@ class UserController extends Controller
         return view('site.users.show', compact('user'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         if(auth()->user()->level !== "ADMIN"){
@@ -132,13 +109,6 @@ class UserController extends Controller
         return view('site.users.edit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         if(auth()->user()->level !== "ADMIN"){
@@ -191,12 +161,6 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('edit', 'User successfully updated');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         if(auth()->user()->level !== "ADMIN"){
@@ -273,7 +237,7 @@ class UserController extends Controller
         $user->phone = $request->input('phone');
         $user->save();
 
-        return back()->with('success', 'Your change profile');
+        return back()->with('success', 'Your Change profile');
     }
 
     public function profilePassword($id)

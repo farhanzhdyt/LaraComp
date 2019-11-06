@@ -15,7 +15,6 @@ class Category extends Model
         "name_category",
         "created_by",
         "updated_by",
-        "deleted_by",
         "created_at",
         "updated_at",
         "deleted_at",
@@ -24,6 +23,11 @@ class Category extends Model
     public function getUser()
     {
         return $this->belongsTo('App\User', 'created_by');
+    }
+
+    public function getUser2()
+    {
+        return $this->belongsTo('App\User', 'updated_by');
     }
 
     public function category_news()

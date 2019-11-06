@@ -32,6 +32,12 @@
                 <label><strong> Created By </strong></label>
                 <input type="text" value="{{ $category->getUser->name }}" class="form-control" readonly>
             </div>
+            @if ($category->updated_by !== null)
+            <div class="form-group">
+                <label><strong> Updated By </strong></label>
+                <input type="text" value="{{ $category->getUser2->name }}" class="form-control" readonly>
+            </div>
+            @endif
             <div class="form-group">
                 <label><strong> Created At </strong></label>
                 <input type="text" value="{{ $category->created_at }}" class="form-control" readonly>
