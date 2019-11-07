@@ -115,9 +115,6 @@
                     <a href="{{ route('company.index') }}"><span class="oi oi-home"></span> Company</a>
                 </li>
                 <li>
-                    <a href="{{ route('users.index') }}"><span class="oi oi-people"></span> Users</a>
-                </li>
-                <li>
                     <a href="{{ route('team.index') }}"><span class="oi oi-sun"></span> Team</a>
                 </li>
                 <li>
@@ -134,6 +131,9 @@
                 </li>
                 <li>
                     <a href="{{ route('service.index') }}"><span class="oi oi-cog"></span> Service</a>
+                </li>
+                <li>
+                    <a href="{{ route('users.index') }}"><span class="oi oi-people"></span> Users</a>
                 </li>
                 <li>
                     <a href="{{ route('news.index') }}"><span class="oi oi-signpost"></span> News</a>
