@@ -8,6 +8,7 @@ use App\User;
 use App\Career;
 use App\Pricing;
 use App\Product;
+use App\Service;
 use App\Category;
 use App\Testimonial;
 use Illuminate\Http\Request;
@@ -35,6 +36,7 @@ class PageController extends Controller
         $careers = Career::all()->count();
         $news = News::all()->count();
         $categories = Category::all()->count();
+        $services = Service::all()->count();
 
         return view('site.dashboard', compact(
             'products', 
@@ -45,7 +47,8 @@ class PageController extends Controller
             'team',
             'careers',
             'news',
-            'categories'
+            'categories',
+            'services'
         ));
     }
 }

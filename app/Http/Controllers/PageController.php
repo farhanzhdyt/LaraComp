@@ -6,8 +6,9 @@ use App\News;
 use App\Company;
 use App\Pricing;
 use App\Category;
-use Carbon\Carbon;
 use App\Testimonial;
+use App\Service;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -16,7 +17,8 @@ class PageController extends Controller
     {
         $pricing = Pricing::all();
         $testi = Testimonial::all();
-        return view('pages.home', compact('pricing', 'testi'));
+        $services = Service::orderBy('id', 'desc')->get();
+        return view('pages.home', compact('pricing', 'testi', 'services'));
     }
 
     public function news() 

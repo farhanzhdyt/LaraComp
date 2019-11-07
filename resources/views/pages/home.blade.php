@@ -12,41 +12,21 @@
 
         <div class="service-body">
             <div class="row">
+                @foreach($services as $service)
                 <div class="col-md-4 column">
                     <div class="card">
                         <div class="text-center">
-                            <img src="{{ asset('images/icons/itsupport.png') }}" alt="" srcset="">
+                            <img src="{{ asset('images/service/' .$service->image) }}" alt="" srcset="">
                         </div>
                         <div class="description">
-                            <h3 class="small-title bold">IT Support</h3>
-                            <p>Melayani Service & Maintenance Komputer/Laptop, Service Jaringan Komputer, dan Rakit Komputer</p>
+                            <h3 class="small-title bold">
+                                {!! $service->title !!}
+                            </h3>
+                            {!! $service->description !!}
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-4 column">
-                    <div class="card">
-                        <div class="text-center">
-                            <img src="{{ asset('images/icons/design.png') }}" alt="" srcset="">
-                        </div>
-                        <div class="description">
-                            <h3 class="small-title bold">Design</h3>
-                            <p>Melayani Pembuatan Katalog Produk, Brosur dan Kartu Nama untuk Perusahaan</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 column">
-                    <div class="card">
-                        <div class="text-center">
-                            <img src="{{ asset('images/icons/digitalMarketing.png') }}" alt="" srcset="">
-                        </div>
-                        <div class="description">
-                            <h3 class="small-title bold">Digital Marketing</h3>
-                            <p>Melayani Maintenance Digital Marketing Google Ads, Instagram Ads dan Web SEO untuk Meningkatkan Pencarian di Mesin Pencari</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

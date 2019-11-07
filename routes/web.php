@@ -100,6 +100,15 @@ Route::group(['prefix' => 'site'], function (){
     Route::get('career/edit/{id}', [\App\Http\Controllers\Site\CareerController::class, 'edit'])->name('career.edit');
     Route::patch('career/update/{id}', [\App\Http\Controllers\Site\CareerController::class, 'update'])->name('career.update');
     Route::delete('career/destroy/{id}', [\App\Http\Controllers\Site\CareerController::class, 'destroy'])->name('career.destroy');
+
+    // Service 
+    Route::get('service', [\App\Http\Controllers\Site\ServiceController::class, 'index'])->name('service.index');
+    Route::get('service/create', [\App\Http\Controllers\Site\ServiceController::class, 'create'])->name('service.create');
+    Route::post('service/store', [\App\Http\Controllers\Site\ServiceController::class, 'store'])->name('service.store');
+    Route::get('service/show/{id}', [\App\Http\Controllers\Site\ServiceController::class, 'show'])->name('service.show');
+    Route::get('service/edit/{id}', [\App\Http\Controllers\Site\ServiceController::class, 'edit'])->name('service.edit');
+    Route::patch('service/update{id}', [\App\Http\Controllers\Site\ServiceController::class, 'update'])->name('service.update');
+    Route::delete('service/destroy/{id}', [\App\Http\Controllers\Site\ServiceController::class, 'destroy'])->name('service.destroy');
 });
 
 // Front Route

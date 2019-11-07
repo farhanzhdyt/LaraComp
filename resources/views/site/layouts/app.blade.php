@@ -133,6 +133,9 @@
                     <a href="{{ route('career.index') }}"><span class="oi oi-paperclip"></span> Career</a>
                 </li>
                 <li>
+                    <a href="{{ route('service.index') }}"><span class="oi oi-cog"></span> Service</a>
+                </li>
+                <li>
                     <a href="{{ route('news.index') }}"><span class="oi oi-signpost"></span> News</a>
                 </li>
                 <li>
