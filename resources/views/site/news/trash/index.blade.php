@@ -31,7 +31,7 @@
                     <tr>
                         <th><b>#</b></th>
                         <th><b>Title</b></th>
-                        <th><b>Description</b></th>
+                        <th><b>Created At</b></th>
                         <th><b>image</b></th>
                         <th><b>Action</b></th>
                     </tr>
@@ -43,7 +43,7 @@
                         <tr>
                             <td>{{ $no }}.</td>
                             <td>{{ $item->title }}</td>
-                            <td>{!! $item->description !!}</td>
+                            <td>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</td>
                             <td>
                                 <img src="{{ asset('images/news_images/' . $item->image) }}" width="48px">
                             </td>
