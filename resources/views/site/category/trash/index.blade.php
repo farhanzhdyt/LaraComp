@@ -5,7 +5,7 @@
 @endsection
 
 @section('page-title')
-    Category Management
+    Trashed Category
 @endsection
 
 @section('content-page')
