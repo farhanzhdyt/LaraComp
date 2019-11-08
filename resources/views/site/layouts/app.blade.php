@@ -108,9 +108,12 @@
 
             <ul class="polished-sidebar-menu ml-0 pt-4 p-0 d-md-block">
                 <input class="border-dark form-control d-block d-md-none mb-4" type="text" placeholder="Search" aria-label="Search" />
+                @if(auth()->user()->level === "ADMIN")
                 <li>
                     <a href="{{ route('dashboard') }}"><span class="oi oi-dashboard"></span> Dashboard</a>
                 </li>
+                @endif
+                @if(auth()->user()->level !== "ADMIN_BERITA")
                 <li>
                     <a href="{{ route('company.index') }}"><span class="oi oi-home"></span> Company</a>
                 </li>
@@ -132,15 +135,20 @@
                 <li>
                     <a href="{{ route('service.index') }}"><span class="oi oi-cog"></span> Service</a>
                 </li>
+                @endif
+                @if(auth()->user()->level === "ADMIN")
                 <li>
                     <a href="{{ route('users.index') }}"><span class="oi oi-people"></span> Users</a>
                 </li>
+                @endif
+                @if(auth()->user()->level !== "ADMIN_PROFILE")
                 <li>
                     <a href="{{ route('news.index') }}"><span class="oi oi-signpost"></span> News</a>
                 </li>
                 <li>
                     <a href="{{ route('categories.index') }}"><span class="oi oi-tag"></span> Category News</a>
                 </li>
+                @endif
                 <div class="d-block d-md-none">
                     <div class="dropdown-divider"></div>
                     <li><a href="{{ route('my-profile', Auth::user()->id) }}"> Profile</a></li>

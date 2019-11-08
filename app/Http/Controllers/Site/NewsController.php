@@ -177,7 +177,7 @@ class NewsController extends Controller
         $news->save();
         $news->category_news()->sync($request->input('categories'));
 
-        return redirect()->route('news.index')->with('edit', 'News successfully update');
+        return redirect()->route('news.index')->with('success', 'News successfully update');
     }
 
     /**
@@ -196,7 +196,7 @@ class NewsController extends Controller
 
         $news->delete();
 
-        return redirect()->route('news.index')->with('delete', 'News moved to trash');
+        return redirect()->route('news.index')->with('success', 'News moved to trash');
     }
 
     public function newsTrashed()
@@ -213,7 +213,7 @@ class NewsController extends Controller
             $news->restore();
         }
 
-        return redirect()->route('news.trashed')->with('restore', 'News successfully restored');
+        return redirect()->route('news.trashed')->with('success', 'News successfully restored');
     }
 
     public function deletePermanent($id)
@@ -228,7 +228,7 @@ class NewsController extends Controller
             $news->forceDelete();
         }
 
-        return redirect()->route('news.trashed')->with('delete', 'News permanently deleted!');
+        return redirect()->route('news.trashed')->with('error', 'News permanently deleted!');
     }
 
     public function showClient($slug)

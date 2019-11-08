@@ -102,7 +102,7 @@ class CategoryController extends Controller
                 'updated_by' => auth()->user()->id,
         ]);
 
-        return redirect()->route('categories.index')->with('edit', 'Category successfully updated');
+        return redirect()->route('categories.index')->with('success', 'Category successfully updated');
     }
 
     /**
@@ -120,7 +120,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
 
-        return redirect()->route('categories.index')->with('delete', 'Category moved to trash');
+        return redirect()->route('categories.index')->with('success', 'Category moved to trash');
     }
 
     public function getCategories(Request $request)
@@ -152,7 +152,7 @@ class CategoryController extends Controller
             $category->restore();
         }
 
-        return redirect()->route('categories.trashed')->with('restore', 'Category successfully restored');
+        return redirect()->route('categories.trashed')->with('success', 'Category successfully restored');
     }
 
     public function deletePermanent($id)
@@ -167,6 +167,6 @@ class CategoryController extends Controller
             $category->forceDelete();
         }
 
-        return redirect()->route('categories.trashed')->with('delete', 'Category permanently deleted!');
+        return redirect()->route('categories.trashed')->with('error', 'Category permanently deleted!');
     }
 }
