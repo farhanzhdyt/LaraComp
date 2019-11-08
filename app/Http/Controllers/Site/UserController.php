@@ -158,7 +158,7 @@ class UserController extends Controller
         $user->phone = $request->input('phone');
         
         $user->save();
-        return redirect()->route('users.index')->with('edit', 'User successfully updated');
+        return redirect()->route('users.index')->with('success', 'User successfully updated');
     }
 
     public function destroy($id)
@@ -175,7 +175,7 @@ class UserController extends Controller
 
         $user->delete();
 
-        return redirect()->route('users.index')->with('delete', 'User Has Been Removed');
+        return redirect()->route('users.index')->with('error', 'User Has Been Removed');
     }
 
     public function profile($id)

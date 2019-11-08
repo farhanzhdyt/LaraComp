@@ -9,21 +9,9 @@
 @endsection
 
 @section('content-page')
-
-@if ( session('restore') )
-    <div class="alert alert-success alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h4><i class="icon fa fa-check"></i> Success!</h4>
-        {{ session('restore') }}
-    </div>
-@elseif ( session('delete') )
-    <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h4><i class="icon fa fa-check"></i> Success!</h4>
-        {{ session('delete') }}
-    </div>
-@endif
-
+<div class="message mt-3 mb-3">
+    @include('message.flash-message')    
+</div>
 <br>
 <div class="card border-primary">
     <div class="card-header text-white bg-primary mb-3">
