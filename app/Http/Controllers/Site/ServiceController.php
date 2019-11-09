@@ -20,8 +20,8 @@ class ServiceController extends Controller
      */
     public function index(Request $request)
     {
-        if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()-with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
         $service = Service::when($request->keyword, function($query) use ($request) {
@@ -38,8 +38,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()-with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
         return view('site.service.create');
@@ -53,8 +53,8 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()-with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
         $this->validate($request, [
@@ -94,8 +94,8 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
         $service = Service::findOrFail($id);
@@ -111,8 +111,8 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
         $service = Service::findOrFail($id);
@@ -129,8 +129,8 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
         $this->validate($request, [
@@ -178,8 +178,8 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
         $service = Service::findOrFail($id);

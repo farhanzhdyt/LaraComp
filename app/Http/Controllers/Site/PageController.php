@@ -23,7 +23,11 @@ class PageController extends Controller
     
     public function index() 
     {
-        if (auth()->user()->level !== "ADMIN") {
+        if (auth()->user()->level !== "ADMIN" && 
+            auth()->user()->level !== "ADMIN_PROFILE" && 
+            auth()->user()->level !== "ADMIN_BERITA"
+            )
+        {
             return abort(403, "Unauthorized Page");
         }
 

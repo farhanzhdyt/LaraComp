@@ -10,6 +10,8 @@
 
 @section('content-page')
 <!-- start info box -->
+
+@if(auth()->user()->level === "ADMIN_PROFILE" || auth()->user()->level === "ADMIN")
 <div class="card">
     <div class="card-header">
         Total of Company Profile
@@ -91,9 +93,11 @@
         </div>
     </div>
 </div>
+@endif
 
 <br>
 
+@if(auth()->user()->level === "ADMIN_BERITA" || auth()->user()->level === "ADMIN")
 <div class="card">
     <div class="card-header">
         Total of Articles, Users, and Categories
@@ -101,6 +105,7 @@
 
     <div class="card-body">
         <div class="row">
+            @if(auth()->user()->level === "ADMIN")
             <div class="col-md-6 col-lg-3 col-12 mb-2 col-sm-6">
                 <div class="media shadow-sm p-0 bg-dark rounded text-light ">
                     <span class="oi top-0 rounded-left bg-white text-dark h-100 p-4 oi-people fs-5"></span>
@@ -112,6 +117,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             
             <div class="col-md-6 col-lg-3 col-12 mb-2 col-sm-6">
                 <div class="media shadow-sm p-0 bg-info-darkest text-light rounded ">
@@ -139,5 +145,6 @@
         </div>
     </div>
 </div>
+@endif
 <!-- end info box -->
 @endsection

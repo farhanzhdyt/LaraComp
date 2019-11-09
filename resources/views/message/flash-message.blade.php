@@ -14,3 +14,25 @@
         {{ session('error') }}
     </div>
 @endif
+
+<style>
+    .alert {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        border: transparent;
+        color: #fff;
+        padding: 20px;
+    }
+
+    .alert .close {
+        outline: none;
+        transition: .3s;
+    }
+
+    .alert.alert-success {
+        background-color: #1dd1a1;
+    }
+    
+    .alert.alert-danger {
+        background-color: #ff6b6b;
+    }
+</style>

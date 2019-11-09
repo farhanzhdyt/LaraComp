@@ -21,8 +21,8 @@ class PricingController extends Controller
     
     public function index(Request $request)
     {
-        if (auth()->user()->level !== "ADMIN") {
-			return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
         
         $pricing = Pricing::when($request->keyword, function ($query) use ($request) {
@@ -39,8 +39,8 @@ class PricingController extends Controller
      */
     public function create()
     {
-        if (auth()->user()->level !== "ADMIN") {
-			return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
         
         return view('site.pricing.create');
@@ -54,8 +54,8 @@ class PricingController extends Controller
      */
     public function store(Request $request)
     {
-        if (auth()->user()->level !== "ADMIN") {
-			return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
         
         $msg = [
@@ -87,8 +87,8 @@ class PricingController extends Controller
      */
     public function show($id)
     {
-        if (auth()->user()->level !== "ADMIN") {
-			return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
         
         $pricing = Pricing::findOrFail($id);
@@ -104,8 +104,8 @@ class PricingController extends Controller
      */
     public function edit($id)
     {
-        if (auth()->user()->level !== "ADMIN") {
-			return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
         
         $pricing = Pricing::findOrFail($id);
@@ -122,8 +122,8 @@ class PricingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (auth()->user()->level !== "ADMIN") {
-			return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
         
         $msg = [
@@ -153,8 +153,8 @@ class PricingController extends Controller
      */
     public function destroy($id)
     {   
-        if (auth()->user()->level !== "ADMIN") {
-			return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
         
         $pricing = Pricing::findOrFail($id);

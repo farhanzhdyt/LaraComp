@@ -15,6 +15,10 @@ class TestimonialController extends Controller
      */
     public function index(Request $request)
     {
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
+        }
+
         $testimonials = Testimonial::when($request->keyword, function($query) use ($request) {
             $query->where('client_name', 'LIKE', "%{$request->keyword}%");
         })->paginate(10);
@@ -29,6 +33,10 @@ class TestimonialController extends Controller
      */
     public function create()
     {
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
+        }
+
         return view('site.testimonial.create');
     }
 
@@ -40,6 +48,10 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
+        }
+
         $this->validate($request, [
             'client_name' => 'required',
             'review' => 'required'
@@ -61,6 +73,10 @@ class TestimonialController extends Controller
      */
     public function show($id)
     {
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
+        }
+
         $testimonial = Testimonial::findOrFail($id);
         return view('site.testimonial.show', compact('testimonial'));
     }
@@ -73,6 +89,10 @@ class TestimonialController extends Controller
      */
     public function edit($id)
     {
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
+        }
+
         $testimonial = Testimonial::findOrFail($id);
         return view('site.testimonial.edit', compact('testimonial'));
     }
@@ -86,6 +106,10 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
+        }
+
         $this->validate($request, [
             'client_name' => 'required',
             'review' => 'required'
@@ -107,6 +131,10 @@ class TestimonialController extends Controller
      */
     public function destroy($id)
     {
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
+        }
+        
         $testi = Testimonial::findOrFail($id);
         $testi->delete();
 

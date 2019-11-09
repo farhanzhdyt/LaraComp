@@ -108,11 +108,9 @@
 
             <ul class="polished-sidebar-menu ml-0 pt-4 p-0 d-md-block">
                 <input class="border-dark form-control d-block d-md-none mb-4" type="text" placeholder="Search" aria-label="Search" />
-                @if(auth()->user()->level === "ADMIN")
                 <li>
                     <a href="{{ route('dashboard') }}"><span class="oi oi-dashboard"></span> Dashboard</a>
                 </li>
-                @endif
                 @if(auth()->user()->level !== "ADMIN_BERITA")
                 <li>
                     <a href="{{ route('company.index') }}"><span class="oi oi-home"></span> Company</a>
