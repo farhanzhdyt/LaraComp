@@ -12,7 +12,7 @@ class AdminBeritaSeeder extends Seeder
     public function run()
     {
         $administrator = new \App\User;
-        $administrator->name = "Admin Profile";
+        $administrator->name = "Admin Berita";
         $administrator->email = "admin_berita@gmail.com";
         $administrator->level = "ADMIN_BERITA";
         $administrator->status = "ACTIVE";
