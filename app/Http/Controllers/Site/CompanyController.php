@@ -16,10 +16,9 @@ class CompanyController extends Controller
 
     public function index() 
     {
-		if (auth()->user()->level !== "ADMIN") {
-			return redirect()->back()->with('error', 'Unauthorized Page');
-		}
-
+		if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
+        }
         $comp = Company::all();
 
         return view('site.company.index', compact("comp"));
@@ -27,8 +26,8 @@ class CompanyController extends Controller
 
     public function create() 
     {
-		if (auth()->user()->level !== "ADMIN") {
-			return redirect()->back()->with('error', 'Unauthorized Page');
+		if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
         return view('site.company.create');
@@ -36,8 +35,8 @@ class CompanyController extends Controller
 
     public function store(Request $request) 
     {
-		if (auth()->user()->level !== "ADMIN") {
-			return redirect()->back()->with('error', 'Unauthorized Page');
+		if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
     	$this->validate($request, [
@@ -89,8 +88,8 @@ class CompanyController extends Controller
 
     public function edit($id) 
     {
-        if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
         $comp = Company::findOrFail($id);
@@ -98,8 +97,9 @@ class CompanyController extends Controller
     }
 
     public function update(Request $request, $id) {
-        if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
+        
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
         $this->validate($request, [
@@ -157,6 +157,10 @@ class CompanyController extends Controller
     }
 
     public function destroy($id) {
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
+        }
+
         $comp = Company::findOrFail($id);
         $comp->delete();
 

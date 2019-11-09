@@ -8,6 +8,11 @@ use App\Career;
 
 class CareerController extends Controller
 {
+    public function __construct() 
+    {
+        return $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +20,10 @@ class CareerController extends Controller
      */
     public function index(Request $request)
     {
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
+        }
+
         $careers = Career::when($request->keyword, function ($query) use ($request) {
             $query->where('job_title', 'LIKE', "%{$request->keyword}%");
         })->paginate();
@@ -28,6 +37,10 @@ class CareerController extends Controller
      */
     public function create()
     {
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
+        }
+
         return view('site.career.create');
     }
 
@@ -39,6 +52,10 @@ class CareerController extends Controller
      */
     public function store(Request $request)
     {
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
+        }
+
         $this->validate($request, [
             'job_title' => 'required',
             'job_description' => 'required',
@@ -57,6 +74,10 @@ class CareerController extends Controller
      */
     public function show($id)
     {
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
+        }
+
         $career = Career::findOrFail($id);
 
         return view('site.career.show', compact('career'));
@@ -70,6 +91,10 @@ class CareerController extends Controller
      */
     public function edit($id)
     {
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
+        }
+
         $career = Career::findOrFail($id);
 
         return view('site.career.edit', compact('career'));
@@ -84,6 +109,10 @@ class CareerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
+        }
+
         $this->validate($request, [
             'job_title' => 'required',
             'job_description' => 'required',
@@ -105,6 +134,10 @@ class CareerController extends Controller
      */
     public function destroy($id)
     {
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
+        }
+        
         $c = Career::findOrFail($id);
         $c->delete();
 

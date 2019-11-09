@@ -16,8 +16,8 @@ class TeamController extends Controller
 
     public function index(Request $request) 
     {
-        if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
         $teams = Team::when($request->keyword, function ($query) use ($request) {
@@ -29,8 +29,8 @@ class TeamController extends Controller
 
     public function show($id) 
     {
-        if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
     	$teams = Team::findOrFail($id);
@@ -39,8 +39,8 @@ class TeamController extends Controller
 
     public function create() 
     {
-        if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
     	return view('site.team.create');
@@ -48,8 +48,8 @@ class TeamController extends Controller
 
     public function store(Request $request) 
     {
-        if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
     	$msg = [
@@ -100,8 +100,8 @@ class TeamController extends Controller
 
     public function edit($id) 
     {   
-        if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
         $team = Team::findOrFail($id);
@@ -172,8 +172,8 @@ class TeamController extends Controller
 
     public function destroy($id) 
     {
-        if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
         $team = Team::findOrFail($id);
