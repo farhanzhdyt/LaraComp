@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="col-md-6 col-sm-12 jumbo-img mt-5">
-                    <img src="{{ asset('images/ahay.png') }}" alt="" srcset="">
+                    <img src="{{ asset('images/ahay.png') }}" class="image-show" alt="" srcset="">
                 </div>
 
                 {{-- Mouse scroll down --}}
@@ -26,3 +26,9 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        ScrollReveal().reveal('.image-show', {delay : 500});
+    </script>
+@endpush
