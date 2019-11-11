@@ -13,7 +13,7 @@
         <div class="service-body">
             <div class="row">
                 @foreach($services as $service)
-                <div class="col-md-4 column">
+                <div class="col-md-4 column" data-aos="zoom-in">
                     <div class="card">
                         <div class="text-center">
                             <img src="{{ asset('images/service/' .$service->image) }}" alt="" srcset="">
@@ -43,7 +43,7 @@
         <div class="price-body">
             <div class="row">
                 @foreach ($pricing as $price)    
-                    <div class="col-md-4 column">
+                    <div class="col-md-4 column" data-aos="zoom-in">
                         <div class="card">
                             <div class="card-header border-0">
                                 <h3 class="title">{{ $price->title }}</h3>
@@ -73,7 +73,7 @@
         <div class="testi-body">
             <div class="row">
                 @foreach($testi as $t)
-                <div class="column col-md-4">
+                <div class="column col-md-4" data-aos="zoom-in">
                     <div class="card">
                         <div class="card-body" style="font-style: italic;">
                             "{!! $t->review !!}"

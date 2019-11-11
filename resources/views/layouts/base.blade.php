@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
         <link rel="stylesheet" href="{{ asset('css/hamburgers.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
         {{-- Icons --}}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -49,17 +50,17 @@
                             <a class="nav-link" href="{{ route('about') }}">Tentang</a>
                         </li>
                         <li class="nav-item bold">
-                            <a class="nav-link" href="#">Produk</a>
+                            <a class="nav-link" href="{{ route('product') }}">Produk</a>
                         </li>
                         <li class="nav-item bold">
-                            <a class="nav-link" href="#">Team</a>
+                            <a class="nav-link" href="{{ route('team') }}">Team</a>
                         </li>
                         <li class="nav-item bold">
                             <a class="nav-link" href="{{ route('news') }}">Artikel</a>
                         </li>
                         
                         <li class="nav-item bold item-button2">
-                            <a class="btn btn-career" href="#">Karir</a>
+                            <a class="btn btn-career" href="{{ route('career') }}">Karir</a>
                         </li>
                         <li class="nav-item bold item-button2">
                             <a class="btn btn-contact" href="{{ route('contact.create') }}">Kontak</a>
@@ -85,7 +86,7 @@
             <div class="container py-5">
                 <div class="row">
                     <div class="col-md-6 column-company-info">
-                        <h1 class="text-white">LARA<b>COMP</b></h1>
+                        <h1 class="text-white helvetica-bold">LARACOMP</h1>
                         <p>brand usaha kami di bidang IT yang memberikan layanan professional dan dibekali dengan tenaga ahli yang berpengalaman. Info lebih lanjut hubungi kami!</p>
                     </div>
                     <div class="col-md-6 column-company-links">
@@ -97,13 +98,10 @@
                                         <a class="nav-link" href="{{ route('about') }}">Tentang</a>
                                     </li>
                                     <li>
-                                        <a class="nav-link" href="#service">Layanan</a>
+                                        <a class="nav-link" href="{{ route('product') }}">Produk</a>
                                     </li>
                                     <li>
-                                        <a class="nav-link" href="#">Produk</a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link" href="#">Team</a>
+                                        <a class="nav-link" href="{{ route('team') }}">Team</a>
                                     </li>
                                 </ul>
                             </div>
@@ -124,7 +122,7 @@
                                         <a class="nav-link" href="{{ route('contact.create') }}">Kontak</a>
                                     </li>
                                     <li>
-                                        <a class="nav-link" href="#">Karir</a>
+                                        <a class="nav-link" href="{{ route('career') }}">Karir</a>
                                     </li>
                                 </ul>
                             </div>
@@ -133,7 +131,7 @@
                 </div>
 
                 <div class="copyright mt-5">
-                    <p class="text-center text-white">&copy; <a href="#">LARACOMP</a> {{ date('Y') }}</p>
+                    <p class="text-center text-white">&copy; <a href="{{ route('index') }}">LARACOMP</a> {{ date('Y') }}</p>
                 </div>
             </div>
         </footer>
@@ -141,10 +139,15 @@
         {{-- script --}}
         <script src="{{ asset('js/script.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{ asset('js/scrollreveal.min.js') }}"></script>
+        <script src="https://unpkg.com/scrollreveal"></script>
         <script src="{{ asset('js/hamburger.js') }}"></script>
         <script src="{{ asset('js/scrollAnimate.js') }}"></script>
         <script src="{{ asset('js/smoothScroll.js') }}"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+        <script>
+            AOS.init();
+        </script>
         {{-- <script src="{{ asset('js/jquery.nicescroll.min.js') }}"></script> --}}
 
         {{-- Custom Javascript --}}
