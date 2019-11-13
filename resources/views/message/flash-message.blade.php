@@ -15,6 +15,14 @@
     </div>
 @endif
 
+@if ($message = Session::get('delete'))
+	<div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-close"></i> Deleted!</h4>
+        {{ session('delete') }}
+    </div>
+@endif
+
 <style>
     .alert {
         box-shadow: 0 2px 4px rgba(0,0,0,0.2);
