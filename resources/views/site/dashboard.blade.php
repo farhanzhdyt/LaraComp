@@ -100,7 +100,7 @@
 @if(auth()->user()->level === "ADMIN_BERITA" || auth()->user()->level === "ADMIN")
 <div class="card">
     <div class="card-header">
-        Total of Articles, Users, and Categories
+        Total of News, @if(auth()->user()->level === "ADMIN") Users, @endif and Categories
     </div>
 
     <div class="card-body">

@@ -46,7 +46,6 @@ class PageController extends Controller
             'products', 
             'pricing', 
             'users',
-            'company',
             'testi',
             'team',
             'careers',

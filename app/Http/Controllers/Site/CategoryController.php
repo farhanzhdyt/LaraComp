@@ -167,6 +167,6 @@ class CategoryController extends Controller
             $category->forceDelete();
         }
 
-        return redirect()->route('categories.trashed')->with('error', 'Category permanently deleted!');
+        return redirect()->route('categories.trashed')->with('delete', 'Category permanently deleted!');
     }
 }

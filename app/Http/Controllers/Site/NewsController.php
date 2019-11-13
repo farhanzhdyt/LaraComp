@@ -228,7 +228,7 @@ class NewsController extends Controller
             $news->forceDelete();
         }
 
-        return redirect()->route('news.trashed')->with('error', 'News permanently deleted!');
+        return redirect()->route('news.trashed')->with('delete', 'News permanently deleted!');
     }
 
     public function showClient($slug)
