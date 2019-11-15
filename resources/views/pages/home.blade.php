@@ -19,7 +19,7 @@
                             <img src="{{ asset('images/service/' .$service->image) }}" alt="" srcset="">
                         </div>
                         <div class="description">
-                            <h3 class="small-title bold">
+                            <h3 class="small-title bold text-center">
                                 {!! $service->title !!}
                             </h3>
                             {!! $service->description !!}
@@ -46,7 +46,7 @@
                     <div class="col-md-4 column" data-aos="zoom-in">
                         <div class="card">
                             <div class="card-header border-0">
-                                <h3 class="title">{{ $price->title }}</h3>
+                                <h3 class="title text-center">{{ $price->title }}</h3>
                                 <p class="pricing">Rp.{{ number_format($price->price, 0, '.', ',') }}</p>
                                 <p class="optional-description">{{ $price->optional_description }}</p>
                             </div>

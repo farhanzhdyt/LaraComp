@@ -37,32 +37,32 @@
 
             <table class="table table-bordered">
                 <tr>
-                    <td>NIK</td>
+                    <td>Nik</td>
                     <td>:</td>
                     <td><input type="text" class="form-control @error('nik') is-invalid @enderror" value="{{ $team->nik }}" name="nik"></td>
                 </tr>
                 <tr>
-                    <td>NAME</td>
+                    <td>Name</td>
                     <td>:</td>
                     <td><input type="text" value="{{ $team->name }}" class="form-control @error('name') is-invalid @enderror" name="name"></td>
                 </tr>
                 <tr>
-                    <td>ADDRESS</td>
+                    <td>Address</td>
                     <td>:</td>
                     <td><input type="text" value="{{ $team->address }}" class="form-control @error('address') is-invalid @enderror" name="address"></td>
                 </tr>
                 <tr>
-                    <td>NO HANDPHONE</td>
+                    <td>Phone Number</td>
                     <td>:</td>
                     <td><input type="number" value="{{ $team->phone_num }}" class="form-control @error('phone_num') is-invalid @enderror" name="phone_num"></td>
                 </tr>
                 <tr>
-                    <td>EMAIL</td>
+                    <td>Email</td>
                     <td>:</td>
                     <td><input type="text" value="{{ $team->email }}" class="form-control @error('email') is-invalid @enderror" name="email"></td>
                 </tr>
                 <tr>
-                    <td>POSITION</td>
+                    <td>Position</td>
                     <td>:</td>
                     <td><input type="text" value="{{ $team->position }}" class="form-control @error('position') is-invalid @enderror" name="position"></td>
                 </tr>

@@ -82,7 +82,7 @@
 
     @if( auth()->user() )
     <div class="dropdown d-none d-md-block">
-        <img class="d-none d-lg-inline rounded-circle ml-1" width="32px" src="{{ asset('assets/gorilla.jpg') }}" alt="FN"/>
+        <img class="d-none d-lg-inline rounded-circle ml-1" width="32px" src="{{ asset('images/users_images/' .Auth::user()->image) }}" alt="FN"/>
         <button class="btn btn-link btn-link-primary dropdown-toggle" id="navbar-dropdown" data-toggle="dropdown">
         {{ Auth::user()->name }}
         </button>

@@ -8,8 +8,8 @@
         <h2 class="helvetica-bold text-center mb-5">Daftar Produk <span class="helvetica-bold" style="color: #000;">Kami</span></h2>
         <div class="product-body">
             <div class="row">
-                <div class="col-md-12 column-one" data-aos="zoom-in">
-                    @foreach($product as $p)
+                @foreach($product as $p)
+                <div class="col-md-4 column-one" data-aos="zoom-in">
                     <div class="card">
                         <div class="card-header text-center">
                             <img src="{{ asset('images/products/' .$p->image) }}" alt="" srcset="">
@@ -18,8 +18,8 @@
                             {!! $p->name !!}
                         </div>
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
