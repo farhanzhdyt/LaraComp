@@ -81,7 +81,7 @@ class TeamController extends Controller
             $path = $request->file('image')->move('images/teams/', $fileNameToStore);
 
         } else {
-            $fileNameToStore = "gorilla.jpg";
+            $fileNameToStore = "man.png";
         }
 
         $team = new Team;
@@ -110,8 +110,8 @@ class TeamController extends Controller
 
     public function update(Request $request, $id) 
     {
-        if (auth()->user()->level !== "ADMIN") {
-            return redirect()->back()->with('error', 'Unauthorized Page');
+        if (auth()->user()->level === "ADMIN_BERITA" && auth()->user()->level !== "ADMIN") {
+            return abort(403, "Unauthorized Page");
         }
 
         $msg = [
@@ -143,14 +143,14 @@ class TeamController extends Controller
             $path = $request->file('image')->move('images/teams/', $fileNameToStore);
 
         } else {
-            $fileNameToStore = "gorilla.jpg";
+            $fileNameToStore = "man.png";
         }
 
         $team = Team::findOrFail($id);
 
         if ($request->hasFile('image')) {
 
-            if ($team->image !== "gorilla.jpg") {
+            if ($team->image !== "man.png") {
                 File::delete('images/teams/' . $team->image);
             }
 
@@ -179,7 +179,7 @@ class TeamController extends Controller
         $team = Team::findOrFail($id);
 
         // Check image
-        if ($team->image !== "gorilla.jpg") {
+        if ($team->image !== "man.png") {
             File::delete('images/teams/' . $team->image);
         }
 

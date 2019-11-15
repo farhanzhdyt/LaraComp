@@ -36,32 +36,32 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>NIK</td>
+                    <td>Nik</td>
                     <td>:</td>
                     <td><input type="text" class="form-control @error('nik') is-invalid @enderror" value="{{ old('nik') }}" name="nik"></td>
                 </tr>
                 <tr>
-                    <td>NAMA</td>
+                    <td>Name</td>
                     <td>:</td>
                     <td><input type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" name="name"></td>
                 </tr>
                 <tr>
-                    <td>ALAMAT</td>
+                    <td>Address</td>
                     <td>:</td>
                     <td><input type="text" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}" name="address"></td>
                 </tr>
                 <tr>
-                    <td>NO HANDPHONE</td>
+                    <td>Phone Number</td>
                     <td>:</td>
                     <td><input type="number" class="form-control @error('phone_num') is-invalid @enderror" value="{{ old('phone_num') }}" name="phone_num"></td>
                 </tr>
                 <tr>
-                    <td>EMAIL</td>
+                    <td>Email</td>
                     <td>:</td>
                     <td><input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" name="email"></td>
                 </tr>
                 <tr>
-                    <td>POSISI</td>
+                    <td>Position</td>
                     <td>:</td>
                     <td><input type="text" class="form-control @error('position') is-invalid @enderror" value="{{ old('position') }}" name="position"></td>
                 </tr>
