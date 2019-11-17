@@ -83,7 +83,7 @@ class ServiceController extends Controller
         $service->description = $request->input('description');
         $service->save();
 
-        return redirect()->back()->with('success', 'Data successfully created');
+        return redirect()->route('service.index')->with('success', 'Data successfully created');
     }
 
     /**
@@ -167,7 +167,7 @@ class ServiceController extends Controller
         $service->description = $request->input('description');
         $service->save();
 
-        return redirect()->back()->with('success', 'Data successfully updated');
+        return redirect()->route('service.index')->with('success', 'Data successfully updated');
     }
 
     /**
