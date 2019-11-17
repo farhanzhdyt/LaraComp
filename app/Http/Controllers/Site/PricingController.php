@@ -76,7 +76,7 @@ class PricingController extends Controller
 
         $pricing->save();
 
-        return redirect()->back()->with('success', 'Data successfully created!');
+        return redirect()->route('pricing.index')->with('success', 'Data successfully created!');
     }
 
     /**
@@ -142,7 +142,7 @@ class PricingController extends Controller
 
         $pricing->save();
 
-        return redirect()->back()->with('success', 'Data successfully updated!');
+        return redirect()->route('pricing.index')->with('success', 'Data successfully updated!');
     }
 
     /**

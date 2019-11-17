@@ -95,7 +95,7 @@ class TeamController extends Controller
 
     	$team->save();
 
-    	return redirect()->back()->with('success', 'Data successfully created');
+    	return redirect()->route('team.index')->with('success', 'Data successfully created');
     }
 
     public function edit($id) 
@@ -167,7 +167,7 @@ class TeamController extends Controller
 
         $team->save();
 
-        return redirect()->back()->with('success', 'Data successfully updated');
+        return redirect()->route('team.index')->with('success', 'Data successfully updated');
     }
 
     public function destroy($id) 

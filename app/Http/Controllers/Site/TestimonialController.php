@@ -62,7 +62,7 @@ class TestimonialController extends Controller
         $testi->review = $request->input('review');
         $testi->save();
 
-        return redirect()->back()->with('success', 'Data successfully created');
+        return redirect()->route('testmonial.index')->with('success', 'Data successfully created');
     }
 
     /**
@@ -120,7 +120,7 @@ class TestimonialController extends Controller
         $testi->review = $request->input('review');
         $testi->save();
 
-        return redirect()->back()->with('success', 'Data successfully updated');
+        return redirect()->route('testimonial.index')->with('success', 'Data successfully updated');
     }
 
     /**

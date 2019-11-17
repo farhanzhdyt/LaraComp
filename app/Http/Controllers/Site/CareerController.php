@@ -63,7 +63,7 @@ class CareerController extends Controller
 
         Career::create($request->all());
 
-        return redirect()->back()->with('success', 'Data successfully created');
+        return redirect()->route('career.index')->with('success', 'Data successfully created');
     }
 
     /**
@@ -123,7 +123,7 @@ class CareerController extends Controller
         $career->job_description = $request->input('job_description');
         $career->save();
 
-        return redirect()->back()->with('success', 'Data successfully updated');
+        return redirect()->route('career.index')->with('success', 'Data successfully updated');
     }
 
     /**

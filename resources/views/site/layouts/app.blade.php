@@ -39,6 +39,11 @@
         hr+.display-2+.display-3 {
         margin-bottom: 2rem;
         }
+
+        .container-fluid .flex-row .polished-sidebar .polished-sidebar-menu .polished-side-item .polished-side-link.active {
+            background-color: #000;
+            color: #fff;
+        }
     </style>
     <script type="text/javascript">
         document.documentElement.className = document.documentElement.className.replace('no-js', 'js') + (document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1") ? ' svg' : ' no-svg');
@@ -108,43 +113,43 @@
 
             <ul class="polished-sidebar-menu ml-0 pt-4 p-0 d-md-block">
                 <input class="border-dark form-control d-block d-md-none mb-4" type="text" placeholder="Search" aria-label="Search" />
-                <li>
-                    <a href="{{ route('dashboard') }}"><span class="oi oi-dashboard"></span> Dashboard</a>
+                <li class="{{ set_active('dashboard') }}">
+                    <a href="{{ route('dashboard') }}" class="polished-side-link"><span class="oi oi-dashboard"></span> Dashboard</a>
                 </li>
                 @if(auth()->user()->level !== "ADMIN_BERITA")
-                <li>
-                    <a href="{{ route('company.index') }}"><span class="oi oi-home"></span> Company</a>
+                <li class="{{ set_active('company.index') }}">
+                    <a href="{{ route('company.index') }}" class="polished-side-link"><span class="oi oi-home"></span> Company</a>
                 </li>
-                <li>
-                    <a href="{{ route('team.index') }}"><span class="oi oi-sun"></span> Team</a>
+                <li class="{{ set_active('team.index') }}">
+                    <a href="{{ route('team.index') }}" class="polished-side-link"><span class="oi oi-sun"></span> Team</a>
                 </li>
-                <li>
-                    <a href="{{ route('product.index') }}"><span class="oi oi-laptop"></span> Product</a>
+                <li class="{{ set_active('product.index') }}">
+                    <a href="{{ route('product.index') }}" class="polished-side-link"><span class="oi oi-laptop"></span> Product</a>
                 </li>
-                <li>
-                    <a href="{{ route('pricing.index') }}"><span class="oi oi-dollar"></span> Pricing</a>
+                <li class="{{ set_active('pricing.index') }}">
+                    <a href="{{ route('pricing.index') }}" class="polished-side-link"><span class="oi oi-dollar"></span> Pricing</a>
                 </li>
-                <li>
-                    <a href="{{ route('testimonial.index') }}"><span class="oi oi-comment-square"></span> Testimonial</a>
+                <li class="{{ set_active('testimonial.index') }}">
+                    <a href="{{ route('testimonial.index') }}" class="polished-side-link"><span class="oi oi-comment-square"></span> Testimonial</a>
                 </li>
-                <li>
-                    <a href="{{ route('career.index') }}"><span class="oi oi-paperclip"></span> Career</a>
+                <li class="{{ set_active('career.index') }}">
+                    <a href="{{ route('career.index') }}" class="polished-side-link"><span class="oi oi-paperclip"></span> Career</a>
                 </li>
-                <li>
-                    <a href="{{ route('service.index') }}"><span class="oi oi-cog"></span> Service</a>
+                <li class="{{ set_active('service.index') }}">
+                    <a href="{{ route('service.index') }}" class="polished-side-link"><span class="oi oi-cog"></span> Service</a>
                 </li>
                 @endif
                 @if(auth()->user()->level === "ADMIN")
-                <li>
-                    <a href="{{ route('users.index') }}"><span class="oi oi-people"></span> Users</a>
+                <li class="{{ set_active('users.index') }}">
+                    <a href="{{ route('users.index') }}" class="polished-side-link"><span class="oi oi-people"></span> Users</a>
                 </li>
                 @endif
                 @if(auth()->user()->level !== "ADMIN_PROFILE")
-                <li>
-                    <a href="{{ route('news.index') }}"><span class="oi oi-signpost"></span> News</a>
+                <li class="{{ set_active('news.index') }}">
+                    <a href="{{ route('news.index') }}" class="polished-side-link"><span class="oi oi-signpost"></span> News</a>
                 </li>
-                <li>
-                    <a href="{{ route('categories.index') }}"><span class="oi oi-tag"></span> Category News</a>
+                <li class="{{ set_active('categories.index') }}">
+                    <a href="{{ route('categories.index') }}" class="polished-side-link"><span class="oi oi-tag"></span> Category News</a>
                 </li>
                 @endif
                 <div class="d-block d-md-none">
@@ -195,6 +200,15 @@
     <script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     
     @stack('script')
+
+    <script>
+        $(document).ready(function (){
+            $(".container-fluid .flex-row .polished-sidebar .polished-sidebar-menu .polished-side-item .polished-side-link.active").click(function (){
+                $(".container-fluid .flex-row .polished-sidebar .polished-sidebar-menu .polished-side-item .polished-side-link.active").removeClass('active');
+                $(this).addClass('active');
+            })
+        });
+    </script>
 
 </body>
 
