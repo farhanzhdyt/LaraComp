@@ -8,5 +8,3 @@
 </p>
 
 ## LaraComp
-
-Lieur wa euy
